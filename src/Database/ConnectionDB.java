@@ -10,8 +10,7 @@ public class ConnectionDB {
     private static final String usuario ="admin123";
     private static final String clave="admin123";
 
-    /* Creamos el método para conectarnos a la base de datos..
-    /* Creamos el método para conectarnos a la
+    /* Creamos el método para conectarnos a la base de datos.
        Este método devolverá un objeto de tipo Connection. */
 
     public static Connection Connect(){
