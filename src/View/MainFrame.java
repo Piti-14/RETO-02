@@ -9,7 +9,11 @@ public class MainFrame extends JFrame {
     public static JMenuBar menuBar;
 
     public MainFrame() {
-        this.setExtendedState(MAXIMIZED_BOTH);
+        Toolkit screen = Toolkit.getDefaultToolkit();
+        Dimension screensize = screen.getScreenSize();
+        int screenHeight = screensize.height;
+        int screenWidth = screensize.width;
+        this.setSize(screenWidth, screenHeight);
         this.setLayout(new BorderLayout());
         this.setResizable(false);
 
