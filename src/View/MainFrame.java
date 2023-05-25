@@ -1,21 +1,23 @@
 package View;
 
+import View.Login.LoginPanel;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainFrame extends JFrame {
     public static CardLayout cardLayout;
     public static JPanel cards;
     public static JMenuBar menuBar;
 
-    public MainFrame() {
+    public MainFrame() throws IOException {
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screensize = screen.getScreenSize();
         int screenHeight = screensize.height;
         int screenWidth = screensize.width;
         this.setSize(screenWidth, screenHeight);
         this.setLayout(new BorderLayout());
-        this.setResizable(false);
 
         menuBar = new JMenuBar();
         menuBar.setVisible(false);

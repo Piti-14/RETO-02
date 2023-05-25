@@ -1,6 +1,6 @@
 package Controller;
 
-import View.LoginPanel;
+import View.Login.LoginPanel;
 import View.MainFrame;
 
 import javax.swing.*;
@@ -15,7 +15,7 @@ public class LoginPanelController {
             MainFrame.cardLayout.show(MainFrame.cards, "mainPanel");
             MainFrame.menuBar.setVisible(true);
         } else {
-            LoginPanel.cajaContrasena.setText("");
+            LoginPanel.passwordField.setText("");
             JOptionPane.showMessageDialog(null, "Wrong Password", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

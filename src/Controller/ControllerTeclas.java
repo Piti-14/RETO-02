@@ -1,6 +1,6 @@
 package Controller;
 
-import View.LoginPanel;
+import View.Login.LoginPanel;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
