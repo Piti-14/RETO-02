@@ -16,9 +16,6 @@ public class MainPanel extends JPanel {
 
 
 
-
-
-
         addButton = new JButton("Crear Nóminas");
         addButton.setBounds(screenWidth/4, screenHeight/4, 400, 200);
 
