@@ -13,10 +13,10 @@ public class Employee {
     private int seniority;
     private boolean permanentJob;
     private String dept;
-    private String group;
+    private ProfessionalGroup group;
 
     public Employee(String nif, String name, String firstLastname, String secondLastname, String account,
-                    int ss_number, int seniority, boolean permanentJob, String dept, String group) {
+                    int ss_number, int seniority, boolean permanentJob, String dept, ProfessionalGroup group) {
         this.nif = nif;
         this.name = name;
         this.firstLastname = firstLastname;
@@ -93,7 +93,7 @@ public class Employee {
         return dept;
     }
 
-    public String getGroup() {
+    public ProfessionalGroup getGroup() {
         return group;
     }
 }

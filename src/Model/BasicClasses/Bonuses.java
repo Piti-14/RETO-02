@@ -1,10 +1,13 @@
 package Model.BasicClasses;
 
-public class Bonuses {
+import Model.ICalculable;
+
+public class Bonuses implements ICalculable {
 
     private String bonus;
     private String description;
     private boolean pays;
+    private int quant;
 
     public Bonuses(String bonus, String description, boolean pays) {
         this.bonus = bonus;
@@ -16,5 +19,11 @@ public class Bonuses {
     }
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public void quantity() {
+
+        this.quant = quant;
     }
 }

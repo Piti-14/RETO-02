@@ -6,17 +6,17 @@ import java.sql.Statement;
 
 public class Querys {
 
-    private ConnectionDB con;
+    private ConnectionDB connect;
 
-    public Querys(ConnectionDB con) {
-        this.con = con;
+    public Querys(ConnectionDB connect) {
+        this.connect = connect;
     }
 
     public ResultSet GrossPay() throws SQLException {
-        Statement query = con.Connect().createStatement();
+        Statement query = connect.Connect().createStatement();
         ResultSet result = query.executeQuery("");
-        con.Connect().close();
-
+        //
+        connect.exit();
         return result;
     }
 
