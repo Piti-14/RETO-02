@@ -1,4 +1,4 @@
-package Model;
+package Model.BasicClasses;
 
 public class Holdbacks {
 
