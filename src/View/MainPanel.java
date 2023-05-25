@@ -143,7 +143,6 @@ public class MainPanel extends JPanel {
             this.shadowOffset = offset;
         }
 
-
         @Override
         protected void paintComponent(Graphics g) {
             Graphics2D g2d = (Graphics2D) g.create();
