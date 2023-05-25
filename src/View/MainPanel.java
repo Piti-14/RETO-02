@@ -14,6 +14,7 @@ public class MainPanel extends JPanel {
         int screenHeight = screensize.height;
         int screenWidth = screensize.width;
 
+
         addButton = new JButton("Crear Nóminas");
         addButton.setBounds(screenWidth/4, screenHeight/4, 400, 200);
 
