@@ -1,5 +1,7 @@
 package Database;
 
+import Model.BasicClasses.Employee;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,9 +14,9 @@ public class Querys {
         this.connect = connect;
     }
 
-    public ResultSet GrossPay() throws SQLException {
+    public ResultSet GrossPay(Employee e) throws SQLException {
         Statement query = connect.Connect().createStatement();
-        ResultSet result = query.executeQuery("");
+        ResultSet result = query.executeQuery("select getSalarioBase('" + e.getGroup().getGroupCode() + "')");
         //
         connect.exit();
         return result;
