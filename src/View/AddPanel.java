@@ -48,6 +48,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 0;
         companyInfo.add(companyLbl, constraints);
 
+
         companyTxt = new JTextField(10);
         constraints.gridx = 1;
         constraints.gridy = 0;
@@ -89,9 +90,6 @@ public class AddPanel extends JPanel {
         companyInfo.add(invisLbl, constraints);
 
         invisTxt = new JTextField(10);
-        invisTxt.setVisible(false);
-        invisTxt.setEditable(false);
-        invisTxt.setPreferredSize(new Dimension(invisTxt.getPreferredSize().width, 50));
         constraints.gridx = 1;
         constraints.gridy = 4;
         companyInfo.add(invisTxt, constraints);
