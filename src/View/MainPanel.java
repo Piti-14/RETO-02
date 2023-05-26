@@ -72,6 +72,7 @@ public class MainPanel extends JPanel {
                 button.setBounds(button.getX() - 10, button.getY() - 10, button.getWidth() + 20, button.getHeight() + 20);
             }
 
+
             @Override
             public void mouseExited(MouseEvent e) {
                 // Restaurar el tamaño original del botón cuando el ratón sale de él
