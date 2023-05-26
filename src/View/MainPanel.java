@@ -7,9 +7,13 @@ import View.Utils.OffButton;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
+
+import static View.MainFrame.cardLayout;
 
 public class MainPanel extends JPanel {
 
@@ -46,6 +50,10 @@ public class MainPanel extends JPanel {
             MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         });
         customizeButton(addButton, color1, color2);
+        addButton.addActionListener(e -> {
+
+            cardLayout.show(MainFrame.cards, "addPanel");
+        });
 
         modifyButton = new RoundedButton("MODIFICAR NÓMINAS");
         modifyButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
