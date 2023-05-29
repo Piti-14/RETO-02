@@ -1,7 +1,7 @@
 package View;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class AddPanel extends JPanel {
@@ -19,23 +19,26 @@ public class AddPanel extends JPanel {
             totalLbl, invisLbl;
 
     JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
-            settlementPeriodTxt, nDaysTxt, baseSalaryTxt,salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
-            overtimeHoursTxt, complementaryHoursTxt, extraBonusesTxt, inKindSalaryTxt,
-            nonSalaryPercepcionsTxt, compensationsOrAllowancesTxt, ssBenefitsCompensationsTxt, compensationsTxt,
-            otherPerceptionsTxt, totalEarnedTxt, deductionsTxt, employeeContributionsTxt, typeTxt, holdbacksTxt,
+            settlementPeriodTxt, nDaysTxt, salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
+            compensationsOrAllowancesTxt, ssBenefitsCompensationsTxt, compensationsTxt,
+            otherPerceptionsTxt, totalEarnedTxt, deductionsTxt, employeeContributionsTxt, holdbacksTxt,
             unemploymentTxt, proTrainingTxt, normalOHTxt, mandatoryOHTxt, intergenerationalEMTxt, totalContributionsTxt,
             incomeTaxTxt, advancesTxt, valueProductsTxt, otherDeductionsTxt, totalDeductedTxt, totalNetReceivedTxt,
             companySignatureTxt, receivedTxt, determinationSSTxt, conceptsTxt, baseContributionTxt,
             monthlyRemunerationTxt, extraPaymentsTxt, total1Txt, companyAportationTxt, baseTxt, baseHoldbacksTxt,
             otherConceptssTxt, jointTxt, fogasaTxt, contributionOHTxt, contributionMandatoryOHTxt, interEMLblTxt, baseSubjectTxt,
             totalTxt, amount1Txt, amount2Txt, amount3Txt, amount4Txt, amount5Txt, amount6Txt, amount7Txt, amount8Txt, amount9Txt,
-            amount10Txt, amount11Txt, invisTxt;
+            amount10Txt, amount11Txt, amount12Txt, amount13Txt, amount14Txt, amount15Txt, amount16Txt, amount17Txt, amount18Txt,
+            amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt;
 
     public AddPanel() {
-        setLayout(new GridBagLayout());
+        setLayout(new BorderLayout());
 
-        JPanel companyInfo = createPanelWithBorder();
-        JPanel employeeInfo = createPanelWithBorder();
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridBagLayout());
+
+        JPanel topInfo = createPanelWithBorder();
+        JPanel dateInfo = createPanelWithBorder();
         JPanel test1 = createPanelWithBorder();
         JPanel test2 = createPanelWithBorder();
 
@@ -43,138 +46,129 @@ public class AddPanel extends JPanel {
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets = new Insets(0, 0, 0, 10);
 
+        //INFORMACIÓN EMPRESA Y EMPLEADO
+
         companyLbl = new JLabel("Company:");
         constraints.gridx = 0;
         constraints.gridy = 0;
-        companyInfo.add(companyLbl, constraints);
+        topInfo.add(companyLbl, constraints);
 
-
-        companyTxt = new JTextField(10);
+        companyTxt = new JTextField(20);
         constraints.gridx = 1;
         constraints.gridy = 0;
-        companyInfo.add(companyTxt, constraints);
+        topInfo.add(companyTxt, constraints);
 
         addressLbl = new JLabel("Address:");
         constraints.gridx = 0;
         constraints.gridy = 1;
-        companyInfo.add(addressLbl, constraints);
+        topInfo.add(addressLbl, constraints);
 
-        addressTxt = new JTextField(10);
+        addressTxt = new JTextField(20);
         constraints.gridx = 1;
         constraints.gridy = 1;
-        companyInfo.add(addressTxt, constraints);
+        topInfo.add(addressTxt, constraints);
 
         cifLbl = new JLabel("CIF:");
         constraints.gridx = 0;
         constraints.gridy = 2;
-        companyInfo.add(cifLbl, constraints);
+        topInfo.add(cifLbl, constraints);
 
-        cifTxt = new JTextField(10);
+        cifTxt = new JTextField(20);
         constraints.gridx = 1;
         constraints.gridy = 2;
-        companyInfo.add(cifTxt, constraints);
+        topInfo.add(cifTxt, constraints);
 
         bankNumberLbl = new JLabel("Bank Account Number:");
         constraints.gridx = 0;
         constraints.gridy = 3;
-        companyInfo.add(bankNumberLbl, constraints);
+        topInfo.add(bankNumberLbl, constraints);
 
-        bankNumberTxt = new JTextField(10);
+        bankNumberTxt = new JTextField(20);
         constraints.gridx = 1;
         constraints.gridy = 3;
-        companyInfo.add(bankNumberTxt, constraints);
-
-        invisLbl = new JLabel("      ");
-        constraints.gridx = 0;
-        constraints.gridy = 4;
-        companyInfo.add(invisLbl, constraints);
-
-        invisTxt = new JTextField(10);
-        constraints.gridx = 1;
-        constraints.gridy = 4;
-        companyInfo.add(invisTxt, constraints);
+        topInfo.add(bankNumberTxt, constraints);
 
         employeeLbl = new JLabel("Employee:");
-        constraints.gridx = 0;
+        constraints.gridx = 2;
         constraints.gridy = 0;
-        employeeInfo.add(employeeLbl, constraints);
+        topInfo.add(employeeLbl, constraints);
 
-        employeeTxt = new JTextField(10);
-        constraints.gridx = 1;
+        employeeTxt = new JTextField(20);
+        constraints.gridx = 3;
         constraints.gridy = 0;
-        employeeInfo.add(employeeTxt, constraints);
+        topInfo.add(employeeTxt, constraints);
 
         nifLbl = new JLabel("NIF:");
-        constraints.gridx = 0;
+        constraints.gridx = 2;
         constraints.gridy = 1;
-        employeeInfo.add(nifLbl, constraints);
+        topInfo.add(nifLbl, constraints);
 
-        nifTxt = new JTextField(10);
-        constraints.gridx = 1;
+        nifTxt = new JTextField(20);
+        constraints.gridx = 3;
         constraints.gridy = 1;
-        employeeInfo.add(nifTxt, constraints);
+        topInfo.add(nifTxt, constraints);
 
         ssnLbl = new JLabel("Social Security Number:");
-        constraints.gridx = 0;
+        constraints.gridx = 2;
         constraints.gridy = 2;
-        employeeInfo.add(ssnLbl, constraints);
+        topInfo.add(ssnLbl, constraints);
 
-        ssnTxt = new JTextField(10);
-        constraints.gridx = 1;
+        ssnTxt = new JTextField(20);
+        constraints.gridx = 3;
         constraints.gridy = 2;
-        employeeInfo.add(ssnTxt, constraints);
+        topInfo.add(ssnTxt, constraints);
 
-        categoryLbl = new JLabel("Category:");
-        constraints.gridx = 0;
+        categoryLbl = new JLabel("Professional Group:");
+        constraints.gridx = 2;
         constraints.gridy = 3;
-        employeeInfo.add(categoryLbl, constraints);
+        topInfo.add(categoryLbl, constraints);
 
-        categoryTxt = new JTextField(10);
-        constraints.gridx = 1;
+        categoryTxt = new JTextField(20);
+        constraints.gridx = 3;
         constraints.gridy = 3;
-        employeeInfo.add(categoryTxt, constraints);
+        topInfo.add(categoryTxt, constraints);
 
         contributionGroupLbl = new JLabel("Contribution Group:");
-        constraints.gridx = 0;
+        constraints.gridx = 2;
         constraints.gridy = 4;
-        employeeInfo.add(contributionGroupLbl, constraints);
+        topInfo.add(contributionGroupLbl, constraints);
 
-        contributionGroupTxt = new JTextField(10);
-        constraints.gridx = 1;
+        contributionGroupTxt = new JTextField(20);
+        constraints.gridx = 3;
         constraints.gridy = 4;
-        employeeInfo.add(contributionGroupTxt, constraints);
+        topInfo.add(contributionGroupTxt, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        add(companyInfo, constraints);
+        mainPanel.add(topInfo, constraints);
 
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        add(employeeInfo, constraints);
-
-        constraints.insets = new Insets(20, 0, 10, 10);
+        //INFORMACIÓN DE LA FECHA
 
         settlementPeriodLbl = new JLabel("Settlement Period:");
         constraints.gridx = 0;
-        constraints.gridy = 2;
-        add(settlementPeriodLbl, constraints);
+        constraints.gridy = 0;
+        dateInfo.add(settlementPeriodLbl, constraints);
 
         settlementPeriodTxt = new JTextField(20);
         constraints.gridx = 1;
-        constraints.gridy = 2;
-        add(settlementPeriodTxt, constraints);
+        constraints.gridy = 0;
+        dateInfo.add(settlementPeriodTxt, constraints);
 
         nDaysLbl = new JLabel("Number of Days:");
         constraints.gridx = 2;
-        constraints.gridy = 2;
-        add(nDaysLbl, constraints);
+        constraints.gridy = 0;
+        dateInfo.add(nDaysLbl, constraints);
 
         nDaysTxt = new JTextField(5);
         constraints.gridx = 3;
-        constraints.gridy = 2;
-        add(nDaysTxt, constraints);
+        constraints.gridy = 0;
+        dateInfo.add(nDaysTxt, constraints);
 
-        constraints.insets = new Insets(0, 0, 0, 10);
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        mainPanel.add(dateInfo, constraints);
+
+        //INFORMACIÓN DEVENGOS
 
         earningsLbl = new JLabel("I. EARNINGS");
         constraints.gridx = 0;
@@ -182,12 +176,12 @@ public class AddPanel extends JPanel {
         test1.add(earningsLbl, constraints);
 
         amountLbl = new JLabel("AMOUNT");
-        constraints.gridx = 2;
+        constraints.gridx = 3;
         constraints.gridy = 0;
         test1.add(amountLbl, constraints);
 
         totalsLbl = new JLabel("TOTALS");
-        constraints.gridx = 3;
+        constraints.gridx = 4;
         constraints.gridy = 0;
         test1.add(totalsLbl, constraints);
 
@@ -201,13 +195,8 @@ public class AddPanel extends JPanel {
         constraints.gridy = 2;
         test1.add(baseSalaryLbl, constraints);
 
-        baseSalaryTxt = new JTextField(20);
-        constraints.gridx = 1;
-        constraints.gridy = 2;
-        test1.add(baseSalaryTxt, constraints);
-
         amount1Txt = new JTextField(10);
-        constraints.gridx = 2;
+        constraints.gridx = 3;
         constraints.gridy = 2;
         test1.add(amount1Txt, constraints);
 
@@ -216,35 +205,291 @@ public class AddPanel extends JPanel {
         constraints.gridy = 3;
         test1.add(salarySupplementsLbl, constraints);
 
-        salarySupplementsTxt = new JTextField(40);
+        salarySupplementsTxt = new JTextField(30);
         constraints.gridx = 0;
         constraints.gridy = 4;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 3;
         test1.add(salarySupplementsTxt, constraints);
 
-        salarySupplements1Txt = new JTextField(40);
-        constraints.gridx = 0;
+        amount2Txt = new JTextField(10);
+        constraints.gridx = 3;
         constraints.gridy = 4;
-        constraints.gridwidth = 2;
-        test1.add(salarySupplementsTxt, constraints);
+        test1.add(amount2Txt, constraints);
 
-        salarySupplements2Txt = new JTextField(40);
+        salarySupplements1Txt = new JTextField(30);
         constraints.gridx = 0;
-        constraints.gridy = 4;
+        constraints.gridy = 5;
+        constraints.gridwidth = 3;
+        test1.add(salarySupplements1Txt, constraints);
+
+        amount3Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 5;
+        test1.add(amount3Txt, constraints);
+
+        salarySupplements2Txt = new JTextField(30);
+        constraints.gridx = 0;
+        constraints.gridy = 6;
+        constraints.gridwidth = 3;
+        test1.add(salarySupplements2Txt, constraints);
+
+        amount4Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 6;
+        test1.add(amount4Txt, constraints);
+
+        overtimeHoursLbl = new JLabel("Overtime Hours:");
+        constraints.gridx = 0;
+        constraints.gridy = 7;
+        test1.add(overtimeHoursLbl, constraints);
+
+        amount5Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 7;
+        test1.add(amount5Txt, constraints);
+
+        complementaryHoursLbl = new JLabel("Complementary Hours:");
+        constraints.gridx = 0;
+        constraints.gridy = 8;
+        test1.add(complementaryHoursLbl, constraints);
+
+        amount6Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 8;
+        test1.add(amount6Txt, constraints);
+
+        extraBonusesLbl = new JLabel("Extra bonuses:");
+        constraints.gridx = 0;
+        constraints.gridy = 9;
+        test1.add(extraBonusesLbl, constraints);
+
+        amount7Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 9;
+        test1.add(amount7Txt, constraints);
+
+        inKindSalaryLbl = new JLabel("In-kind salary:");
+        constraints.gridx = 0;
+        constraints.gridy = 10;
+        test1.add(inKindSalaryLbl, constraints);
+
+        amount8Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 10;
+        test1.add(amount8Txt, constraints);
+
+        nonSalaryPercepcionsLbl = new JLabel("2. Non-salary perceptions:");
+        constraints.gridx = 0;
+        constraints.gridy = 11;
+        test1.add(nonSalaryPercepcionsLbl, constraints);
+
+        compensationsOrAllowancesLbl = new JLabel("Compensations or allowances:");
+        constraints.gridx = 0;
+        constraints.gridy = 12;
+        test1.add(compensationsOrAllowancesLbl, constraints);
+
+        compensationsOrAllowancesTxt = new JTextField(40);
+        constraints.gridx = 0;
+        constraints.gridy = 13;
+        constraints.gridwidth = 3;
+        test1.add(compensationsOrAllowancesTxt, constraints);
+
+        amount9Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 13;
+        test1.add(amount9Txt, constraints);
+
+        ssBenefitsCompensationsLbl = new JLabel("Social security benefits and compensations:");
+        constraints.gridx = 0;
+        constraints.gridy = 14;
+        test1.add(ssBenefitsCompensationsLbl, constraints);
+
+        ssBenefitsCompensationsTxt = new JTextField(40);
+        constraints.gridx = 0;
+        constraints.gridy = 15;
+        constraints.gridwidth = 3;
+        test1.add(ssBenefitsCompensationsTxt, constraints);
+
+        amount10Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 15;
+        test1.add(amount10Txt, constraints);
+
+        compensationsLbl = new JLabel("Compensations for transfers, suspensions or layoffs:");
+        constraints.gridx = 0;
+        constraints.gridy = 16;
+        test1.add(ssBenefitsCompensationsLbl, constraints);
+
+        compensationsTxt = new JTextField(40);
+        constraints.gridx = 0;
+        constraints.gridy = 17;
+        constraints.gridwidth = 3;
+        test1.add(compensationsTxt, constraints);
+
+        amount11Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 17;
+        test1.add(amount11Txt, constraints);
+
+        otherPerceptionsLbl = new JLabel("Other non-salary perceptions:");
+        constraints.gridx = 0;
+        constraints.gridy = 18;
+        test1.add(otherPerceptionsLbl, constraints);
+
+        otherPerceptionsTxt = new JTextField(40);
+        constraints.gridx = 0;
+        constraints.gridy = 19;
+        constraints.gridwidth = 3;
+        test1.add(otherPerceptionsTxt, constraints);
+
+        amount12Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 19;
+        test1.add(amount12Txt, constraints);
+
+        totalEarnedLbl = new JLabel("A. TOTAL EARNED:");
+        constraints.gridx = 1;
+        constraints.gridy = 20;
+        test1.add(totalEarnedLbl, constraints);
+
+        totalEarnedTxt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 20;
+        test1.add(totalEarnedTxt, constraints);
+
+        deductionsLbl = new JLabel("II. DEDUCTIONS:");
+        constraints.gridx = 0;
+        constraints.gridy = 21;
+        test1.add(deductionsLbl, constraints);
+
+        employeeContributionsLbl = new JLabel("1. Employee's contribution to S.S. and joint collection concepts:");
+        constraints.gridx = 0;
+        constraints.gridy = 22;
+        constraints.gridwidth = 3;
+        test1.add(employeeContributionsLbl, constraints);
+
+        typeLbl = new JLabel("TYPE %");
+        constraints.gridx = 2;
+        constraints.gridy = 23;
+        test1.add(typeLbl, constraints);
+
+        holdbacksLbl = new JLabel("Holdbacks:");
+        constraints.gridx = 0;
+        constraints.gridy = 24;
         constraints.gridwidth = 2;
-        test1.add(salarySupplementsTxt, constraints);
+        test1.add(holdbacksLbl, constraints);
+
+        typeTxt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 24;
+        test1.add(typeTxt, constraints);
+
+        amount13Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 24;
+        test1.add(amount13Txt, constraints);
+
+        unemploymentLbl = new JLabel("Unemployment:");
+        constraints.gridx = 0;
+        constraints.gridy = 25;
+        constraints.gridwidth = 2;
+        test1.add(unemploymentLbl, constraints);
+
+        type1Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 25;
+        test1.add(type1Txt, constraints);
+
+        amount14Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 25;
+        test1.add(amount14Txt, constraints);
+
+        proTrainingLbl = new JLabel("Professional training:");
+        constraints.gridx = 0;
+        constraints.gridy = 26;
+        constraints.gridwidth = 2;
+        test1.add(proTrainingLbl, constraints);
+
+        type2Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 26;
+        test1.add(type2Txt, constraints);
+
+        amount15Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 26;
+        test1.add(amount15Txt, constraints);
+
+        normalOHLbl = new JLabel("Normal overtime hours:");
+        constraints.gridx = 0;
+        constraints.gridy = 27;
+        constraints.gridwidth = 2;
+        test1.add(normalOHLbl, constraints);
+
+        type3Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 27;
+        test1.add(type3Txt, constraints);
+
+        amount16Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 27;
+        test1.add(amount16Txt, constraints);
+
+        mandatoryOHLbl = new JLabel("Mandatory overtime hours:");
+        constraints.gridx = 0;
+        constraints.gridy = 28;
+        constraints.gridwidth = 2;
+        test1.add(mandatoryOHLbl, constraints);
+
+        type4Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 28;
+        test1.add(type4Txt, constraints);
+
+        amount17Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 28;
+        test1.add(amount17Txt, constraints);
+
+        interEMLbl = new JLabel("Intergenerational equity mechanism:");
+        constraints.gridx = 0;
+        constraints.gridy = 29;
+        constraints.gridwidth = 2;
+        test1.add(interEMLbl, constraints);
+
+        type5Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 29;
+        test1.add(type5Txt, constraints);
+
+        amount18Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 29;
+        test1.add(amount18Txt, constraints);
 
         constraints.gridx = 0;
-        constraints.gridy = 3;
-        add(test1, constraints);
+        constraints.gridy = 2;
+        mainPanel.add(test1, constraints);
+
+        JScrollPane scrollPane = new JScrollPane(mainPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setPreferredSize(new Dimension(800, 600));
+
+        add(scrollPane, BorderLayout.CENTER);
     }
 
     private JPanel createPanelWithBorder() {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
-        panel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createBevelBorder(1, Color.black, Color.black),
-                new EmptyBorder(10, 10, 10, 10)));
+
+        Border innerBorder = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        Border outerBorder = BorderFactory.createMatteBorder(2, 2, 0, 2, Color.black);
+
+        Border border = BorderFactory.createCompoundBorder(outerBorder, innerBorder);
+
+        panel.setBorder(border);
 
         return panel;
     }
