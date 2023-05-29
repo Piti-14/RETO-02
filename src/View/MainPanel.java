@@ -19,7 +19,6 @@ public class MainPanel extends JPanel {
     public MainPanel() {
         this.setLayout(null);
 
-
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screenSize = screen.getScreenSize();
         int screenHeight = screenSize.height;
@@ -43,20 +42,41 @@ public class MainPanel extends JPanel {
 
         addButton = new RoundedButton("CREAR NÓMINAS");
         addButton.setBounds((screenWidth/6), ((screenHeight/4)+50), 400, 100);
+        addButton.addActionListener(e -> {
+            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+        });
         customizeButton(addButton, color1, color2);
 
         modifyButton = new RoundedButton("MODIFICAR NÓMINAS");
         modifyButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
+        modifyButton.addActionListener(e -> {
+            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+            GeneralPlayerPickPanel.deleteButton.setVisible(false);
+            GeneralPlayerPickPanel.modifyButton.setVisible(true);
+            GeneralPlayerPickPanel.chooseButton.setVisible(false);
+            GeneralPlayerPickPanel.jComboBox.setVisible(false);
+        });
         customizeButton(modifyButton, color2, color1);
 
         consultButton = new RoundedButton("CONSULTAR NÓMINAS");
         consultButton.setBounds(screenWidth/6, ((screenHeight/2)+20), 400, 100);
+        consultButton.addActionListener(e -> {
+            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+            GeneralPlayerPickPanel.deleteButton.setVisible(false);
+            GeneralPlayerPickPanel.modifyButton.setVisible(false);
+            GeneralPlayerPickPanel.chooseButton.setVisible(true);
+            GeneralPlayerPickPanel.jComboBox.setVisible(true);
+        });
         customizeButton(consultButton, color1, color2);
 
         deleteButton = new RoundedButton("ELIMINAR NÓMINAS");
         deleteButton.setBounds(((screenWidth/2)+50), ((screenHeight/2)+20), 400, 100);
         deleteButton.addActionListener(e -> {
             MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+            GeneralPlayerPickPanel.deleteButton.setVisible(false);
+            GeneralPlayerPickPanel.modifyButton.setVisible(false);
+            GeneralPlayerPickPanel.chooseButton.setVisible(true);
+            GeneralPlayerPickPanel.jComboBox.setVisible(true);
         });
         customizeButton(deleteButton, color2, color1);
 

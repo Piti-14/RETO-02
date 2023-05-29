@@ -10,9 +10,10 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws IOException, SQLException {
-        //MainFrame mainFrame = new MainFrame();
-        //mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        /*
         ProfessionalGroup gr = new ProfessionalGroup("B", 0.0);
         Employee e = new Employee("12345678-A", "Nina", "Williams", "Smith",
                 "nwilliams",222333, 3, true, "A", gr);
@@ -22,6 +23,8 @@ public class Main {
 
         System.out.println(e.getGroup().getGroupCode());
         System.out.println(qs.baseSalary(e));
+
+         */
 
     }
 }
