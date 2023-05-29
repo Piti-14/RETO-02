@@ -8,18 +8,23 @@ import java.sql.Statement;
 
 public class Querys {
 
-    private ConnectionDB connect;
+    //private ConnectionDB connect;
 
-    public Querys(ConnectionDB connect) {
-        this.connect = connect;
+    public Querys() {
+
     }
 
-    public ResultSet GrossPay(Employee e) throws SQLException {
-        Statement query = connect.Connect().createStatement();
+    public double baseSalary(Employee e) throws SQLException {
+        Statement query = ConnectionDB.Connect().createStatement();
         ResultSet result = query.executeQuery("select getSalarioBase('" + e.getGroup().getGroupCode() + "')");
-        //
-        connect.exit();
-        return result;
+
+        double salary = 0.0;
+        if (result.next()) {
+            salary = result.getDouble(1);
+        }
+
+        ConnectionDB.exit(ConnectionDB.Connect());
+        return salary;
     }
 
     public void NetPay() throws SQLException{}

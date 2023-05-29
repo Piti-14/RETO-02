@@ -13,14 +13,15 @@ public class Main {
         //MainFrame mainFrame = new MainFrame();
         //mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        ProfessionalGroup gr = new ProfessionalGroup("A", 0.0);
+        ProfessionalGroup gr = new ProfessionalGroup("B", 0.0);
         Employee e = new Employee("12345678-A", "Nina", "Williams", "Smith",
                 "nwilliams",222333, 3, true, "A", gr);
 
 
-        Querys qs = new Querys(new ConnectionDB());
+        Querys qs = new Querys();
 
-        System.out.println(qs.GrossPay(e));
+        System.out.println(e.getGroup().getGroupCode());
+        System.out.println(qs.baseSalary(e));
 
     }
 }
