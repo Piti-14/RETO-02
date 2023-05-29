@@ -15,6 +15,15 @@ public class Querys {
 
     }
 
+    public ArrayList<Employee> getEmployees() throws SQLException{
+        Statement query = ConnectionDB.Connect().createStatement();
+        ResultSet result = query.executeQuery("select * from trabajador");
+
+        ArrayList<Employee> employees = new ArrayList<>();
+        while(result.next()) {
+
+        }
+    }
     public double baseSalary(Employee e) throws SQLException {
         Statement query = ConnectionDB.Connect().createStatement();
         ResultSet result = query.executeQuery("select getSalarioBase('" + e.getGroup().getGroupCode() + "')");
