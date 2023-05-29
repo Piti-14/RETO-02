@@ -5,11 +5,11 @@ import View.Login.LoginPanel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class ControllerTeclas extends KeyAdapter {
+public class KeyController extends KeyAdapter {
     @Override
     public void keyTyped(KeyEvent e) {
         if(e.getKeyChar()==KeyEvent.VK_ENTER){
-            LoginPanel.botonOK.doClick();
+            LoginPanelController.verificar(LoginPanel.passwordField);
         }
     }
 }

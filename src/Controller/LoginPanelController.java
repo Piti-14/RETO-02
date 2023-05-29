@@ -16,7 +16,7 @@ public class LoginPanelController {
             MainFrame.menuBar.setVisible(true);
         } else {
             LoginPanel.passwordField.setText("");
-            JOptionPane.showMessageDialog(null, "Wrong Password", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Wrong User or Password", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

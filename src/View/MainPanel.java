@@ -1,5 +1,10 @@
 package View;
 
+import Sources.Sources;
+import View.Utils.JLabelWallpaper;
+import View.Utils.JPanelBlue;
+import View.Utils.OffButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -14,12 +19,15 @@ public class MainPanel extends JPanel {
     public MainPanel() {
         this.setLayout(null);
 
-        this.setBackground(Color.BLACK);
 
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screenSize = screen.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
+
+        ImageIcon corporativeImage = new ImageIcon(Sources.class.getResource("fondo-login.jpg"));
+        JLabel labelImage = new JLabel(corporativeImage);
+        labelImage.setBounds(0,0,screenWidth,screenHeight);
 
         Color color2 = new Color(185, 189, 209);
 
@@ -47,13 +55,24 @@ public class MainPanel extends JPanel {
 
         deleteButton = new RoundedButton("ELIMINAR NÓMINAS");
         deleteButton.setBounds(((screenWidth/2)+50), ((screenHeight/2)+20), 400, 100);
+        deleteButton.addActionListener(e -> {
+            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+        });
         customizeButton(deleteButton, color2, color1);
 
-        add(titleLabel);
-        add(addButton);
-        add(modifyButton);
-        add(consultButton);
-        add(deleteButton);
+        this.add(titleLabel);
+        this.add(addButton);
+        this.add(modifyButton);
+        this.add(consultButton);
+        this.add(deleteButton);
+
+        MainFrame.menuBar.setVisible(true);
+
+        this.add(new OffButton());
+        this.add(new JPanelBlue());
+        this.add(new JLabelWallpaper());
+
+
     }
 
     private void customizeButton(RoundedButton button, Color startColor, Color endColor) {
@@ -101,7 +120,6 @@ public class MainPanel extends JPanel {
             Graphics2D g2d = (Graphics2D) g.create();
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            // Crear gradiente
             GradientPaint gradient = new GradientPaint(0, 0, startColor, getWidth(), getHeight(), endColor);
             g2d.setPaint(gradient);
 
@@ -154,11 +172,9 @@ public class MainPanel extends JPanel {
             int x = (getWidth() - textBounds.width) / 2;
             int y = (getHeight() - textBounds.height) / 2 + fm.getAscent();
 
-            // Dibujar la sombra desplazada
             g2d.setColor(shadowColor);
             g2d.drawString(getText(), x + shadowOffset.width, y + shadowOffset.height);
 
-            // Dibujar el texto original
             g2d.setColor(getForeground());
             g2d.drawString(getText(), x, y);
 

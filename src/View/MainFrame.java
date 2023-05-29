@@ -1,26 +1,29 @@
 package View;
 
+import Sources.Sources;
 import View.Login.LoginPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+import static java.lang.System.exit;
+
 public class MainFrame extends JFrame {
     public static CardLayout cardLayout;
     public static JPanel cards;
     public static JMenuBar menuBar;
 
-    public MainFrame() throws IOException {
+
+    public MainFrame() {
+        this.setVisible(true);
+
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screensize = screen.getScreenSize();
         int screenHeight = screensize.height;
         int screenWidth = screensize.width;
         this.setSize(screenWidth, screenHeight);
         this.setLayout(new BorderLayout());
-
-        menuBar = new JMenuBar();
-        menuBar.setVisible(false);
 
         JMenu menuArchive = new JMenu("Archivo");
         JMenuItem itemExport = new JMenuItem("Exportar");
@@ -46,27 +49,36 @@ public class MainFrame extends JFrame {
         menuLanguage.add(itemEn);
         menuHelp.add(itemManual);
 
+
+        menuBar = new JMenuBar();
+
         menuBar.add(menuArchive);
         menuBar.add(menuPayroll);
         menuBar.add(menuPreferences);
         menuBar.add(menuHelp);
 
-        this.add(menuBar, BorderLayout.NORTH);
-
-        // Gestion de Paneles
 
         LoginPanel loginPanel = new LoginPanel();
         MainPanel mainPanel = new MainPanel();
         AddPanel addPanel = new AddPanel();
+        DeletePanel deletePanel = new DeletePanel();
+        PlayerPickPanel playerPickPanel = new PlayerPickPanel();
 
+        menuBar.setVisible(false);
         cardLayout = new CardLayout();
         cards = new JPanel(cardLayout);
 
         cards.add(loginPanel, "loginPanel");
         cards.add(mainPanel,"mainPanel");
         cards.add(addPanel,"addPanel");
+        cards.add(deletePanel, "deletePanel");
+        cards.add(playerPickPanel,"playerPick");
+
+        this.add(menuBar, BorderLayout.NORTH);
 
         this.add(cards);
-        this.setVisible(true);
+
+
     }
+
 }
