@@ -1,6 +1,7 @@
 package View;
 
 import Database.Querys;
+import Model.BasicClasses.Employee;
 import View.Utils.*;
 
 import javax.swing.*;
@@ -20,6 +21,8 @@ public class GeneralEmployeePickPanel extends JPanel {
     public static JButton deleteButton;
     public static JButton alternateDepartmentButton;
     public static JButton alternateEmployeeButton;
+
+    public Querys query = new Querys();
 
     public GeneralEmployeePickPanel() throws SQLException {
         this.setLayout(null);
@@ -105,9 +108,9 @@ public class GeneralEmployeePickPanel extends JPanel {
 
             try {
                 GeneralEmployeePickPanel.listModel.removeAllElements();
-                for (String element: Querys.listEmployees()) {
+                for (Employee element: query.getEmployees()) {
 
-                    GeneralEmployeePickPanel.listModel.addElement(element);
+                    GeneralEmployeePickPanel.listModel.addElement(element.getName() + " " + element.getFirstLastname() + " " + element.getSecondLastname());
                 }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
