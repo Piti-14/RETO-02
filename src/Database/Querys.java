@@ -12,9 +12,7 @@ public class Querys {
 
     //private ConnectionDB connect;
 
-    public Querys() {
-
-    }
+    public Querys() { }
 
     public ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = ConnectionDB.Connect().createStatement();
@@ -22,8 +20,8 @@ public class Querys {
 
         ArrayList<Employee> employees = new ArrayList<>();
 
-        String NIF, name, firstLastName, secondLastName, account, dept;
-        int ss_number, seniority;
+        String NIF, name, firstLastName, secondLastName, account, seniority, dept;
+        int ss_number;
         boolean permanentJob;
         ProfessionalGroup group;
 
@@ -34,10 +32,18 @@ public class Querys {
             secondLastName = result.getString("apellido2");
             account = result.getString("cuenta");
             ss_number = result.getInt("n_ss");
-            seniority = result.getInt("antig");
+            seniority = result.getString("antig");
             permanentJob = result.getBoolean("indef");
             dept = result.getString("cod_dep");
-            group = new ProfessionalGroup(result.getString("cod_gr"));
+
+            String gr = result.getString("cod_gr");
+            if (gr == "A" || gr == "C") {
+                group = new ProfessionalGroup("I.T." , gr);
+            } else if (gr == "B") {
+                group = new ProfessionalGroup("Marketing" , gr);
+            } else {
+                group = new ProfessionalGroup("Administration" , gr);
+            }
 
             Employee e = new Employee(NIF, name, firstLastName, secondLastName, account, ss_number, seniority, permanentJob, dept, group);
             employees.add(e);

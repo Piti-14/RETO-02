@@ -10,13 +10,13 @@ public class Employee {
     private String secondLastname;
     private String account;
     private int ss_number;
-    private int seniority;
+    private String seniority;
     private boolean permanentJob;
     private String dept;
     private ProfessionalGroup group;
 
     public Employee(String nif, String name, String firstLastname, String secondLastname, String account,
-                    int ss_number, int seniority, boolean permanentJob, String dept, ProfessionalGroup group) {
+                    int ss_number, String seniority, boolean permanentJob, String dept, ProfessionalGroup group) {
         this.nif = nif;
         this.name = name;
         this.firstLastname = firstLastname;
@@ -25,7 +25,15 @@ public class Employee {
         this.ss_number = ss_number;
         this.seniority = seniority;
         this.permanentJob = permanentJob;
-        this.dept = dept;
+
+        if (dept == "A" || dept == "C") {
+            this.dept = "I.T.";
+        } else if (dept == "B") {
+            this.dept = "Marketing";
+        } else {
+            this.dept = "Administration";
+        }
+
         this.group = group;
     }
 
@@ -69,11 +77,11 @@ public class Employee {
         this.ss_number = ss_number;
     }
 
-    public int getSeniority() {
+    public String  getSeniority() {
         return seniority;
     }
 
-    public void setSeniority(int seniority) {
+    public void setSeniority(String seniority) {
         this.seniority = seniority;
     }
 
@@ -95,5 +103,11 @@ public class Employee {
 
     public ProfessionalGroup getGroup() {
         return group;
+    }
+
+    public String toString() {
+        return "Employee: " + name + ", " + firstLastname + ", " + secondLastname +
+                ". Account: " + account + "; nº SS: " + ss_number + ". Start date: " + seniority + ". Department: " + dept +
+                ". Group: " + group.getName();
     }
 }
