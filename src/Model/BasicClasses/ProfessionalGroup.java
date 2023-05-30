@@ -5,9 +5,9 @@ public class ProfessionalGroup {
     private String groupCode;
     private double quant;
 
-    public ProfessionalGroup(String groupCode, double quant) {
+    public ProfessionalGroup(String groupCode) {
         this.groupCode = groupCode;
-        this.quant = quant;
+        //this.quant = quant;
     }
 
     public String getGroupCode() {

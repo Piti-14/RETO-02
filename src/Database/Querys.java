@@ -1,6 +1,7 @@
 package Database;
 
 import Model.BasicClasses.Employee;
+import Model.BasicClasses.ProfessionalGroup;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,16 +16,64 @@ public class Querys {
 
     }
 
-    public ArrayList<Employee> getEmployees() throws SQLException{
+    public ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = ConnectionDB.Connect().createStatement();
         ResultSet result = query.executeQuery("select * from trabajador");
 
         ArrayList<Employee> employees = new ArrayList<>();
-        while(result.next()) {
 
+        String NIF, name, firstLastName, secondLastName, account, dept;
+        int ss_number, seniority;
+        boolean permanentJob;
+        ProfessionalGroup group;
+
+        while(result.next()) {
+            NIF = result.getString("nif");
+            name = result.getString("nom");
+            firstLastName = result.getString("apellido1");
+            secondLastName = result.getString("apellido2");
+            account = result.getString("cuenta");
+            ss_number = result.getInt("n_ss");
+            seniority = result.getInt("antig");
+            permanentJob = result.getBoolean("indef");
+            dept = result.getString("cod_dep");
+            group = new ProfessionalGroup(result.getString("cod_gr"));
+
+            Employee e = new Employee(NIF, name, firstLastName, secondLastName, account, ss_number, seniority, permanentJob, dept, group);
+            employees.add(e);
         }
+        return employees;
     }
-    public double baseSalary(Employee e) throws SQLException {
+
+    public ArrayList<Double> getEmployeeTaxes() throws SQLException {
+        Statement query = ConnectionDB.Connect().createStatement();
+        ResultSet result = query.executeQuery("select cant from contingencias_t");
+
+        ArrayList<Double> taxes = new ArrayList<>();
+        double tax;
+
+        while(result.next()) {
+            tax = (result.getDouble(1)) / 10;
+            taxes.add(tax);
+        }
+        return taxes;
+    }
+
+    public ArrayList<Double> getCompanyTaxes() throws SQLException {
+        Statement query = ConnectionDB.Connect().createStatement();
+        ResultSet result = query.executeQuery("select cant from contingencias_e");
+
+        ArrayList<Double> taxes = new ArrayList<>();
+        double tax;
+
+        while(result.next()) {
+            tax = (result.getDouble(1)) / 10;
+            taxes.add(tax);
+        }
+        return taxes;
+    }
+
+    public double getCommonContingencies(Employee e) throws SQLException {
         Statement query = ConnectionDB.Connect().createStatement();
         ResultSet result = query.executeQuery("select getSalarioBase('" + e.getGroup().getGroupCode() + "')");
 
