@@ -11,12 +11,12 @@ public class AddPanel extends JPanel {
             salarySupplementsLbl, overtimeHoursLbl, complementaryHoursLbl, extraBonusesLbl, inKindSalaryLbl,
             nonSalaryPercepcionsLbl, compensationsOrAllowancesLbl, ssBenefitsCompensationsLbl, compensationsLbl,
             otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, holdbacksLbl,
-            unemploymentLbl, proTrainingLbl, normalOHLbl, mandatoryOHLbl, intergenerationalEMLbl, totalContributionsLbl,
+            unemploymentLbl, proTrainingLbl, overtimeHours, mandatoryOHLbl, intergenerationalEMLbl, totalContributionsLbl,
             incomeTaxLbl, advancesLbl, valueProductsLbl, otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl,
             companySignatureLbl, receivedLbl, determinationSSLbl, conceptsLbl, baseContributionLbl,
             monthlyRemunerationLbl, extraPaymentsLbl, total1Lbl, companyAportationLbl, baseLbl, baseHoldbacksLbl,
             otherConceptssLbl, jointLbl, fogasaLbl, contributionOHLbl, contributionMandatoryOHLbl, interEMLbl, baseSubjectLbl,
-            totalLbl, invisLbl;
+            totalLbl, dateLbl;
 
     JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
             settlementPeriodTxt, nDaysTxt, salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
@@ -29,7 +29,7 @@ public class AddPanel extends JPanel {
             otherConceptssTxt, jointTxt, fogasaTxt, contributionOHTxt, contributionMandatoryOHTxt, interEMLblTxt, baseSubjectTxt,
             totalTxt, amount1Txt, amount2Txt, amount3Txt, amount4Txt, amount5Txt, amount6Txt, amount7Txt, amount8Txt, amount9Txt,
             amount10Txt, amount11Txt, amount12Txt, amount13Txt, amount14Txt, amount15Txt, amount16Txt, amount17Txt, amount18Txt,
-            amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt;
+            amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt, dateTxt;
 
     public AddPanel() {
         setLayout(new BorderLayout());
@@ -421,11 +421,11 @@ public class AddPanel extends JPanel {
         constraints.gridy = 26;
         test1.add(amount15Txt, constraints);
 
-        normalOHLbl = new JLabel("Normal overtime hours:");
+        overtimeHours = new JLabel("Normal overtime hours:");
         constraints.gridx = 0;
         constraints.gridy = 27;
         constraints.gridwidth = 2;
-        test1.add(normalOHLbl, constraints);
+        test1.add(overtimeHours, constraints);
 
         type3Txt = new JTextField(10);
         constraints.gridx = 2;
@@ -437,37 +437,90 @@ public class AddPanel extends JPanel {
         constraints.gridy = 27;
         test1.add(amount16Txt, constraints);
 
-        mandatoryOHLbl = new JLabel("Mandatory overtime hours:");
+        totalContributionsLbl = new JLabel("TOTAL CONTRIBUTIONS:");
         constraints.gridx = 0;
         constraints.gridy = 28;
-        constraints.gridwidth = 2;
-        test1.add(mandatoryOHLbl, constraints);
-
-        type4Txt = new JTextField(10);
-        constraints.gridx = 2;
-        constraints.gridy = 28;
-        test1.add(type4Txt, constraints);
+        test1.add(overtimeHours, constraints);
 
         amount17Txt = new JTextField(10);
         constraints.gridx = 3;
         constraints.gridy = 28;
         test1.add(amount17Txt, constraints);
 
-        interEMLbl = new JLabel("Intergenerational equity mechanism:");
+        incomeTaxLbl = new JLabel("IRPF:");
         constraints.gridx = 0;
         constraints.gridy = 29;
-        constraints.gridwidth = 2;
-        test1.add(interEMLbl, constraints);
-
-        type5Txt = new JTextField(10);
-        constraints.gridx = 2;
-        constraints.gridy = 29;
-        test1.add(type5Txt, constraints);
+        test1.add(incomeTaxLbl, constraints);
 
         amount18Txt = new JTextField(10);
         constraints.gridx = 3;
         constraints.gridy = 29;
         test1.add(amount18Txt, constraints);
+
+        advancesLbl = new JLabel("Advances:");
+        constraints.gridx = 0;
+        constraints.gridy = 30;
+        test1.add(advancesLbl, constraints);
+
+        amount19Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 30;
+        test1.add(amount19Txt, constraints);
+
+        valueProductsLbl = new JLabel("Value of goods received in kind:");
+        constraints.gridx = 0;
+        constraints.gridy = 31;
+        test1.add(valueProductsLbl, constraints);
+
+        amount20Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 31;
+        test1.add(amount20Txt, constraints);
+
+        otherDeductionsLbl = new JLabel("Value of goods received in kind:");
+        constraints.gridx = 0;
+        constraints.gridy = 32;
+        test1.add(otherDeductionsTxt, constraints);
+
+        amount21Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 32;
+        test1.add(amount21Txt, constraints);
+
+        totalDeductedLbl = new JLabel("B. TOTAL DEDUCTED:");
+        constraints.gridx = 1;
+        constraints.gridy = 33;
+        test1.add(totalDeductedLbl, constraints);
+
+        totalDeductedTxt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 33;
+        test1.add(totalDeductedTxt, constraints);
+
+        totalNetReceivedLbl = new JLabel("TOTAL NET RECEIVED (A-B):");
+        constraints.gridx = 1;
+        constraints.gridy = 34;
+        test1.add(totalNetReceivedLbl, constraints);
+
+        dateLbl = new JLabel("Date:");
+        constraints.gridx = 2;
+        constraints.gridy = 34;
+        test1.add(dateLbl, constraints);
+
+        dateTxt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 34;
+        test1.add(dateTxt, constraints);
+
+        totalNetReceivedTxt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 34;
+        test1.add(totalNetReceivedTxt, constraints);
+
+        companySignatureLbl = new JLabel("Signature and company seal:");
+        constraints.gridx = 1;
+        constraints.gridy = 35;
+        test1.add(companySignatureLbl, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
