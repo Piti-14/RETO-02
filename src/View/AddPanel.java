@@ -11,25 +11,21 @@ public class AddPanel extends JPanel {
             salarySupplementsLbl, overtimeHoursLbl, complementaryHoursLbl, extraBonusesLbl, inKindSalaryLbl,
             nonSalaryPercepcionsLbl, compensationsOrAllowancesLbl, ssBenefitsCompensationsLbl, compensationsLbl,
             otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, type2Lbl, holdbacksLbl,
-            unemploymentLbl, proTrainingLbl,   totalContributionsLbl,
-            incomeTaxLbl, advancesLbl, valueProductsLbl, otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl,
-            companySignatureLbl, receivedLbl, determinationSSLbl, determinationSS2Lbl, baseContributionLbl,
-            monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl, baseLbl, professionalHoldbacksLbl, fogasaLbl,
-             contributionOHLbl, baseSubjectLbl, overtimeContributionLbl, incomeTaxBaseLbl,
-            totalLbl, dateLbl, conceptLbl, atEPLbl, unemployment2Lbl, fpLbl;
+            unemploymentLbl, proTrainingLbl,   totalContributionsLbl, incomeTaxLbl, advancesLbl, valueProductsLbl,
+             otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl, companySignatureLbl, receivedLbl, determinationSSLbl,
+             determinationSS2Lbl, baseContributionLbl, monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl,
+             baseLbl, professionalHoldbacksLbl, fogasaLbl, overtimeContributionLbl, totalLbl, dateLbl, conceptLbl, atEPLbl,
+             unemployment2Lbl, fpLbl, total2Lbl;
 
     JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
             settlementPeriodTxt, nDaysTxt, salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
-            compensationsOrAllowancesTxt, ssBenefitsCompensationsTxt, compensationsTxt,
-            otherPerceptionsTxt, totalEarnedTxt, totalDeductedTxt, totalNetReceivedTxt,
-            companySignatureTxt, receivedTxt, determinationSSTxt, conceptsTxt, baseContributionTxt,
-            monthlyRemunerationTxt, extraPaymentsTxt, total1Txt, companyAportationTxt, baseTxt, baseHoldbacksTxt,
-            otherConceptssTxt, jointTxt, fogasaTxt, contributionOHTxt, contributionMandatoryOHTxt, interEMLblTxt, baseSubjectTxt,
-            totalTxt, amount1Txt, amount2Txt, amount3Txt, amount4Txt, amount5Txt, amount6Txt, amount7Txt, amount8Txt, amount9Txt,
-            amount10Txt, amount11Txt, amount12Txt, amount13Txt, amount14Txt, amount15Txt, amount16Txt, amount17Txt, amount18Txt,
-            amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt, type6Txt, type7Txt,
-            type8Txt, type9Txt, dateTxt, base1Txt, base2Txt, base3Txt, base4Txt, compTax1Txt, compTax2Txt, compTax3Txt, compTax4Txt,
-            compTax5Txt, compTax6Txt;
+            compensationsOrAllowancesTxt, ssBenefitsCompensationsTxt, compensationsTxt, otherPerceptionsTxt,
+            totalEarnedTxt, totalDeductedTxt, totalNetReceivedTxt, monthlyRemunerationTxt, extraPaymentsTxt,
+            totalTxt, amount1Txt, amount2Txt, amount3Txt, amount4Txt, amount5Txt, amount6Txt, amount7Txt, amount8Txt,
+            amount9Txt, amount10Txt, amount11Txt, amount12Txt, amount13Txt, amount14Txt, amount15Txt, amount16Txt, amount17Txt,
+            amount18Txt, amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt,
+            type6Txt, type7Txt, type8Txt, type9Txt, dateTxt, base1Txt, base2Txt, base3Txt, base4Txt, compTax1Txt, compTax2Txt,
+            compTax3Txt, compTax4Txt, compTax5Txt, compTax6Txt;
 
     public AddPanel() {
         setLayout(new BorderLayout());
@@ -39,8 +35,13 @@ public class AddPanel extends JPanel {
 
         JPanel topInfo = createPanelWithBorder();
         JPanel dateInfo = createPanelWithBorder();
-        JPanel test1 = createPanelWithBorder();
-        JPanel test2 = createPanelWithBorder();
+        JPanel test1 = createPanelWithBorder3();
+        JPanel test2 = createPanelWithBorder2();
+
+        topInfo.setPreferredSize(new Dimension(800, 150));
+        dateInfo.setPreferredSize(new Dimension(800, 50));
+        test1.setPreferredSize(new Dimension(800, 800));
+        test2.setPreferredSize(new Dimension(800, 300));
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
@@ -78,7 +79,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 2;
         topInfo.add(cifTxt, constraints);
 
-        bankNumberLbl = new JLabel("Bank Account Number:");
+        bankNumberLbl = new JLabel("Bank Account:");
         constraints.gridx = 0;
         constraints.gridy = 3;
         topInfo.add(bankNumberLbl, constraints);
@@ -108,7 +109,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 1;
         topInfo.add(nifTxt, constraints);
 
-        ssnLbl = new JLabel("Social Security Number:");
+        ssnLbl = new JLabel("Social Security Nº:");
         constraints.gridx = 2;
         constraints.gridy = 2;
         topInfo.add(ssnLbl, constraints);
@@ -714,14 +715,15 @@ public class AddPanel extends JPanel {
         constraints.gridy = 12;
         test2.add(base4Txt, constraints);
 
+        total2Lbl = new JLabel("TOTAL:");
+        constraints.gridx = 3;
+        constraints.gridy = 12;
+        test2.add(total2Lbl, constraints);
+
         totalTxt = new JTextField(10);
         constraints.gridx = 4;
         constraints.gridy = 12;
         test2.add(totalTxt, constraints);
-
-
-
-
 
         constraints.gridx = 0;
         constraints.gridy = 3;
@@ -729,6 +731,7 @@ public class AddPanel extends JPanel {
 
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
         scrollPane.setPreferredSize(new Dimension(800, 600));
 
         add(scrollPane, BorderLayout.CENTER);
@@ -739,6 +742,34 @@ public class AddPanel extends JPanel {
         panel.setLayout(new GridBagLayout());
 
         Border innerBorder = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        Border outerBorder = BorderFactory.createMatteBorder(2, 2, 0, 2, Color.black);
+
+        Border border = BorderFactory.createCompoundBorder(outerBorder, innerBorder);
+
+        panel.setBorder(border);
+
+        return panel;
+    }
+
+    private JPanel createPanelWithBorder2() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+
+        Border innerBorder = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        Border outerBorder = BorderFactory.createMatteBorder(2, 2, 2, 2, Color.black);
+
+        Border border = BorderFactory.createCompoundBorder(outerBorder, innerBorder);
+
+        panel.setBorder(border);
+
+        return panel;
+    }
+
+    private JPanel createPanelWithBorder3() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+
+        Border innerBorder = BorderFactory.createEmptyBorder(10, 10, 50, 10);
         Border outerBorder = BorderFactory.createMatteBorder(2, 2, 0, 2, Color.black);
 
         Border border = BorderFactory.createCompoundBorder(outerBorder, innerBorder);

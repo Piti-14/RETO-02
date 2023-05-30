@@ -129,8 +129,8 @@ public class GeneralEmployeePickPanel extends JPanel {
         });
 
         try {
-            for (Employee element: Querys.getEmployees()) {
-                GeneralEmployeePickPanel.listModel.addElement(element.getName());
+            for (Employee element: query.getEmployees()) {
+                GeneralEmployeePickPanel.listModel.addElement(element.getName() + " " + element.getFirstLastname() + " " + element.getSecondLastname());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
