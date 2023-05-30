@@ -73,9 +73,6 @@ public class MainFrame extends JFrame {
         this.setIconImage(new ImageIcon(Sources.class.getResource("logoteaw.png")).getImage());
         this.add(menuBar, BorderLayout.NORTH);
         this.add(cards);
-
-
-
     }
 
 }

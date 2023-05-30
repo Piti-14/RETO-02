@@ -6,6 +6,7 @@ import Sources.Sources;
 import View.Utils.JLabelWallpaper;
 import View.Utils.JPanelBlue;
 import View.Utils.OffButton;
+import View.Utils.PreviousButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +23,6 @@ public class MainPanel extends JPanel {
 
     RoundedButton addButton, modifyButton, consultButton, deleteButton;
     ShadowLabel titleLabel;
-    Querys query = new Querys();
 
     public MainPanel() {
         this.setLayout(null);
@@ -52,12 +52,13 @@ public class MainPanel extends JPanel {
         addButton.setBounds((screenWidth/6), ((screenHeight/4)+50), 400, 100);
         addButton.addActionListener(e -> {
             MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+            GeneralEmployeePickPanel.deleteButton.setVisible(false);
+            GeneralEmployeePickPanel.modifyButton.setVisible(false);
+            GeneralEmployeePickPanel.chooseButton.setVisible(true);
+            GeneralEmployeePickPanel.jComboBox.setVisible(true);
+            GeneralEmployeePickPanel.alternateDepartmentButton.setVisible(true);
         });
         customizeButton(addButton, color1, color2);
-        addButton.addActionListener(e -> {
-
-            cardLayout.show(MainFrame.cards, "addPanel");
-        });
 
         modifyButton = new RoundedButton("MODIFICAR NÓMINAS");
         modifyButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
@@ -70,8 +71,8 @@ public class MainPanel extends JPanel {
             GeneralEmployeePickPanel.alternateDepartmentButton.setVisible(true);
 
             try {
-                for (Employee element: query.getEmployees()) {
-                    GeneralEmployeePickPanel.listModel.addElement(element.getName() + " " + element.getFirstLastname() + " " + element.getSecondLastname());
+                for (Employee element: Querys.getEmployees()) {
+                    GeneralEmployeePickPanel.listModel.addElement(element.getName());
                 }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);

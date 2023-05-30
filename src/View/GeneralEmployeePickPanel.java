@@ -48,7 +48,7 @@ public class GeneralEmployeePickPanel extends JPanel {
         jListPick.setBackground(color);
 
         jComboBox = new JComboBox<>(new String[]{"History", "Recent"});
-        jComboBox.setBounds(screenWidth*(72)/100,screenHeight*(40)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        jComboBox.setBounds(screenWidth*(42)/100,screenHeight*(68)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         jComboBox.setBorder(new LineBorder(Color.WHITE, 2));
         jComboBox.setBackground(color);
         jComboBox.setVisible(false);
@@ -59,6 +59,15 @@ public class GeneralEmployeePickPanel extends JPanel {
         chooseButton.setBackground(color);
         chooseButton.setFocusPainted(false);
         chooseButton.setVisible(false);
+        chooseButton.addActionListener(e -> {
+
+            String horasExtrasStr = JOptionPane.showInputDialog(null, "Ingrese las horas extras del trabajador:");
+
+            int horasExtras = Integer.parseInt(horasExtrasStr);
+
+            MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
+
+        });
 
         modifyButton = new JButton("Modify");
         modifyButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -119,6 +128,13 @@ public class GeneralEmployeePickPanel extends JPanel {
             titleLabel.setText("Choose Employee");
         });
 
+        try {
+            for (Employee element: Querys.getEmployees()) {
+                GeneralEmployeePickPanel.listModel.addElement(element.getName());
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
 
         this.add(titleLabel);
         this.add(chooseButton);
@@ -130,6 +146,7 @@ public class GeneralEmployeePickPanel extends JPanel {
         this.add(alternateDepartmentButton);
 
         this.add(new OffButton());
+        this.add(new PreviousButton());
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
     }
