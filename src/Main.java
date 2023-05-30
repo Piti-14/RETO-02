@@ -11,9 +11,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException, SQLException {
-        //MainFrame mainFrame = new MainFrame();
-        //mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        /*
         ProfessionalGroup gr = new ProfessionalGroup("Marketing", "B");
         Employee e = new Employee("12345678-A", "Nina", "Williams", "Smith",
                 "nwilliams",222333, "02-12-2021", true, "A", gr);
@@ -25,7 +26,7 @@ public class Main {
         /*ArrayList<Employee> employees = qs.getEmployees();
         for(int i = 0; i < employees.size(); i++) {
             System.out.println(employees.get(i).toString());
-        }*/
+        }
 
         ArrayList<Double> taxes = qs.getEmployeeTaxes();
         for(int i = 0; i < taxes.size(); i++) {
@@ -36,6 +37,7 @@ public class Main {
         for(int i = 0; i < companyTaxes.size(); i++) {
             System.out.println(companyTaxes.get(i).toString());
         }
+        */
 
     }
 }

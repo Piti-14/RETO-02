@@ -14,7 +14,7 @@ public class Querys {
 
     public Querys() { }
 
-    public ArrayList<Employee> getEmployees() throws SQLException {
+    public static ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = ConnectionDB.Connect().createStatement();
         ResultSet result = query.executeQuery("select * from trabajador");
 

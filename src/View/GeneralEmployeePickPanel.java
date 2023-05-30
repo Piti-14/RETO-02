@@ -1,6 +1,7 @@
 package View;
 
 import Database.Querys;
+import Model.BasicClasses.Employee;
 import View.Utils.*;
 
 import javax.swing.*;
@@ -56,6 +57,15 @@ public class GeneralEmployeePickPanel extends JPanel {
         chooseButton.setBackground(color);
         chooseButton.setFocusPainted(false);
         chooseButton.setVisible(false);
+        chooseButton.addActionListener(e -> {
+
+            String horasExtrasStr = JOptionPane.showInputDialog(null, "Ingrese las horas extras del trabajador:");
+
+            int horasExtras = Integer.parseInt(horasExtrasStr);
+
+            MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
+
+        });
 
         modifyButton = new JButton("Modify");
         modifyButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -117,8 +127,8 @@ public class GeneralEmployeePickPanel extends JPanel {
         });
 
         try {
-            for (String element: Querys.getEmployees()) {
-                GeneralEmployeePickPanel.listModel.addElement(element);
+            for (Employee element: Querys.getEmployees()) {
+                GeneralEmployeePickPanel.listModel.addElement(element.getName());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
