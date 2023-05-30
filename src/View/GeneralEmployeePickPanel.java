@@ -45,7 +45,7 @@ public class GeneralEmployeePickPanel extends JPanel {
         jListPick.setBackground(color);
 
         jComboBox = new JComboBox<>(new String[]{"History", "Recent"});
-        jComboBox.setBounds(screenWidth*(72)/100,screenHeight*(40)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        jComboBox.setBounds(screenWidth*(42)/100,screenHeight*(68)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         jComboBox.setBorder(new LineBorder(Color.WHITE, 2));
         jComboBox.setBackground(color);
         jComboBox.setVisible(false);
@@ -116,6 +116,13 @@ public class GeneralEmployeePickPanel extends JPanel {
             titleLabel.setText("Choose Employee");
         });
 
+        try {
+            for (String element: Querys.getEmployees()) {
+                GeneralEmployeePickPanel.listModel.addElement(element);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
 
         this.add(titleLabel);
         this.add(chooseButton);
@@ -127,6 +134,7 @@ public class GeneralEmployeePickPanel extends JPanel {
         this.add(alternateDepartmentButton);
 
         this.add(new OffButton());
+        this.add(new PreviousButton());
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
     }

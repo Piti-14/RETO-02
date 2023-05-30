@@ -5,6 +5,7 @@ import Sources.Sources;
 import View.Utils.JLabelWallpaper;
 import View.Utils.JPanelBlue;
 import View.Utils.OffButton;
+import View.Utils.PreviousButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,7 +50,7 @@ public class MainPanel extends JPanel {
         addButton = new RoundedButton("CREAR NÓMINAS");
         addButton.setBounds((screenWidth/6), ((screenHeight/4)+50), 400, 100);
         addButton.addActionListener(e -> {
-            MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
+            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         });
         customizeButton(addButton, color1, color2);
         addButton.addActionListener(e -> {
@@ -68,7 +69,7 @@ public class MainPanel extends JPanel {
             GeneralEmployeePickPanel.alternateDepartmentButton.setVisible(true);
 
             try {
-                for (String element: Querys.listEmployees()) {
+                for (String element: Querys.getEmployees()) {
                     GeneralEmployeePickPanel.listModel.addElement(element);
                 }
             } catch (SQLException ex) {
