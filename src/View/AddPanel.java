@@ -11,7 +11,7 @@ public class AddPanel extends JPanel {
             salarySupplementsLbl, overtimeHoursLbl, complementaryHoursLbl, extraBonusesLbl, inKindSalaryLbl,
             nonSalaryPercepcionsLbl, compensationsOrAllowancesLbl, ssBenefitsCompensationsLbl, compensationsLbl,
             otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, holdbacksLbl,
-            unemploymentLbl, proTrainingLbl, overtimeHours, mandatoryOHLbl, intergenerationalEMLbl, totalContributionsLbl,
+            unemploymentLbl, proTrainingLbl,   totalContributionsLbl,
             incomeTaxLbl, advancesLbl, valueProductsLbl, otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl,
             companySignatureLbl, receivedLbl, determinationSSLbl, conceptsLbl, baseContributionLbl,
             monthlyRemunerationLbl, extraPaymentsLbl, total1Lbl, companyAportationLbl, baseLbl, baseHoldbacksLbl,
@@ -21,9 +21,7 @@ public class AddPanel extends JPanel {
     JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
             settlementPeriodTxt, nDaysTxt, salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
             compensationsOrAllowancesTxt, ssBenefitsCompensationsTxt, compensationsTxt,
-            otherPerceptionsTxt, totalEarnedTxt, deductionsTxt, employeeContributionsTxt, holdbacksTxt,
-            unemploymentTxt, proTrainingTxt, normalOHTxt, mandatoryOHTxt, intergenerationalEMTxt, totalContributionsTxt,
-            incomeTaxTxt, advancesTxt, valueProductsTxt, otherDeductionsTxt, totalDeductedTxt, totalNetReceivedTxt,
+            otherPerceptionsTxt, totalEarnedTxt, totalDeductedTxt, totalNetReceivedTxt,
             companySignatureTxt, receivedTxt, determinationSSTxt, conceptsTxt, baseContributionTxt,
             monthlyRemunerationTxt, extraPaymentsTxt, total1Txt, companyAportationTxt, baseTxt, baseHoldbacksTxt,
             otherConceptssTxt, jointTxt, fogasaTxt, contributionOHTxt, contributionMandatoryOHTxt, interEMLblTxt, baseSubjectTxt,
@@ -318,7 +316,7 @@ public class AddPanel extends JPanel {
         compensationsLbl = new JLabel("Compensations for transfers, suspensions or layoffs:");
         constraints.gridx = 0;
         constraints.gridy = 16;
-        test1.add(ssBenefitsCompensationsLbl, constraints);
+        test1.add(compensationsLbl, constraints);
 
         compensationsTxt = new JTextField(40);
         constraints.gridx = 0;
@@ -421,11 +419,11 @@ public class AddPanel extends JPanel {
         constraints.gridy = 26;
         test1.add(amount15Txt, constraints);
 
-        overtimeHours = new JLabel("Normal overtime hours:");
+        overtimeHoursLbl = new JLabel("Normal overtime hours:");
         constraints.gridx = 0;
         constraints.gridy = 27;
         constraints.gridwidth = 2;
-        test1.add(overtimeHours, constraints);
+        test1.add(overtimeHoursLbl, constraints);
 
         type3Txt = new JTextField(10);
         constraints.gridx = 2;
@@ -440,7 +438,7 @@ public class AddPanel extends JPanel {
         totalContributionsLbl = new JLabel("TOTAL CONTRIBUTIONS:");
         constraints.gridx = 0;
         constraints.gridy = 28;
-        test1.add(overtimeHours, constraints);
+        test1.add(totalContributionsLbl, constraints);
 
         amount17Txt = new JTextField(10);
         constraints.gridx = 3;
@@ -480,7 +478,7 @@ public class AddPanel extends JPanel {
         otherDeductionsLbl = new JLabel("Value of goods received in kind:");
         constraints.gridx = 0;
         constraints.gridy = 32;
-        test1.add(otherDeductionsTxt, constraints);
+        test1.add(otherDeductionsLbl, constraints);
 
         amount21Txt = new JTextField(10);
         constraints.gridx = 3;
