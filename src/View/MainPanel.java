@@ -49,7 +49,7 @@ public class MainPanel extends JPanel {
         addButton = new RoundedButton("CREAR NÓMINAS");
         addButton.setBounds((screenWidth/6), ((screenHeight/4)+50), 400, 100);
         addButton.addActionListener(e -> {
-            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+            MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
         });
         customizeButton(addButton, color1, color2);
         addButton.addActionListener(e -> {

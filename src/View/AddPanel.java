@@ -10,13 +10,13 @@ public class AddPanel extends JPanel {
             settlementPeriodLbl, nDaysLbl, totalsLbl, earningsLbl, amountLbl, salaryPercepcionsLbl, baseSalaryLbl,
             salarySupplementsLbl, overtimeHoursLbl, complementaryHoursLbl, extraBonusesLbl, inKindSalaryLbl,
             nonSalaryPercepcionsLbl, compensationsOrAllowancesLbl, ssBenefitsCompensationsLbl, compensationsLbl,
-            otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, holdbacksLbl,
+            otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, type2Lbl, holdbacksLbl,
             unemploymentLbl, proTrainingLbl,   totalContributionsLbl,
             incomeTaxLbl, advancesLbl, valueProductsLbl, otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl,
-            companySignatureLbl, receivedLbl, determinationSSLbl, conceptsLbl, baseContributionLbl,
-            monthlyRemunerationLbl, extraPaymentsLbl, total1Lbl, companyAportationLbl, baseLbl, baseHoldbacksLbl,
-            otherConceptssLbl, jointLbl, fogasaLbl, contributionOHLbl, contributionMandatoryOHLbl, interEMLbl, baseSubjectLbl,
-            totalLbl, dateLbl;
+            companySignatureLbl, receivedLbl, determinationSSLbl, determinationSS2Lbl, baseContributionLbl,
+            monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl, baseLbl, professionalHoldbacksLbl, fogasaLbl,
+             contributionOHLbl, baseSubjectLbl, overtimeContributionLbl, incomeTaxBaseLbl,
+            totalLbl, dateLbl, conceptLbl, atEPLbl, unemployment2Lbl, fpLbl;
 
     JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
             settlementPeriodTxt, nDaysTxt, salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
@@ -27,7 +27,9 @@ public class AddPanel extends JPanel {
             otherConceptssTxt, jointTxt, fogasaTxt, contributionOHTxt, contributionMandatoryOHTxt, interEMLblTxt, baseSubjectTxt,
             totalTxt, amount1Txt, amount2Txt, amount3Txt, amount4Txt, amount5Txt, amount6Txt, amount7Txt, amount8Txt, amount9Txt,
             amount10Txt, amount11Txt, amount12Txt, amount13Txt, amount14Txt, amount15Txt, amount16Txt, amount17Txt, amount18Txt,
-            amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt, dateTxt;
+            amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt, type6Txt, type7Txt,
+            type8Txt, type9Txt, dateTxt, base1Txt, base2Txt, base3Txt, base4Txt, compTax1Txt, compTax2Txt, compTax3Txt, compTax4Txt,
+            compTax5Txt, compTax6Txt;
 
     public AddPanel() {
         setLayout(new BorderLayout());
@@ -475,7 +477,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 31;
         test1.add(amount20Txt, constraints);
 
-        otherDeductionsLbl = new JLabel("Value of goods received in kind:");
+        otherDeductionsLbl = new JLabel("Other deductions:");
         constraints.gridx = 0;
         constraints.gridy = 32;
         test1.add(otherDeductionsLbl, constraints);
@@ -500,11 +502,6 @@ public class AddPanel extends JPanel {
         constraints.gridy = 34;
         test1.add(totalNetReceivedLbl, constraints);
 
-        dateLbl = new JLabel("Date:");
-        constraints.gridx = 2;
-        constraints.gridy = 34;
-        test1.add(dateLbl, constraints);
-
         dateTxt = new JTextField(10);
         constraints.gridx = 3;
         constraints.gridy = 34;
@@ -515,14 +512,220 @@ public class AddPanel extends JPanel {
         constraints.gridy = 34;
         test1.add(totalNetReceivedTxt, constraints);
 
-        companySignatureLbl = new JLabel("Signature and company seal:");
+        companySignatureLbl = new JLabel("Signature and company seal");
         constraints.gridx = 1;
         constraints.gridy = 35;
         test1.add(companySignatureLbl, constraints);
 
+        dateLbl = new JLabel("Date");
+        constraints.gridx = 3;
+        constraints.gridy = 35;
+        test1.add(dateLbl, constraints);
+
+        receivedLbl = new JLabel("Received");
+        constraints.gridx = 4;
+        constraints.gridy = 35;
+        test1.add(receivedLbl, constraints);
+
         constraints.gridx = 0;
         constraints.gridy = 2;
         mainPanel.add(test1, constraints);
+
+        //CONTINGENCIAS EMPRESA
+
+        determinationSSLbl = new JLabel("Determination of S.S. y contribution bases and concepts of joint and joint collection");
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.gridwidth = 5;
+        test2.add(determinationSSLbl, constraints);
+
+        determinationSS2Lbl = new JLabel("and of the base subject to personal income tax withholding and company contribution");
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.gridwidth = 5;
+        test2.add(determinationSS2Lbl, constraints);
+
+        conceptLbl = new JLabel("CONCEPT");
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        test2.add(conceptLbl, constraints);
+
+        baseLbl = new JLabel("BASE");
+        constraints.gridx = 2;
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        test2.add(baseLbl, constraints);
+
+        type2Lbl = new JLabel("TYPE %");
+        constraints.gridx = 3;
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        test2.add(type2Lbl, constraints);
+
+        companyContributionLbl = new JLabel("COMPANY CONTRIBUTION");
+        constraints.gridx = 4;
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        test2.add(companyContributionLbl, constraints);
+
+        baseContributionLbl = new JLabel("1. Common holdbacks");
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        test2.add(baseContributionLbl, constraints);
+
+        monthlyRemunerationLbl = new JLabel("Monthly remuneration:");
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        test2.add(monthlyRemunerationLbl, constraints);
+
+        monthlyRemunerationTxt = new JTextField(10);
+        constraints.gridx = 1;
+        constraints.gridy = 4;
+        test2.add(monthlyRemunerationTxt, constraints);
+
+        extraPaymentsLbl = new JLabel("Extra payments:");
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        test2.add(extraPaymentsLbl, constraints);
+
+        extraPaymentsTxt = new JTextField(10);
+        constraints.gridx = 1;
+        constraints.gridy = 5;
+        test2.add(extraPaymentsTxt, constraints);
+
+        totalLbl = new JLabel("TOTAL:");
+        constraints.gridx = 1;
+        constraints.gridy = 6;
+        test2.add(totalLbl, constraints);
+
+        base1Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 6;
+        test2.add(base1Txt, constraints);
+
+        type4Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 6;
+        test2.add(type4Txt, constraints);
+
+        compTax1Txt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 6;
+        test2.add(compTax1Txt, constraints);
+
+        professionalHoldbacksLbl = new JLabel("2. Professional holdbacks");
+        constraints.gridx = 0;
+        constraints.gridy = 7;
+        test2.add(professionalHoldbacksLbl, constraints);
+
+        atEPLbl = new JLabel("AT y EP:");
+        constraints.gridx = 1;
+        constraints.gridy = 7;
+        test2.add(atEPLbl, constraints);
+
+        type5Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 7;
+        test2.add(type5Txt, constraints);
+
+        compTax2Txt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 7;
+        test2.add(compTax2Txt, constraints);
+
+        unemployment2Lbl = new JLabel("Unemployment:");
+        constraints.gridx = 1;
+        constraints.gridy = 8;
+        test2.add(unemployment2Lbl, constraints);
+
+        type6Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 8;
+        test2.add(type6Txt, constraints);
+
+        compTax3Txt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 8;
+        test2.add(compTax3Txt, constraints);
+
+        fpLbl = new JLabel("FP:");
+        constraints.gridx = 1;
+        constraints.gridy = 9;
+        test2.add(fpLbl, constraints);
+
+        base2Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 9;
+        test2.add(base2Txt, constraints);
+
+        type7Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 9;
+        test2.add(type7Txt, constraints);
+
+        compTax4Txt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 9;
+        test2.add(compTax4Txt, constraints);
+
+        fogasaLbl = new JLabel("FOGASA:");
+        constraints.gridx = 1;
+        constraints.gridy = 10;
+        test2.add(fogasaLbl, constraints);
+
+        type8Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 10;
+        test2.add(type8Txt, constraints);
+
+        compTax5Txt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 10;
+        test2.add(compTax5Txt, constraints);
+
+        overtimeContributionLbl = new JLabel("3. Overtime contribution:");
+        constraints.gridx = 0;
+        constraints.gridy = 11;
+        test2.add(overtimeContributionLbl, constraints);
+
+        type9Txt = new JTextField(10);
+        constraints.gridx = 3;
+        constraints.gridy = 11;
+        test2.add(type9Txt, constraints);
+
+        base3Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 11;
+        test2.add(base3Txt, constraints);
+
+        compTax6Txt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 11;
+        test2.add(compTax6Txt, constraints);
+
+        incomeTaxLbl = new JLabel("4. Income tax withholding base:");
+        constraints.gridx = 0;
+        constraints.gridy = 12;
+        test2.add(incomeTaxLbl, constraints);
+
+        base4Txt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 12;
+        test2.add(base4Txt, constraints);
+
+        totalTxt = new JTextField(10);
+        constraints.gridx = 4;
+        constraints.gridy = 12;
+        test2.add(totalTxt, constraints);
+
+
+
+
+
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        mainPanel.add(test2, constraints);
 
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
