@@ -105,7 +105,7 @@ public class GeneralEmployeePickPanel extends JPanel {
 
             try {
                 GeneralEmployeePickPanel.listModel.removeAllElements();
-                for (String element: Querys.getEmployees()) {
+                for (String element: Querys.listEmployees()) {
 
                     GeneralEmployeePickPanel.listModel.addElement(element);
                 }

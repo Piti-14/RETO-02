@@ -68,7 +68,7 @@ public class MainPanel extends JPanel {
             GeneralEmployeePickPanel.alternateDepartmentButton.setVisible(true);
 
             try {
-                for (String element: Querys.getEmployees()) {
+                for (String element: Querys.listEmployees()) {
                     GeneralEmployeePickPanel.listModel.addElement(element);
                 }
             } catch (SQLException ex) {

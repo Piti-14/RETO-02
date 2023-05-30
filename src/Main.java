@@ -21,7 +21,7 @@ public class Main {
         Querys qs = new Querys();
 
         System.out.println(e.getGroup().getGroupCode());
-        System.out.println(qs.baseSalary(e));
+        System.out.println(qs.getCommonContingencies(e));
 
     }
 }
