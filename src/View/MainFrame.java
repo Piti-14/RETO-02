@@ -5,6 +5,7 @@ import View.Login.LoginPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class MainFrame extends JFrame {
     public static CardLayout cardLayout;
@@ -12,7 +13,7 @@ public class MainFrame extends JFrame {
     public static JMenuBar menuBar;
 
 
-    public MainFrame() {
+    public MainFrame() throws SQLException {
         this.setVisible(true);
 
         Toolkit screen = Toolkit.getDefaultToolkit();
@@ -57,7 +58,7 @@ public class MainFrame extends JFrame {
         MainPanel mainPanel = new MainPanel();
         AddPanel addPanel = new AddPanel();
         DeletePanel deletePanel = new DeletePanel();
-        GeneralPlayerPickPanel generalPlayerPickPanel = new GeneralPlayerPickPanel();
+        GeneralEmployeePickPanel generalEmployeePickPanel = new GeneralEmployeePickPanel();
 
         menuBar.setVisible(false);
         cardLayout = new CardLayout();
@@ -67,11 +68,12 @@ public class MainFrame extends JFrame {
         cards.add(mainPanel,"mainPanel");
         cards.add(addPanel,"addPanel");
         cards.add(deletePanel, "deletePanel");
-        cards.add(generalPlayerPickPanel,"playerPick");
+        cards.add(generalEmployeePickPanel,"playerPick");
 
         this.setIconImage(new ImageIcon(Sources.class.getResource("logoteaw.png")).getImage());
         this.add(menuBar, BorderLayout.NORTH);
         this.add(cards);
+
 
 
     }

@@ -1,5 +1,6 @@
 package View;
 
+import Database.Querys;
 import Sources.Sources;
 import View.Utils.JLabelWallpaper;
 import View.Utils.JPanelBlue;
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.sql.SQLException;
 
 import static View.MainFrame.cardLayout;
 
@@ -59,10 +61,20 @@ public class MainPanel extends JPanel {
         modifyButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
         modifyButton.addActionListener(e -> {
             MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-            GeneralPlayerPickPanel.deleteButton.setVisible(false);
-            GeneralPlayerPickPanel.modifyButton.setVisible(true);
-            GeneralPlayerPickPanel.chooseButton.setVisible(false);
-            GeneralPlayerPickPanel.jComboBox.setVisible(false);
+            GeneralEmployeePickPanel.deleteButton.setVisible(false);
+            GeneralEmployeePickPanel.modifyButton.setVisible(true);
+            GeneralEmployeePickPanel.chooseButton.setVisible(false);
+            GeneralEmployeePickPanel.jComboBox.setVisible(false);
+            GeneralEmployeePickPanel.alternateDepartmentButton.setVisible(true);
+
+            try {
+                for (String element: Querys.getEmployees()) {
+                    GeneralEmployeePickPanel.listModel.addElement(element);
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+
         });
         customizeButton(modifyButton, color2, color1);
 
@@ -70,10 +82,10 @@ public class MainPanel extends JPanel {
         consultButton.setBounds(screenWidth/6, ((screenHeight/2)+20), 400, 100);
         consultButton.addActionListener(e -> {
             MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-            GeneralPlayerPickPanel.deleteButton.setVisible(false);
-            GeneralPlayerPickPanel.modifyButton.setVisible(false);
-            GeneralPlayerPickPanel.chooseButton.setVisible(true);
-            GeneralPlayerPickPanel.jComboBox.setVisible(true);
+            GeneralEmployeePickPanel.deleteButton.setVisible(false);
+            GeneralEmployeePickPanel.modifyButton.setVisible(false);
+            GeneralEmployeePickPanel.chooseButton.setVisible(true);
+            GeneralEmployeePickPanel.jComboBox.setVisible(true);
         });
         customizeButton(consultButton, color1, color2);
 
@@ -81,10 +93,10 @@ public class MainPanel extends JPanel {
         deleteButton.setBounds(((screenWidth/2)+50), ((screenHeight/2)+20), 400, 100);
         deleteButton.addActionListener(e -> {
             MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-            GeneralPlayerPickPanel.deleteButton.setVisible(false);
-            GeneralPlayerPickPanel.modifyButton.setVisible(false);
-            GeneralPlayerPickPanel.chooseButton.setVisible(true);
-            GeneralPlayerPickPanel.jComboBox.setVisible(true);
+            GeneralEmployeePickPanel.deleteButton.setVisible(false);
+            GeneralEmployeePickPanel.modifyButton.setVisible(false);
+            GeneralEmployeePickPanel.chooseButton.setVisible(true);
+            GeneralEmployeePickPanel.jComboBox.setVisible(true);
         });
         customizeButton(deleteButton, color2, color1);
 
