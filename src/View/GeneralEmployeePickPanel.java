@@ -67,6 +67,8 @@ public class GeneralEmployeePickPanel extends JPanel {
 
             MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
 
+            System.out.println(jListPick.getSelectedValue().toString().split(" "));
+
         });
 
         modifyButton = new JButton("Modify");
