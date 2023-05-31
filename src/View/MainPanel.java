@@ -1,30 +1,26 @@
 package View;
 
+import Controller.MainPanelController;
 import Database.Querys;
 import Model.BasicClasses.Employee;
 import Sources.Sources;
 import View.Utils.JLabelWallpaper;
 import View.Utils.JPanelBlue;
 import View.Utils.OffButton;
-import View.Utils.PreviousButton;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.sql.SQLException;
-
-import static View.MainFrame.cardLayout;
 
 public class MainPanel extends JPanel {
 
     RoundedButton addButton, modifyButton, consultButton, deleteButton;
     ShadowLabel titleLabel;
 
-    public MainPanel() {
+    public MainPanel() throws SQLException {
         this.setLayout(null);
 
         Toolkit screen = Toolkit.getDefaultToolkit();
@@ -36,9 +32,10 @@ public class MainPanel extends JPanel {
         JLabel labelImage = new JLabel(corporativeImage);
         labelImage.setBounds(0,0,screenWidth,screenHeight);
 
+        Color color1 = new Color(41, 170, 225);
+
         Color color2 = new Color(185, 189, 209);
 
-        Color color1 = new Color(41, 170, 225);
 
         titleLabel = new ShadowLabel("BIENVENIDO USER");
         titleLabel.setBounds(0, ((screenHeight / 8)), screenWidth, 100);
@@ -50,57 +47,22 @@ public class MainPanel extends JPanel {
 
         addButton = new RoundedButton("CREAR NÓMINAS");
         addButton.setBounds((screenWidth/6), ((screenHeight/4)+50), 400, 100);
-        addButton.addActionListener(e -> {
-            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-            GeneralEmployeePickPanel.deleteButton.setVisible(false);
-            GeneralEmployeePickPanel.modifyButton.setVisible(false);
-            GeneralEmployeePickPanel.chooseButton.setVisible(true);
-            GeneralEmployeePickPanel.jComboBox.setVisible(true);
-            GeneralEmployeePickPanel.alternateDepartmentButton.setVisible(true);
-        });
+        addButton.addActionListener(new MainPanelController());
         customizeButton(addButton, color1, color2);
 
         modifyButton = new RoundedButton("MODIFICAR NÓMINAS");
         modifyButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
-        modifyButton.addActionListener(e -> {
-            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-            GeneralEmployeePickPanel.deleteButton.setVisible(false);
-            GeneralEmployeePickPanel.modifyButton.setVisible(true);
-            GeneralEmployeePickPanel.chooseButton.setVisible(false);
-            GeneralEmployeePickPanel.jComboBox.setVisible(false);
-            GeneralEmployeePickPanel.alternateDepartmentButton.setVisible(true);
-
-            try {
-                for (Employee element: Querys.getEmployees()) {
-                    GeneralEmployeePickPanel.listModel.addElement(element.getName());
-                }
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-
-        });
+        modifyButton.addActionListener(new MainPanelController());
         customizeButton(modifyButton, color2, color1);
 
         consultButton = new RoundedButton("CONSULTAR NÓMINAS");
         consultButton.setBounds(screenWidth/6, ((screenHeight/2)+20), 400, 100);
-        consultButton.addActionListener(e -> {
-            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-            GeneralEmployeePickPanel.deleteButton.setVisible(false);
-            GeneralEmployeePickPanel.modifyButton.setVisible(false);
-            GeneralEmployeePickPanel.chooseButton.setVisible(true);
-            GeneralEmployeePickPanel.jComboBox.setVisible(true);
-        });
+        consultButton.addActionListener(new MainPanelController());
         customizeButton(consultButton, color1, color2);
 
         deleteButton = new RoundedButton("ELIMINAR NÓMINAS");
         deleteButton.setBounds(((screenWidth/2)+50), ((screenHeight/2)+20), 400, 100);
-        deleteButton.addActionListener(e -> {
-            MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-            GeneralEmployeePickPanel.deleteButton.setVisible(false);
-            GeneralEmployeePickPanel.modifyButton.setVisible(false);
-            GeneralEmployeePickPanel.chooseButton.setVisible(true);
-            GeneralEmployeePickPanel.jComboBox.setVisible(true);
-        });
+        deleteButton.addActionListener(new MainPanelController());
         customizeButton(deleteButton, color2, color1);
 
         this.add(titleLabel);

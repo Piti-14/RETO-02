@@ -9,22 +9,19 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.sql.SQLException;
 
-public class GeneralEmployeePickPanel extends JPanel {
+public class GeneralPickPanel extends JPanel {
 
     MainPanel.ShadowLabel titleLabel;
-
-    public static JList jListPick;
+    public JList jListPick;
     public static JComboBox<String> jComboBox;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();
     public static JButton chooseButton;
     public static JButton modifyButton;
     public static JButton deleteButton;
     public static JButton alternateDepartmentButton;
-    public static JButton alternateEmployeeButton;
+    public  JButton alternateEmployeeButton;
 
-    public Querys query = new Querys();
-
-    public GeneralEmployeePickPanel() throws SQLException {
+    public GeneralPickPanel() throws SQLException {
         this.setLayout(null);
 
         Color color = Color.decode("#26aae1");
@@ -94,9 +91,9 @@ public class GeneralEmployeePickPanel extends JPanel {
             alternateDepartmentButton.setVisible(false);
 
             try {
-                GeneralEmployeePickPanel.listModel.removeAllElements();
+                listModel.removeAllElements();
                 for (String element: Querys.getDepartments()) {
-                    GeneralEmployeePickPanel.listModel.addElement(element);
+                    listModel.addElement(element);
                 }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
@@ -116,10 +113,10 @@ public class GeneralEmployeePickPanel extends JPanel {
             alternateDepartmentButton.setVisible(true);
 
             try {
-                GeneralEmployeePickPanel.listModel.removeAllElements();
-                for (Employee element: query.getEmployees()) {
+                listModel.removeAllElements();
+                for (String element: Querys.listEmployees()) {
 
-                    GeneralEmployeePickPanel.listModel.addElement(element.getName() + " " + element.getFirstLastname() + " " + element.getSecondLastname());
+                    listModel.addElement(element);
                 }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
@@ -129,8 +126,8 @@ public class GeneralEmployeePickPanel extends JPanel {
         });
 
         try {
-            for (Employee element: query.getEmployees()) {
-                GeneralEmployeePickPanel.listModel.addElement(element.getName() + " " + element.getFirstLastname() + " " + element.getSecondLastname());
+            for (Employee element: Querys.getEmployees()) {
+                listModel.addElement(element.getName());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
