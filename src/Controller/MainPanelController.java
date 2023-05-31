@@ -11,11 +11,16 @@ import java.sql.SQLException;
 
 public class MainPanelController implements ActionListener {
 
+    Querys querys = new Querys();
+
+
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         String button = e.getActionCommand();
-        System.out.println(button);
 
         if (button.equals("CREAR NÓMINAS") || button.equals("CREATE PAYRROLS")) {
             createButton();
@@ -50,15 +55,6 @@ public class MainPanelController implements ActionListener {
         GeneralPickPanel.chooseButton.setVisible(false);
         GeneralPickPanel.jComboBox.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);
-
-        try {
-            GeneralPickPanel.listModel.removeAllElements();
-            for (Employee element: Querys.getEmployees()) {
-                GeneralPickPanel.listModel.addElement(element.getName());
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
     }
 
     private void consultButton() {

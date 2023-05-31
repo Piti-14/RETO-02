@@ -1,5 +1,6 @@
 package Database;
 
+import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import Model.BasicClasses.ProfessionalGroup;
 
@@ -14,7 +15,7 @@ public class Querys {
 
     public Querys() { }
 
-    public static ArrayList<Employee> getEmployees() throws SQLException {
+    public ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = ConnectionDB.Connect().createStatement();
         ResultSet result = query.executeQuery("select * from trabajador");
 
@@ -92,14 +93,14 @@ public class Querys {
         return salary;
     }
 
-    public static ArrayList<String> getDepartments() throws SQLException {
+    public ArrayList<Department> getDepartments() throws SQLException {
         Statement query = ConnectionDB.Connect().createStatement();
         ResultSet result = query.executeQuery("select cod_dep , nom  from departamento");
 
-        ArrayList<String> departments = new ArrayList<>();
+        ArrayList<Department> departments = new ArrayList<>();
 
         while (result.next()){
-            departments.add(result.getString(1) +", "+ result.getString(2));
+            departments.add(new Department(result.getString(1) , result.getString(2)));
         }
 
         ConnectionDB.exit(ConnectionDB.Connect());

@@ -149,7 +149,7 @@ public class MainPanel extends JPanel {
         }
     }
 
-    static class ShadowLabel extends JLabel {
+    public static class ShadowLabel extends JLabel {
         private Color shadowColor;
         private Dimension shadowOffset;
 

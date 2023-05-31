@@ -1,5 +1,6 @@
 package View;
 
+import Controller.GeneralPickPanelController;
 import Database.Querys;
 import Model.BasicClasses.Employee;
 import View.Utils.*;
@@ -11,7 +12,9 @@ import java.sql.SQLException;
 
 public class GeneralPickPanel extends JPanel {
 
-    MainPanel.ShadowLabel titleLabel;
+    public static MainPanel.ShadowLabel titleLabel;
+
+    Querys querys = new Querys();
     public JList jListPick;
     public static JComboBox<String> jComboBox;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -19,7 +22,7 @@ public class GeneralPickPanel extends JPanel {
     public static JButton modifyButton;
     public static JButton deleteButton;
     public static JButton alternateDepartmentButton;
-    public  JButton alternateEmployeeButton;
+    public static JButton alternateEmployeeButton;
 
     public GeneralPickPanel() throws SQLException {
         this.setLayout(null);
@@ -56,15 +59,7 @@ public class GeneralPickPanel extends JPanel {
         chooseButton.setBackground(color);
         chooseButton.setFocusPainted(false);
         chooseButton.setVisible(false);
-        chooseButton.addActionListener(e -> {
-
-            String horasExtrasStr = JOptionPane.showInputDialog(null, "Ingrese las horas extras del trabajador:");
-
-            int horasExtras = Integer.parseInt(horasExtrasStr);
-
-            MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
-
-        });
+        chooseButton.addActionListener(new GeneralPickPanelController());
 
         modifyButton = new JButton("Modify");
         modifyButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -86,21 +81,7 @@ public class GeneralPickPanel extends JPanel {
         alternateDepartmentButton.setBackground(color);
         alternateDepartmentButton.setFocusPainted(false);
         alternateDepartmentButton.setVisible(true);
-        alternateDepartmentButton.addActionListener(e -> {
-            alternateEmployeeButton.setVisible(true);
-            alternateDepartmentButton.setVisible(false);
-
-            try {
-                listModel.removeAllElements();
-                for (String element: Querys.getDepartments()) {
-                    listModel.addElement(element);
-                }
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-
-            titleLabel.setText("Choose Department");
-        });
+        alternateDepartmentButton.addActionListener(new GeneralPickPanelController());
 
         alternateEmployeeButton = new JButton("Choose Employee");
         alternateEmployeeButton.setBounds(screenWidth*(72)/100,screenHeight*(39)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -108,30 +89,9 @@ public class GeneralPickPanel extends JPanel {
         alternateEmployeeButton.setBackground(color);
         alternateEmployeeButton.setFocusPainted(false);
         alternateEmployeeButton.setVisible(false);
-        alternateEmployeeButton.addActionListener(e -> {
-            alternateEmployeeButton.setVisible(false);
-            alternateDepartmentButton.setVisible(true);
+        alternateEmployeeButton.addActionListener(new GeneralPickPanelController());
 
-            try {
-                listModel.removeAllElements();
-                for (String element: Querys.listEmployees()) {
-
-                    listModel.addElement(element);
-                }
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-
-            titleLabel.setText("Choose Employee");
-        });
-
-        try {
-            for (Employee element: Querys.getEmployees()) {
-                listModel.addElement(element.getName());
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
+        insertData();
 
         this.add(titleLabel);
         this.add(chooseButton);
@@ -146,6 +106,16 @@ public class GeneralPickPanel extends JPanel {
         this.add(new PreviousButton());
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
+    }
+
+    public void insertData() {
+        try {
+            for (Employee employee: querys.getEmployees()) {
+                listModel.addElement(employee.getName() + ", " + employee.getFirstLastname() + ", " + employee.getSecondLastname());
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
 
