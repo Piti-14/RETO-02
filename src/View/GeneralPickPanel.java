@@ -15,7 +15,7 @@ public class GeneralPickPanel extends JPanel {
     public static MainPanel.ShadowLabel titleLabel;
 
     Querys querys = new Querys();
-    public JList jListPick;
+    public static JList jListPick;
     public static JComboBox<String> jComboBox;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();
     public static JButton chooseButton;
@@ -111,7 +111,7 @@ public class GeneralPickPanel extends JPanel {
     public void insertData() {
         try {
             for (Employee employee: querys.getEmployees()) {
-                listModel.addElement(employee.getName() + ", " + employee.getFirstLastname() + ", " + employee.getSecondLastname());
+                listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname() + ", " + employee.getNIF());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);

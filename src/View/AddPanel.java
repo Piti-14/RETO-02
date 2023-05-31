@@ -3,10 +3,11 @@ package View;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class AddPanel extends JPanel {
 
-     JLabel companyLbl, employeeLbl, addressLbl, nifLbl, cifLbl, ssnLbl, bankNumberLbl, categoryLbl, contributionGroupLbl,
+     static JLabel companyLbl, employeeLbl, addressLbl, nifLbl, cifLbl, ssnLbl, bankNumberLbl, categoryLbl, contributionGroupLbl,
             settlementPeriodLbl, nDaysLbl, totalsLbl, earningsLbl, amountLbl, salaryPercepcionsLbl, baseSalaryLbl,
             salarySupplementsLbl, overtimeHoursLbl, complementaryHoursLbl, extraBonusesLbl, inKindSalaryLbl,
             nonSalaryPercepcionsLbl, compensationsOrAllowancesLbl, ssBenefitsCompensationsLbl, compensationsLbl,
@@ -17,7 +18,7 @@ public class AddPanel extends JPanel {
              baseLbl, professionalHoldbacksLbl, fogasaLbl, overtimeContributionLbl, totalLbl, dateLbl, conceptLbl, atEPLbl,
              unemployment2Lbl, fpLbl, total2Lbl;
 
-    JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
+    static JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
             settlementPeriodTxt, nDaysTxt, salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
             compensationsOrAllowancesTxt, ssBenefitsCompensationsTxt, compensationsTxt, otherPerceptionsTxt,
             totalEarnedTxt, totalDeductedTxt, totalNetReceivedTxt, monthlyRemunerationTxt, extraPaymentsTxt,
@@ -26,6 +27,16 @@ public class AddPanel extends JPanel {
             amount18Txt, amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt,
             type6Txt, type7Txt, type8Txt, type9Txt, dateTxt, base1Txt, base2Txt, base3Txt, base4Txt, compTax1Txt, compTax2Txt,
             compTax3Txt, compTax4Txt, compTax5Txt, compTax6Txt;
+
+    public static ArrayList<JTextField> companyTextFields = new ArrayList<>();
+    public static ArrayList<JTextField> employeeTextFields = new ArrayList<>();
+    public static ArrayList<JTextField> employeeTypesTextFields = new ArrayList<>();
+
+    public static ArrayList<JTextField> earningsTextFields = new ArrayList<>();
+    public static ArrayList<JTextField> companyDeductionsTextFields = new ArrayList<>();
+    public static ArrayList<JTextField> companyTypesTextFields = new ArrayList<>();
+    public static ArrayList<JTextField> dateTextFields = new ArrayList<>();
+    public static ArrayList<JTextField> perceptionsTextFields = new ArrayList<>();
 
     public AddPanel() {
         setLayout(new BorderLayout());
@@ -735,6 +746,80 @@ public class AddPanel extends JPanel {
         scrollPane.setPreferredSize(new Dimension(800, 600));
 
         add(scrollPane, BorderLayout.CENTER);
+
+        companyTextFields.add(companyTxt);
+        companyTextFields.add(addressTxt);
+        companyTextFields.add(cifTxt);
+        companyTextFields.add(bankNumberTxt);
+
+        employeeTextFields.add(employeeTxt);
+        employeeTextFields.add(nifTxt);
+        employeeTextFields.add(ssnTxt);
+        employeeTextFields.add(categoryTxt);
+        employeeTextFields.add(contributionGroupTxt);
+
+        dateTextFields.add(settlementPeriodTxt);
+        dateTextFields.add(nDaysTxt);
+        dateTextFields.add(dateTxt);
+
+        perceptionsTextFields.add(salarySupplementsTxt);
+        perceptionsTextFields.add(salarySupplements1Txt);
+        perceptionsTextFields.add(salarySupplements2Txt);
+        perceptionsTextFields.add(compensationsOrAllowancesTxt);
+        perceptionsTextFields.add(ssBenefitsCompensationsTxt);
+        perceptionsTextFields.add(compensationsTxt);
+        perceptionsTextFields.add(otherPerceptionsTxt);
+
+        earningsTextFields.add(totalEarnedTxt);
+        earningsTextFields.add(totalDeductedTxt);
+        earningsTextFields.add(totalNetReceivedTxt);
+        earningsTextFields.add(monthlyRemunerationTxt);
+        earningsTextFields.add(extraPaymentsTxt);
+        earningsTextFields.add(totalTxt);
+        earningsTextFields.add(amount1Txt);
+        earningsTextFields.add(amount2Txt);
+        earningsTextFields.add(amount3Txt);
+        earningsTextFields.add(amount4Txt);
+        earningsTextFields.add(amount5Txt);
+        earningsTextFields.add(amount6Txt);
+        earningsTextFields.add(amount7Txt);
+        earningsTextFields.add(amount8Txt);
+        earningsTextFields.add(amount9Txt);
+        earningsTextFields.add(amount10Txt);
+        earningsTextFields.add(amount11Txt);
+        earningsTextFields.add(amount12Txt);
+        earningsTextFields.add(amount13Txt);
+        earningsTextFields.add(amount14Txt);
+        earningsTextFields.add(amount15Txt);
+        earningsTextFields.add(amount16Txt);
+        earningsTextFields.add(amount17Txt);
+        earningsTextFields.add(amount18Txt);
+        earningsTextFields.add(amount19Txt);
+        earningsTextFields.add(amount20Txt);
+        earningsTextFields.add(amount21Txt);
+
+        employeeTypesTextFields.add(typeTxt);
+        employeeTypesTextFields.add(type1Txt);
+        employeeTypesTextFields.add(type2Txt);
+        employeeTypesTextFields.add(type3Txt);
+
+        companyTypesTextFields.add(type4Txt);
+        companyTypesTextFields.add(type5Txt);
+        companyTypesTextFields.add(type6Txt);
+        companyTypesTextFields.add(type7Txt);
+        companyTypesTextFields.add(type8Txt);
+        companyTypesTextFields.add(type9Txt);
+
+        companyDeductionsTextFields.add(base1Txt);
+        companyDeductionsTextFields.add(base2Txt);
+        companyDeductionsTextFields.add(base3Txt);
+        companyDeductionsTextFields.add(base4Txt);
+        companyDeductionsTextFields.add(compTax1Txt);
+        companyDeductionsTextFields.add(compTax2Txt);
+        companyDeductionsTextFields.add(compTax3Txt);
+        companyDeductionsTextFields.add(compTax4Txt);
+        companyDeductionsTextFields.add(compTax5Txt);
+        companyDeductionsTextFields.add(compTax6Txt);
     }
 
     private JPanel createPanelWithBorder() {
@@ -745,7 +830,6 @@ public class AddPanel extends JPanel {
         Border outerBorder = BorderFactory.createMatteBorder(2, 2, 0, 2, Color.black);
 
         Border border = BorderFactory.createCompoundBorder(outerBorder, innerBorder);
-
         panel.setBorder(border);
 
         return panel;

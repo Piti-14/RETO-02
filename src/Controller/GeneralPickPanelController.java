@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import Database.Querys;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
+import View.GeneralPickPanel;
 import View.MainFrame;
 
 import static View.GeneralPickPanel.*;
@@ -16,12 +17,11 @@ public class GeneralPickPanelController implements ActionListener {
 
     Querys querys = new Querys();
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
         String button = e.getActionCommand();
-        System.out.println(button);
+        //System.out.println(button);
 
         if (button.equals("Choose Employee") || button.equals("Elegir Empleado")) {
             chooseEmployeeButton();
@@ -37,7 +37,14 @@ public class GeneralPickPanelController implements ActionListener {
     }
 
     private void chooseButton() {
+
+        String[] value = jListPick.getSelectedValue().toString().split(" ");
+        String nif = value[value.length - 1];
+
+
+
         MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
+
     }
 
     private void chooseDepartmentButton() {

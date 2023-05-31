@@ -1,5 +1,6 @@
 package Database;
 
+import Model.BasicClasses.Company;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import Model.BasicClasses.ProfessionalGroup;
@@ -49,6 +50,8 @@ public class Querys {
             Employee e = new Employee(NIF, name, firstLastName, secondLastName, account, ss_number, seniority, permanentJob, dept, group);
             employees.add(e);
         }
+        ConnectionDB.exit(ConnectionDB.Connect());
+
         return employees;
     }
 
@@ -63,6 +66,8 @@ public class Querys {
             tax = (result.getDouble(1)) / 10;
             taxes.add(tax);
         }
+        ConnectionDB.exit(ConnectionDB.Connect());
+
         return taxes;
     }
 
@@ -77,6 +82,8 @@ public class Querys {
             tax = (result.getDouble(1)) / 10;
             taxes.add(tax);
         }
+        ConnectionDB.exit(ConnectionDB.Connect());
+
         return taxes;
     }
 
@@ -108,5 +115,49 @@ public class Querys {
         return departments;
     }
 
+    public Company getCompanyData() throws SQLException {
+        Statement query = ConnectionDB.Connect().createStatement();
+        ResultSet result = query.executeQuery("select *  from empresa");
+
+        Company comp = null;
+        while (result.next()) {
+
+            comp = new Company(result.getString(1),
+                               result.getString(2),
+                               result.getString(3),
+                               result.getInt(4));
+
+        }
+        ConnectionDB.exit(ConnectionDB.Connect());
+
+        return comp;
+    }
+
     public void NetPay() throws SQLException{}
+
+    public int getIRPF(String nif) throws SQLException {
+        Statement query = ConnectionDB.Connect().createStatement();
+        ResultSet result = query.executeQuery("select getRetencionIRPF('" + nif + "')");
+
+        int irpf = 0;
+        while (result.next()){
+            irpf = result.getInt(1);
+        }
+        ConnectionDB.exit(ConnectionDB.Connect());
+
+        return irpf;
+    }
+
+    public int getATEP(String nif) throws SQLException {
+        Statement query = ConnectionDB.Connect().createStatement();
+        ResultSet result = query.executeQuery("select getRetencionATEP('" + nif + "')");
+
+        int atep = 0;
+        while (result.next()){
+            atep = result.getInt(1);
+        }
+        ConnectionDB.exit(ConnectionDB.Connect());
+
+        return atep;
+    }
 }

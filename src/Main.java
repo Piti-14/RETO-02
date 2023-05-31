@@ -2,6 +2,7 @@ import Database.ConnectionDB;
 import Database.Querys;
 import Model.BasicClasses.Employee;
 import Model.BasicClasses.ProfessionalGroup;
+import Model.DataAccess.PayrollData;
 import View.MainFrame;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws IOException, SQLException {
 
+        PayrollData.initialiseData();
 
         MainFrame mainFrame = new MainFrame();
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -24,6 +26,7 @@ public class Main {
 
         //System.out.println(e.getGroup().getGroupCode());
         //System.out.println(qs.getCommonContingencies(e));
+
         /*ArrayList<Employee> employees = qs.getEmployees();
         for(int i = 0; i < employees.size(); i++) {
             System.out.println(employees.get(i).toString());
@@ -40,5 +43,6 @@ public class Main {
         }
         */
 
+        //System.out.println(qs.getCompanyData());
     }
 }

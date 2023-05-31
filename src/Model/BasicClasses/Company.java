@@ -29,4 +29,8 @@ public class Company {
     public int getCcc() {
         return ccc;
     }
+
+    public String toString() {
+        return name + ", " + address + ". CIF: " + cif + "; " + "CCC: " + ccc;
+    }
 }
