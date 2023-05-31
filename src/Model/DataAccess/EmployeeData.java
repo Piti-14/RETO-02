@@ -5,6 +5,7 @@ import Model.BasicClasses.Employee;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class EmployeeData {
 
@@ -20,12 +21,10 @@ public class EmployeeData {
     public double totalEarned (String name, String lastName, String secondLastName, int hours) throws SQLException {
         double total = 0.0;
 
-        for (int i = 0; i < employees.size(); i++) {
-            Employee current = employees.get(i);
-
-            if (current.getName() == name &&
-                current.getFirstLastname() == lastName &&
-                current.getSecondLastname() == secondLastName) {
+        for (Employee current : employees) {
+            if (Objects.equals(current.getName(), name) &&
+                    Objects.equals(current.getFirstLastname(), lastName) &&
+                    Objects.equals(current.getSecondLastname(), secondLastName)) {
 
                 total = query.getCommonContingencies(current) + hours;
             }
