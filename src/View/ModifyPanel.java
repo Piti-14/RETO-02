@@ -1,4 +1,10 @@
 package View;
 
-public class ModifyPanel {
+import javax.swing.*;
+
+public class ModifyPanel extends JPanel {
+
+    public ModifyPanel () {
+
+    }
 }

@@ -59,6 +59,8 @@ public class MainFrame extends JFrame {
         AddPanel addPanel = new AddPanel();
         DeletePanel deletePanel = new DeletePanel();
         GeneralPickPanel generalPickPanel = new GeneralPickPanel();
+        ConsultPanel consultPanel = new ConsultPanel();
+        ModifyPanel modifyPanel = new ModifyPanel();
 
         menuBar.setVisible(false);
         cardLayout = new CardLayout();
@@ -69,6 +71,8 @@ public class MainFrame extends JFrame {
         cards.add(addPanel,"addPanel");
         cards.add(deletePanel, "deletePanel");
         cards.add(generalPickPanel,"playerPick");
+        cards.add(consultPanel,"consultPanel");
+        cards.add(modifyPanel, "modifyPanel");
 
         this.setIconImage(new ImageIcon(Sources.class.getResource("logoteaw.png")).getImage());
         this.add(menuBar, BorderLayout.NORTH);

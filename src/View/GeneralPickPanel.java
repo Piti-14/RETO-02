@@ -2,6 +2,7 @@ package View;
 
 import Controller.GeneralPickPanelController;
 import Database.Querys;
+import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import View.Utils.*;
 
@@ -13,14 +14,14 @@ import java.sql.SQLException;
 public class GeneralPickPanel extends JPanel {
 
     public static MainPanel.ShadowLabel titleLabel;
-
-    Querys querys = new Querys();
-    public JList jListPick;
+    public static Querys querys = new Querys();
+    public static JList jListPick;
     public static JComboBox<String> jComboBox;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();
     public static JButton chooseButton;
     public static JButton modifyButton;
     public static JButton deleteButton;
+    public static JButton consultButton;
     public static JButton alternateDepartmentButton;
     public static JButton alternateEmployeeButton;
 
@@ -59,7 +60,7 @@ public class GeneralPickPanel extends JPanel {
         chooseButton.setBackground(color);
         chooseButton.setFocusPainted(false);
         chooseButton.setVisible(false);
-        chooseButton.addActionListener(new GeneralPickPanelController());
+        chooseButton.addActionListener(new GeneralPickPanelController("chooseButton"));
 
         modifyButton = new JButton("Modify");
         modifyButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -67,6 +68,7 @@ public class GeneralPickPanel extends JPanel {
         modifyButton.setBackground(color);
         modifyButton.setFocusPainted(false);
         modifyButton.setVisible(true);
+        modifyButton.addActionListener(new GeneralPickPanelController("modifyButton"));
 
         deleteButton = new JButton("Delete");
         deleteButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -74,6 +76,15 @@ public class GeneralPickPanel extends JPanel {
         deleteButton.setBackground(color);
         deleteButton.setFocusPainted(false);
         deleteButton.setVisible(false);
+        deleteButton.addActionListener(new GeneralPickPanelController("deleteButton"));
+
+        consultButton = new JButton("Consult");
+        consultButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        consultButton.setBorder(new LineBorder(Color.WHITE, 2));
+        consultButton.setBackground(color);
+        consultButton.setFocusPainted(false);
+        consultButton.setVisible(true);
+        consultButton.addActionListener(new GeneralPickPanelController("consultButton"));
 
         alternateDepartmentButton = new JButton("Choose Department");
         alternateDepartmentButton.setBounds(screenWidth*(72)/100,screenHeight*(39)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -81,7 +92,7 @@ public class GeneralPickPanel extends JPanel {
         alternateDepartmentButton.setBackground(color);
         alternateDepartmentButton.setFocusPainted(false);
         alternateDepartmentButton.setVisible(true);
-        alternateDepartmentButton.addActionListener(new GeneralPickPanelController());
+        alternateDepartmentButton.addActionListener(new GeneralPickPanelController("alternateDepartmentButton"));
 
         alternateEmployeeButton = new JButton("Choose Employee");
         alternateEmployeeButton.setBounds(screenWidth*(72)/100,screenHeight*(39)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -89,9 +100,9 @@ public class GeneralPickPanel extends JPanel {
         alternateEmployeeButton.setBackground(color);
         alternateEmployeeButton.setFocusPainted(false);
         alternateEmployeeButton.setVisible(false);
-        alternateEmployeeButton.addActionListener(new GeneralPickPanelController());
+        alternateEmployeeButton.addActionListener(new GeneralPickPanelController("alternateEmployeeButton"));
 
-        insertData();
+        insertDataEmployees();
 
         this.add(titleLabel);
         this.add(chooseButton);
@@ -101,15 +112,30 @@ public class GeneralPickPanel extends JPanel {
         this.add(deleteButton);
         this.add(alternateEmployeeButton);
         this.add(alternateDepartmentButton);
+        this.add(consultButton);
 
         this.add(new OffButton());
         this.add(new PreviousButton());
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
     }
+    public static void deleteElement() {
+        listModel.removeElement(jListPick.getSelectedValue());
+    }
 
-    public void insertData() {
+    public static void insertDataEmployees() {
         try {
+            for (Employee employee: querys.getEmployees()) {
+                listModel.addElement(employee.getName() + ", " + employee.getFirstLastname() + ", " + employee.getSecondLastname());
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public static void insertDataDepartments() {
+        try {
+            listModel.removeAllElements();
             for (Employee employee: querys.getEmployees()) {
                 listModel.addElement(employee.getName() + ", " + employee.getFirstLastname() + ", " + employee.getSecondLastname());
             }
