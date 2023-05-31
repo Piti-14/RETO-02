@@ -83,7 +83,7 @@ public class GeneralPickPanelController implements ActionListener {
         try {
             listModel.removeAllElements();
             for (Department department: querys.getDepartments()) {
-                listModel.addElement(department.getCodeDept() +", "+ department.getName());
+                listModel.addElement(department.getCodeDept() +" "+ department.getName());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -99,7 +99,7 @@ public class GeneralPickPanelController implements ActionListener {
         try {
             listModel.removeAllElements();
             for (Employee employee: querys.getEmployees()) {
-                listModel.addElement(employee.getName() + ", " + employee.getFirstLastname() + ", " + employee.getSecondLastname());
+                listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);

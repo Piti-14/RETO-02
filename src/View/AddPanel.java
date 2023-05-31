@@ -1,9 +1,6 @@
 package View;
 
-import View.Utils.JLabelWallpaper;
-import View.Utils.JPanelBlue;
-import View.Utils.OffButton;
-import View.Utils.PreviousButton;
+import View.Utils.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,7 +15,7 @@ public class AddPanel extends JPanel {
             otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, type2Lbl, holdbacksLbl,
             unemploymentLbl, proTrainingLbl,   totalContributionsLbl, incomeTaxLbl, advancesLbl, valueProductsLbl,
              otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl, companySignatureLbl, receivedLbl, determinationSSLbl,
-             determinationSS2Lbl, baseContributionLbl, monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl,
+             determinationSS2Lbl, commonHoldbacksLbl, monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl,
              baseLbl, professionalHoldbacksLbl, fogasaLbl, overtimeContributionLbl, totalLbl, dateLbl, conceptLbl, atEPLbl,
              unemployment2Lbl, fpLbl, total2Lbl;
 
@@ -41,12 +38,14 @@ public class AddPanel extends JPanel {
         JPanel topInfo = createPanelWithBorder(10,10,10,10,false);
         JPanel dateInfo = createPanelWithBorder(10,10,10,10,false);
         JPanel midInfo = createPanelWithBorder(10,40,10,10,false);
-        JPanel botInfo = createPanelWithBorder(10,10,10,10,true);
+        JPanel botInfo = createPanelWithBorder(10,10,10,10,false);
+        JPanel exitSave = createPanelWithBorder(10,10,10,10,true);
 
         topInfo.setPreferredSize(new Dimension(800, 150));
         dateInfo.setPreferredSize(new Dimension(800, 50));
         midInfo.setPreferredSize(new Dimension(800, 800));
         botInfo.setPreferredSize(new Dimension(800, 300));
+        exitSave.setPreferredSize(new Dimension(800, 100));
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
@@ -575,10 +574,10 @@ public class AddPanel extends JPanel {
         constraints.gridwidth = 1;
         botInfo.add(companyContributionLbl, constraints);
 
-        baseContributionLbl = new JLabel("1. Common holdbacks");
+        commonHoldbacksLbl = new JLabel("1. Common holdbacks");
         constraints.gridx = 0;
         constraints.gridy = 3;
-        botInfo.add(baseContributionLbl, constraints);
+        botInfo.add(commonHoldbacksLbl, constraints);
 
         monthlyRemunerationLbl = new JLabel("Monthly remuneration:");
         constraints.gridx = 0;
@@ -734,19 +733,28 @@ public class AddPanel extends JPanel {
         constraints.gridy = 3;
         mainPanel.add(botInfo, constraints);
 
+        PreviousButton previousButton = new PreviousButton();
+        previousButton.setPreferredSize(new Dimension(75, 75));
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        exitSave.add(previousButton, constraints);
+
+        SaveButton saveButton = new SaveButton();
+        saveButton.setPreferredSize(new Dimension(75, 75));
+        constraints.gridx = 4;
+        constraints.gridy = 0;
+        exitSave.add(saveButton, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        mainPanel.add(exitSave, constraints);
+
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.getVerticalScrollBar().setUnitIncrement(20);
         scrollPane.setPreferredSize(new Dimension(800, 600));
 
-
-
         add(scrollPane, BorderLayout.CENTER);
-        add(new OffButton(), BorderLayout.EAST);
-        add(new PreviousButton(), BorderLayout.WEST);
-
-        //add(new JPanelBlue());
-        //add(new JLabelWallpaper());
     }
 
     private JPanel createPanelWithBorder(int topMargin, int bottomMargin, int leftMargin, int rightMargin, boolean includeBottomBorder) {
