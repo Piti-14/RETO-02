@@ -16,7 +16,7 @@ public class SaveButton extends JButton {
         this.setIcon(new ImageIcon(Sources.class.getResource("save.png")));
         this.setContentAreaFilled(false);
         this.setBorder(null);
-        this.setBounds(screenWidth*(93)/100,screenHeight*(87)/100,50,50);
+        this.setBounds(screenWidth*(93)/100,screenHeight*(87)/100,75,75);
         this.addActionListener(new UtilsController(this.getClass().getSimpleName()));
     }
 }
