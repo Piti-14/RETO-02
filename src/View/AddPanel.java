@@ -1,5 +1,7 @@
 package View;
 
+import Languages.Configuration;
+import Languages.Language;
 import View.Utils.*;
 
 import javax.swing.*;
@@ -53,7 +55,10 @@ public class AddPanel extends JPanel {
 
         //INFORMACIÓN EMPRESA Y EMPLEADO
 
-        companyLbl = new JLabel("Company:");
+        Configuration configuration = new Configuration();
+        Language language = new Language(Integer.parseInt(configuration.getLanguage()));
+
+        companyLbl = new JLabel(language.getProperty("companyLbl"));
         constraints.gridx = 0;
         constraints.gridy = 0;
         topInfo.add(companyLbl, constraints);
@@ -73,7 +78,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 1;
         topInfo.add(addressTxt, constraints);
 
-        cifLbl = new JLabel("CIF:");
+        cifLbl = new JLabel(language.getProperty("cifLbl"));
         constraints.gridx = 0;
         constraints.gridy = 2;
         topInfo.add(cifLbl, constraints);
@@ -83,7 +88,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 2;
         topInfo.add(cifTxt, constraints);
 
-        bankNumberLbl = new JLabel("Bank Account:");
+        bankNumberLbl = new JLabel(language.getProperty("bankNumberLbl"));
         constraints.gridx = 0;
         constraints.gridy = 3;
         topInfo.add(bankNumberLbl, constraints);
@@ -93,7 +98,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 3;
         topInfo.add(bankNumberTxt, constraints);
 
-        employeeLbl = new JLabel("Employee:");
+        employeeLbl = new JLabel(language.getProperty("employeeLbl"));
         constraints.gridx = 2;
         constraints.gridy = 0;
         topInfo.add(employeeLbl, constraints);
@@ -103,7 +108,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 0;
         topInfo.add(employeeTxt, constraints);
 
-        nifLbl = new JLabel("NIF:");
+        nifLbl = new JLabel(language.getProperty("nifLbl"));
         constraints.gridx = 2;
         constraints.gridy = 1;
         topInfo.add(nifLbl, constraints);
@@ -113,7 +118,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 1;
         topInfo.add(nifTxt, constraints);
 
-        ssnLbl = new JLabel("Social Security Nº:");
+        ssnLbl = new JLabel(language.getProperty("ssnLbl"));
         constraints.gridx = 2;
         constraints.gridy = 2;
         topInfo.add(ssnLbl, constraints);
@@ -123,7 +128,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 2;
         topInfo.add(ssnTxt, constraints);
 
-        categoryLbl = new JLabel("Professional Group:");
+        categoryLbl = new JLabel(language.getProperty("categoryLbl"));
         constraints.gridx = 2;
         constraints.gridy = 3;
         topInfo.add(categoryLbl, constraints);
@@ -133,7 +138,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 3;
         topInfo.add(categoryTxt, constraints);
 
-        contributionGroupLbl = new JLabel("Contribution Group:");
+        contributionGroupLbl = new JLabel(language.getProperty("contributionGroupLbl"));
         constraints.gridx = 2;
         constraints.gridy = 4;
         topInfo.add(contributionGroupLbl, constraints);
@@ -149,7 +154,7 @@ public class AddPanel extends JPanel {
 
         //INFORMACIÓN DE LA FECHA
 
-        settlementPeriodLbl = new JLabel("Settlement Period:");
+        settlementPeriodLbl = new JLabel(language.getProperty("settlementPeriodLbl"));
         constraints.gridx = 0;
         constraints.gridy = 0;
         dateInfo.add(settlementPeriodLbl, constraints);
@@ -159,7 +164,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 0;
         dateInfo.add(settlementPeriodTxt, constraints);
 
-        nDaysLbl = new JLabel("Number of Days:");
+        nDaysLbl = new JLabel(language.getProperty("nDaysLbl"));
         constraints.gridx = 2;
         constraints.gridy = 0;
         dateInfo.add(nDaysLbl, constraints);
@@ -175,27 +180,27 @@ public class AddPanel extends JPanel {
 
         //INFORMACIÓN DEVENGOS
 
-        earningsLbl = new JLabel("I. EARNINGS");
+        earningsLbl = new JLabel(language.getProperty("earningsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 0;
         midInfo.add(earningsLbl, constraints);
 
-        amountLbl = new JLabel("AMOUNT");
+        amountLbl = new JLabel(language.getProperty("amountLbl"));
         constraints.gridx = 3;
         constraints.gridy = 0;
         midInfo.add(amountLbl, constraints);
 
-        totalsLbl = new JLabel("TOTALS");
+        totalsLbl = new JLabel(language.getProperty("totalsLbl"));
         constraints.gridx = 4;
         constraints.gridy = 0;
         midInfo.add(totalsLbl, constraints);
 
-        salaryPercepcionsLbl = new JLabel("1. Salary percepcions");
+        salaryPercepcionsLbl = new JLabel(language.getProperty("salaryPercepcionsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 1;
         midInfo.add(salaryPercepcionsLbl, constraints);
 
-        baseSalaryLbl = new JLabel("Base salary:");
+        baseSalaryLbl = new JLabel(language.getProperty("baseSalaryLbl"));
         constraints.gridx = 0;
         constraints.gridy = 2;
         midInfo.add(baseSalaryLbl, constraints);
@@ -205,7 +210,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 2;
         midInfo.add(amount1Txt, constraints);
 
-        salarySupplementsLbl = new JLabel("Salary supplements:");
+        salarySupplementsLbl = new JLabel(language.getProperty("salarySupplementsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 3;
         midInfo.add(salarySupplementsLbl, constraints);
@@ -243,7 +248,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 6;
         midInfo.add(amount4Txt, constraints);
 
-        overtimeHoursLbl = new JLabel("Overtime Hours:");
+        overtimeHoursLbl = new JLabel(language.getProperty("overtimeHoursLbl"));
         constraints.gridx = 0;
         constraints.gridy = 7;
         midInfo.add(overtimeHoursLbl, constraints);
@@ -253,7 +258,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 7;
         midInfo.add(amount5Txt, constraints);
 
-        complementaryHoursLbl = new JLabel("Complementary Hours:");
+        complementaryHoursLbl = new JLabel(language.getProperty("complementaryHoursLbl"));
         constraints.gridx = 0;
         constraints.gridy = 8;
         midInfo.add(complementaryHoursLbl, constraints);
@@ -263,7 +268,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 8;
         midInfo.add(amount6Txt, constraints);
 
-        extraBonusesLbl = new JLabel("Extra bonuses:");
+        extraBonusesLbl = new JLabel(language.getProperty("extraBonusesLbl"));
         constraints.gridx = 0;
         constraints.gridy = 9;
         midInfo.add(extraBonusesLbl, constraints);
@@ -273,7 +278,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 9;
         midInfo.add(amount7Txt, constraints);
 
-        inKindSalaryLbl = new JLabel("In-kind salary:");
+        inKindSalaryLbl = new JLabel(language.getProperty("inKindSalaryLbl"));
         constraints.gridx = 0;
         constraints.gridy = 10;
         midInfo.add(inKindSalaryLbl, constraints);
@@ -283,12 +288,12 @@ public class AddPanel extends JPanel {
         constraints.gridy = 10;
         midInfo.add(amount8Txt, constraints);
 
-        nonSalaryPercepcionsLbl = new JLabel("2. Non-salary perceptions:");
+        nonSalaryPercepcionsLbl = new JLabel(language.getProperty("nonSalaryPercepcionsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 11;
         midInfo.add(nonSalaryPercepcionsLbl, constraints);
 
-        compensationsOrAllowancesLbl = new JLabel("Compensations or allowances:");
+        compensationsOrAllowancesLbl = new JLabel(language.getProperty("compensationsOrAllowancesLbl"));
         constraints.gridx = 0;
         constraints.gridy = 12;
         midInfo.add(compensationsOrAllowancesLbl, constraints);
@@ -304,7 +309,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 13;
         midInfo.add(amount9Txt, constraints);
 
-        ssBenefitsCompensationsLbl = new JLabel("Social security benefits and compensations:");
+        ssBenefitsCompensationsLbl = new JLabel(language.getProperty("ssBenefitsCompensationsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 14;
         midInfo.add(ssBenefitsCompensationsLbl, constraints);
@@ -320,7 +325,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 15;
         midInfo.add(amount10Txt, constraints);
 
-        compensationsLbl = new JLabel("Compensations for transfers, suspensions or layoffs:");
+        compensationsLbl = new JLabel(language.getProperty("compensationsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 16;
         midInfo.add(compensationsLbl, constraints);
@@ -336,7 +341,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 17;
         midInfo.add(amount11Txt, constraints);
 
-        otherPerceptionsLbl = new JLabel("Other non-salary perceptions:");
+        otherPerceptionsLbl = new JLabel(language.getProperty("otherPerceptionsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 18;
         midInfo.add(otherPerceptionsLbl, constraints);
@@ -352,7 +357,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 19;
         midInfo.add(amount12Txt, constraints);
 
-        totalEarnedLbl = new JLabel("A. TOTAL EARNED:");
+        totalEarnedLbl = new JLabel(language.getProperty("totalEarnedLbl"));
         constraints.gridx = 1;
         constraints.gridy = 20;
         midInfo.add(totalEarnedLbl, constraints);
@@ -362,23 +367,23 @@ public class AddPanel extends JPanel {
         constraints.gridy = 20;
         midInfo.add(totalEarnedTxt, constraints);
 
-        deductionsLbl = new JLabel("II. DEDUCTIONS:");
+        deductionsLbl = new JLabel(language.getProperty("deductionsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 21;
         midInfo.add(deductionsLbl, constraints);
 
-        employeeContributionsLbl = new JLabel("1. Employee's contribution to S.S. and joint collection concepts:");
+        employeeContributionsLbl = new JLabel(language.getProperty("employeeContributionsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 22;
         constraints.gridwidth = 3;
         midInfo.add(employeeContributionsLbl, constraints);
 
-        typeLbl = new JLabel("TYPE %");
+        typeLbl = new JLabel(language.getProperty("typeLbl"));
         constraints.gridx = 2;
         constraints.gridy = 23;
         midInfo.add(typeLbl, constraints);
 
-        holdbacksLbl = new JLabel("Holdbacks:");
+        holdbacksLbl = new JLabel(language.getProperty("holdbacksLbl"));
         constraints.gridx = 0;
         constraints.gridy = 24;
         constraints.gridwidth = 2;
@@ -394,7 +399,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 24;
         midInfo.add(amount13Txt, constraints);
 
-        unemploymentLbl = new JLabel("Unemployment:");
+        unemploymentLbl = new JLabel(language.getProperty("unemploymentLbl"));
         constraints.gridx = 0;
         constraints.gridy = 25;
         constraints.gridwidth = 2;
@@ -410,7 +415,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 25;
         midInfo.add(amount14Txt, constraints);
 
-        proTrainingLbl = new JLabel("Professional training:");
+        proTrainingLbl = new JLabel(language.getProperty("proTrainingLbl"));
         constraints.gridx = 0;
         constraints.gridy = 26;
         constraints.gridwidth = 2;
@@ -426,7 +431,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 26;
         midInfo.add(amount15Txt, constraints);
 
-        overtimeHoursLbl = new JLabel("Normal overtime hours:");
+        overtimeHoursLbl = new JLabel(language.getProperty("overtimeHoursLbl"));
         constraints.gridx = 0;
         constraints.gridy = 27;
         constraints.gridwidth = 2;
@@ -442,7 +447,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 27;
         midInfo.add(amount16Txt, constraints);
 
-        totalContributionsLbl = new JLabel("TOTAL CONTRIBUTIONS:");
+        totalContributionsLbl = new JLabel(language.getProperty("totalContributionsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 28;
         midInfo.add(totalContributionsLbl, constraints);
@@ -452,7 +457,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 28;
         midInfo.add(amount17Txt, constraints);
 
-        incomeTaxLbl = new JLabel("IRPF:");
+        incomeTaxLbl = new JLabel(language.getProperty("incomeTaxLbl"));
         constraints.gridx = 0;
         constraints.gridy = 29;
         midInfo.add(incomeTaxLbl, constraints);
@@ -462,7 +467,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 29;
         midInfo.add(amount18Txt, constraints);
 
-        advancesLbl = new JLabel("Advances:");
+        advancesLbl = new JLabel(language.getProperty("advancesLbl"));
         constraints.gridx = 0;
         constraints.gridy = 30;
         midInfo.add(advancesLbl, constraints);
@@ -472,7 +477,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 30;
         midInfo.add(amount19Txt, constraints);
 
-        valueProductsLbl = new JLabel("Value of goods received in kind:");
+        valueProductsLbl = new JLabel(language.getProperty("valueProductsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 31;
         midInfo.add(valueProductsLbl, constraints);
@@ -482,7 +487,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 31;
         midInfo.add(amount20Txt, constraints);
 
-        otherDeductionsLbl = new JLabel("Other deductions:");
+        otherDeductionsLbl = new JLabel(language.getProperty("otherDeductionsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 32;
         midInfo.add(otherDeductionsLbl, constraints);
@@ -492,7 +497,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 32;
         midInfo.add(amount21Txt, constraints);
 
-        totalDeductedLbl = new JLabel("B. TOTAL DEDUCTED:");
+        totalDeductedLbl = new JLabel(language.getProperty("totalDeductedLbl"));
         constraints.gridx = 1;
         constraints.gridy = 33;
         midInfo.add(totalDeductedLbl, constraints);
@@ -502,7 +507,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 33;
         midInfo.add(totalDeductedTxt, constraints);
 
-        totalNetReceivedLbl = new JLabel("TOTAL NET RECEIVED (A-B):");
+        totalNetReceivedLbl = new JLabel(language.getProperty("totalNetReceivedLbl"));
         constraints.gridx = 1;
         constraints.gridy = 34;
         midInfo.add(totalNetReceivedLbl, constraints);
@@ -517,17 +522,17 @@ public class AddPanel extends JPanel {
         constraints.gridy = 34;
         midInfo.add(totalNetReceivedTxt, constraints);
 
-        companySignatureLbl = new JLabel("Signature and company seal");
+        companySignatureLbl = new JLabel(language.getProperty("companySignatureLbl"));
         constraints.gridx = 1;
         constraints.gridy = 35;
         midInfo.add(companySignatureLbl, constraints);
 
-        dateLbl = new JLabel("Date");
+        dateLbl = new JLabel(language.getProperty("dateLbl"));
         constraints.gridx = 3;
         constraints.gridy = 35;
         midInfo.add(dateLbl, constraints);
 
-        receivedLbl = new JLabel("Received");
+        receivedLbl = new JLabel(language.getProperty("receivedLbl"));
         constraints.gridx = 4;
         constraints.gridy = 35;
         midInfo.add(receivedLbl, constraints);
@@ -538,48 +543,48 @@ public class AddPanel extends JPanel {
 
         //CONTINGENCIAS EMPRESA
 
-        determinationSSLbl = new JLabel("Determination of S.S. y contribution bases and concepts of joint and joint collection");
+        determinationSSLbl = new JLabel(language.getProperty("determinationSSLbl"));
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 5;
         botInfo.add(determinationSSLbl, constraints);
 
-        determinationSS2Lbl = new JLabel("and of the base subject to personal income tax withholding and company contribution");
+        determinationSS2Lbl = new JLabel(language.getProperty("determinationSS2Lbl"));
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.gridwidth = 5;
         botInfo.add(determinationSS2Lbl, constraints);
 
-        conceptLbl = new JLabel("CONCEPT");
+        conceptLbl = new JLabel(language.getProperty("conceptLbl"));
         constraints.gridx = 1;
         constraints.gridy = 2;
         constraints.gridwidth = 1;
         botInfo.add(conceptLbl, constraints);
 
-        baseLbl = new JLabel("BASE");
+        baseLbl = new JLabel(language.getProperty("baseLbl"));
         constraints.gridx = 2;
         constraints.gridy = 2;
         constraints.gridwidth = 1;
         botInfo.add(baseLbl, constraints);
 
-        type2Lbl = new JLabel("TYPE %");
+        type2Lbl = new JLabel(language.getProperty("type2Lbl"));
         constraints.gridx = 3;
         constraints.gridy = 2;
         constraints.gridwidth = 1;
         botInfo.add(type2Lbl, constraints);
 
-        companyContributionLbl = new JLabel("COMPANY CONTRIBUTION");
+        companyContributionLbl = new JLabel(language.getProperty("companyContributionLbl"));
         constraints.gridx = 4;
         constraints.gridy = 2;
         constraints.gridwidth = 1;
         botInfo.add(companyContributionLbl, constraints);
 
-        commonHoldbacksLbl = new JLabel("1. Common holdbacks");
+        commonHoldbacksLbl = new JLabel(language.getProperty("commonHoldbacksLbl"));
         constraints.gridx = 0;
         constraints.gridy = 3;
         botInfo.add(commonHoldbacksLbl, constraints);
 
-        monthlyRemunerationLbl = new JLabel("Monthly remuneration:");
+        monthlyRemunerationLbl = new JLabel(language.getProperty("monthlyRemunerationLbl"));
         constraints.gridx = 0;
         constraints.gridy = 4;
         botInfo.add(monthlyRemunerationLbl, constraints);
@@ -589,7 +594,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 4;
         botInfo.add(monthlyRemunerationTxt, constraints);
 
-        extraPaymentsLbl = new JLabel("Extra payments:");
+        extraPaymentsLbl = new JLabel(language.getProperty("extraPaymentsLbl"));
         constraints.gridx = 0;
         constraints.gridy = 5;
         botInfo.add(extraPaymentsLbl, constraints);
@@ -599,7 +604,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 5;
         botInfo.add(extraPaymentsTxt, constraints);
 
-        totalLbl = new JLabel("TOTAL:");
+        totalLbl = new JLabel(language.getProperty("totalLbl"));
         constraints.gridx = 1;
         constraints.gridy = 6;
         botInfo.add(totalLbl, constraints);
@@ -619,12 +624,12 @@ public class AddPanel extends JPanel {
         constraints.gridy = 6;
         botInfo.add(compTax1Txt, constraints);
 
-        professionalHoldbacksLbl = new JLabel("2. Professional holdbacks");
+        professionalHoldbacksLbl = new JLabel(language.getProperty("professionalHoldbacksLbl"));
         constraints.gridx = 0;
         constraints.gridy = 7;
         botInfo.add(professionalHoldbacksLbl, constraints);
 
-        atEPLbl = new JLabel("AT y EP:");
+        atEPLbl = new JLabel(language.getProperty("atEPLbl"));
         constraints.gridx = 1;
         constraints.gridy = 7;
         botInfo.add(atEPLbl, constraints);
@@ -639,7 +644,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 7;
         botInfo.add(compTax2Txt, constraints);
 
-        unemployment2Lbl = new JLabel("Unemployment:");
+        unemployment2Lbl = new JLabel(language.getProperty("unemployment2Lbl"));
         constraints.gridx = 1;
         constraints.gridy = 8;
         botInfo.add(unemployment2Lbl, constraints);
@@ -654,7 +659,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 8;
         botInfo.add(compTax3Txt, constraints);
 
-        fpLbl = new JLabel("FP:");
+        fpLbl = new JLabel(language.getProperty("fpLbl"));
         constraints.gridx = 1;
         constraints.gridy = 9;
         botInfo.add(fpLbl, constraints);
@@ -674,7 +679,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 9;
         botInfo.add(compTax4Txt, constraints);
 
-        fogasaLbl = new JLabel("FOGASA:");
+        fogasaLbl = new JLabel(language.getProperty("fogasaLbl"));
         constraints.gridx = 1;
         constraints.gridy = 10;
         botInfo.add(fogasaLbl, constraints);
@@ -689,7 +694,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 10;
         botInfo.add(compTax5Txt, constraints);
 
-        overtimeContributionLbl = new JLabel("3. Overtime contribution:");
+        overtimeContributionLbl = new JLabel(language.getProperty("overtimeContributionLbl"));
         constraints.gridx = 0;
         constraints.gridy = 11;
         botInfo.add(overtimeContributionLbl, constraints);
@@ -709,7 +714,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 11;
         botInfo.add(compTax6Txt, constraints);
 
-        incomeTaxLbl = new JLabel("4. Income tax withholding base:");
+        incomeTaxLbl = new JLabel(language.getProperty("incomeTaxLbl"));
         constraints.gridx = 0;
         constraints.gridy = 12;
         botInfo.add(incomeTaxLbl, constraints);
@@ -719,7 +724,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 12;
         botInfo.add(base4Txt, constraints);
 
-        total2Lbl = new JLabel("TOTAL:");
+        total2Lbl = new JLabel(language.getProperty("total2Lbl"));
         constraints.gridx = 3;
         constraints.gridy = 12;
         botInfo.add(total2Lbl, constraints);

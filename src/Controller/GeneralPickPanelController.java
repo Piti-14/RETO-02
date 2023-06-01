@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import Database.Querys;
+import Languages.Configuration;
+import Languages.Language;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import View.GeneralPickPanel;
@@ -17,6 +19,9 @@ public class GeneralPickPanelController implements ActionListener {
 
     Querys querys = new Querys();
     String name;
+
+    Configuration configuration = new Configuration();
+    Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
     public GeneralPickPanelController(String name) throws SQLException {
         this.name = name;
@@ -40,6 +45,10 @@ public class GeneralPickPanelController implements ActionListener {
             deleteButton();
         }
 
+        if (name.equals("selectButton")) {
+            selectButton();
+        }
+
         if (name.equals("alternateDepartmentButton")) {
             chooseDepartmentButton();
         }
@@ -48,8 +57,20 @@ public class GeneralPickPanelController implements ActionListener {
             chooseEmployeeButton();
         }
 
+
     }
 
+    private void selectButton() {
+        selectButton.setVisible(false);
+        deleteButton.setVisible(true);
+        if (alternateEmployeeButton.isVisible()) {
+            alternateEmployeeButton.setVisible(false);
+        }
+        if (alternateDepartmentButton.isVisible()) {
+            alternateDepartmentButton.setVisible(false);
+        }
+        titleLabel.setText(language.getProperty("choosePay"));
+    }
     private void chooseButton() {
         MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
     }
@@ -89,7 +110,7 @@ public class GeneralPickPanelController implements ActionListener {
             throw new RuntimeException(ex);
         }
 
-        titleLabel.setText("Choose Department");
+        titleLabel.setText(language.getProperty("chooseDep"));
     }
 
     private void chooseEmployeeButton() {
@@ -105,7 +126,7 @@ public class GeneralPickPanelController implements ActionListener {
             throw new RuntimeException(ex);
         }
 
-        titleLabel.setText("Choose Employee");
+        titleLabel.setText(language.getProperty("chooseEmp"));
     }
 
 

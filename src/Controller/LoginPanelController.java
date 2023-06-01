@@ -1,11 +1,16 @@
 package Controller;
 
+import Languages.Configuration;
+import Languages.Language;
 import View.Login.LoginPanel;
 import View.MainFrame;
 
 import javax.swing.*;
 
 public class LoginPanelController {
+
+    public static Configuration configuration = new Configuration();
+    public static Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
     public static void verificar(JPasswordField passwordField) {
 
@@ -16,7 +21,7 @@ public class LoginPanelController {
             MainFrame.menuBar.setVisible(true);
         } else {
             LoginPanel.passwordField.setText("");
-            JOptionPane.showMessageDialog(null, "Wrong User or Password", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, language.getProperty("wrongMsg"), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

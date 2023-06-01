@@ -1,6 +1,8 @@
 package Controller;
 
 import Database.Querys;
+import Languages.Configuration;
+import Languages.Language;
 import View.GeneralPickPanel;
 import View.MainFrame;
 
@@ -11,64 +13,99 @@ public class MainPanelController implements ActionListener {
 
     Querys querys = new Querys();
 
+    Configuration configuration = new Configuration();
+    Language language = new Language(Integer.parseInt(configuration.getLanguage()));
+
+    String name;
+
+    public MainPanelController(String name) {
+        this.name = name;
+    }
+
+    public MainPanelController() {
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String button = e.getActionCommand();
 
-        if (button.equals("CREAR NÓMINAS") || button.equals("CREATE PAYRROLS")) {
+        if (name.equals("addButton")) {
             createButton();
         }
 
-        if (button.equals("MODIFICAR NÓMINAS") || button.equals("MODIFY PAYRROLS")){
+        if (name.equals("modifyButton")){
             modifyButton();
         }
 
-        if (button.equals("CONSULTAR NÓMINAS") || button.equals("CONSULT PAYRROLS")) {
+        if (name.equals("consultButton")) {
             consultButton();
         }
 
-        if (button.equals("ELIMINAR NÓMINAS") || button.equals("DELETE PAYRROLS")) {
+        if (name.equals("deleteButton")) {
             deleteButton();
         }
     }
 
-    private void createButton() {
+    public void createButton() {
+        MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         GeneralPickPanel.deleteButton.setVisible(false);
         GeneralPickPanel.modifyButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(true);
         GeneralPickPanel.jComboBox.setVisible(false);
         GeneralPickPanel.consultButton.setVisible(false);
+        GeneralPickPanel.selectButton.setVisible(false);
+        GeneralPickPanel.alternateEmployeeButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);
-        MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+        GeneralPickPanel.titleLabel.setText(language.getProperty("chooseEmp"));
+        GeneralPickPanel.listModel.removeAllElements();
+        GeneralPickPanel.insertDataEmployees();
     }
 
-    private void modifyButton() {
+    public void modifyButton() {
         MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         GeneralPickPanel.deleteButton.setVisible(false);
         GeneralPickPanel.modifyButton.setVisible(true);
         GeneralPickPanel.chooseButton.setVisible(false);
         GeneralPickPanel.jComboBox.setVisible(false);
         GeneralPickPanel.consultButton.setVisible(false);
+        GeneralPickPanel.selectButton.setVisible(false);
+        GeneralPickPanel.alternateEmployeeButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);
+        GeneralPickPanel.titleLabel.setText(language.getProperty("chooseEmp"));
+        GeneralPickPanel.listModel.removeAllElements();
+        GeneralPickPanel.insertDataEmployees();
     }
 
-    private void consultButton() {
+    public void consultButton() {
+        MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         GeneralPickPanel.deleteButton.setVisible(false);
         GeneralPickPanel.modifyButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(false);
         GeneralPickPanel.consultButton.setVisible(true);
         GeneralPickPanel.jComboBox.setVisible(true);
-        MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
+        GeneralPickPanel.selectButton.setVisible(false);
+        GeneralPickPanel.alternateEmployeeButton.setVisible(false);
+        GeneralPickPanel.alternateDepartmentButton.setVisible(true);
+        GeneralPickPanel.titleLabel.setText(language.getProperty("chooseEmp"));
+        GeneralPickPanel.listModel.removeAllElements();
+        GeneralPickPanel.insertDataEmployees();
     }
 
-    private void deleteButton() {
+    public void deleteButton() {
         MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-        GeneralPickPanel.deleteButton.setVisible(true);
+        GeneralPickPanel.deleteButton.setVisible(false);
         GeneralPickPanel.modifyButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(false);
         GeneralPickPanel.jComboBox.setVisible(false);
         GeneralPickPanel.consultButton.setVisible(false);
+        GeneralPickPanel.selectButton.setVisible(true);
+        GeneralPickPanel.alternateEmployeeButton.setVisible(false);
+        GeneralPickPanel.alternateDepartmentButton.setVisible(true);
+        GeneralPickPanel.titleLabel.setText(language.getProperty("chooseEmp"));
+        GeneralPickPanel.listModel.removeAllElements();
+        GeneralPickPanel.insertDataEmployees();
+
     }
 
 

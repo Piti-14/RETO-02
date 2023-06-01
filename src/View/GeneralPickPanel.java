@@ -2,6 +2,8 @@ package View;
 
 import Controller.GeneralPickPanelController;
 import Database.Querys;
+import Languages.Configuration;
+import Languages.Language;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import View.Utils.*;
@@ -22,6 +24,7 @@ public class GeneralPickPanel extends JPanel {
     public static JButton modifyButton;
     public static JButton deleteButton;
     public static JButton consultButton;
+    public static JButton selectButton;
     public static JButton alternateDepartmentButton;
     public static JButton alternateEmployeeButton;
 
@@ -35,7 +38,10 @@ public class GeneralPickPanel extends JPanel {
         int screenHeight = screensize.height;
         int screenWidth = screensize.width;
 
-        titleLabel = new MainPanel.ShadowLabel("CHOOSE EMPLOYEE");
+        Configuration configuration = new Configuration();
+        Language language = new Language(Integer.parseInt(configuration.getLanguage()));
+
+        titleLabel = new MainPanel.ShadowLabel(language.getProperty("chooseEmp"));
         titleLabel.setBounds(-75, ((screenHeight / 6)), screenWidth, 100);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 50));
@@ -48,13 +54,13 @@ public class GeneralPickPanel extends JPanel {
         jListPick.setBorder(new LineBorder(Color.WHITE, 2));
         jListPick.setBackground(color);
 
-        jComboBox = new JComboBox<>(new String[]{"History", "Recent"});
+        jComboBox = new JComboBox<>(new String[]{language.getProperty("history"), language.getProperty("recent")});
         jComboBox.setBounds(screenWidth*(42)/100,screenHeight*(68)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         jComboBox.setBorder(new LineBorder(Color.WHITE, 2));
         jComboBox.setBackground(color);
         jComboBox.setVisible(false);
 
-        chooseButton = new JButton("Choose");
+        chooseButton = new JButton(language.getProperty("chooseBtn"));
         chooseButton.setBounds(screenWidth*(72)/100,screenHeight*(48)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         chooseButton.setBorder(new LineBorder(Color.WHITE, 2));
         chooseButton.setBackground(color);
@@ -62,7 +68,7 @@ public class GeneralPickPanel extends JPanel {
         chooseButton.setVisible(false);
         chooseButton.addActionListener(new GeneralPickPanelController("chooseButton"));
 
-        modifyButton = new JButton("Modify");
+        modifyButton = new JButton(language.getProperty("modifyBtn"));
         modifyButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         modifyButton.setBorder(new LineBorder(Color.WHITE, 2));
         modifyButton.setBackground(color);
@@ -70,23 +76,31 @@ public class GeneralPickPanel extends JPanel {
         modifyButton.setVisible(true);
         modifyButton.addActionListener(new GeneralPickPanelController("modifyButton"));
 
-        deleteButton = new JButton("Delete");
-        deleteButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        selectButton = new JButton(language.getProperty("selectBtn"));
+        selectButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        selectButton.setBorder(new LineBorder(Color.WHITE, 2));
+        selectButton.setBackground(color);
+        selectButton.setFocusPainted(false);
+        selectButton.setVisible(true);
+        selectButton.addActionListener(new GeneralPickPanelController("selectButton"));
+
+        deleteButton = new JButton(language.getProperty("deleteBtn"));
+        deleteButton.setBounds(screenWidth*(72)/100,screenHeight*(44)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         deleteButton.setBorder(new LineBorder(Color.WHITE, 2));
         deleteButton.setBackground(color);
         deleteButton.setFocusPainted(false);
         deleteButton.setVisible(false);
         deleteButton.addActionListener(new GeneralPickPanelController("deleteButton"));
 
-        consultButton = new JButton("Consult");
-        consultButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        consultButton = new JButton(language.getProperty("consultBtn"));
+        consultButton.setBounds(screenWidth*(72)/100,screenHeight*(44)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         consultButton.setBorder(new LineBorder(Color.WHITE, 2));
         consultButton.setBackground(color);
         consultButton.setFocusPainted(false);
         consultButton.setVisible(true);
         consultButton.addActionListener(new GeneralPickPanelController("consultButton"));
 
-        alternateDepartmentButton = new JButton("Choose Department");
+        alternateDepartmentButton = new JButton(language.getProperty("chooseDepBtn"));
         alternateDepartmentButton.setBounds(screenWidth*(72)/100,screenHeight*(39)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         alternateDepartmentButton.setBorder(new LineBorder(Color.WHITE, 2));
         alternateDepartmentButton.setBackground(color);
@@ -94,7 +108,7 @@ public class GeneralPickPanel extends JPanel {
         alternateDepartmentButton.setVisible(true);
         alternateDepartmentButton.addActionListener(new GeneralPickPanelController("alternateDepartmentButton"));
 
-        alternateEmployeeButton = new JButton("Choose Employee");
+        alternateEmployeeButton = new JButton(language.getProperty("chooseEmpBtn"));
         alternateEmployeeButton.setBounds(screenWidth*(72)/100,screenHeight*(39)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         alternateEmployeeButton.setBorder(new LineBorder(Color.WHITE, 2));
         alternateEmployeeButton.setBackground(color);
@@ -113,6 +127,7 @@ public class GeneralPickPanel extends JPanel {
         this.add(alternateEmployeeButton);
         this.add(alternateDepartmentButton);
         this.add(consultButton);
+        this.add(selectButton);
 
         this.add(new OffButton());
         this.add(new PreviousButton());
