@@ -1,7 +1,6 @@
 package View;
 
 import Controller.MainFrameController;
-import Controller.MainPanelController;
 import Languages.Configuration;
 import Languages.Language;
 import Sources.Sources;
@@ -19,7 +18,11 @@ public class MainFrame extends JFrame {
 
     public MainFrame() throws SQLException {
         this.setVisible(true);
+
+        // To change language
         frame = this;
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screensize = screen.getScreenSize();
         int screenHeight = screensize.height;

@@ -4,6 +4,7 @@ import Controller.MainPanelController;
 import Languages.Configuration;
 import Languages.Language;
 import Sources.Sources;
+import View.Login.LoginPanel;
 import View.Utils.JLabelWallpaper;
 import View.Utils.JPanelBlue;
 import View.Utils.OffButton;
@@ -18,7 +19,7 @@ import java.sql.SQLException;
 public class MainPanel extends JPanel {
 
     RoundedButton addButton, modifyButton, consultButton, deleteButton;
-    ShadowLabel titleLabel;
+    public static ShadowLabel titleLabel;
 
     public MainPanel() throws SQLException {
         this.setLayout(null);

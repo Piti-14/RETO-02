@@ -44,10 +44,7 @@ public class Configuration {
         // Obtener el valor de Language
         String language = configuration.getLanguage();
         System.out.println("Valor de Language: " + language);
-        configuration.setLanguage("0");
         System.out.println("Valor de Language: " + configuration.getLanguage());
-
-        String prueba = String.valueOf(Configuration.class.getResource("Configuration.properties"));
 
 
     }

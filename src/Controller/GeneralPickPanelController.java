@@ -86,14 +86,7 @@ public class GeneralPickPanelController implements ActionListener {
     private void deleteButton() {
         String name = titleLabel.getText();
 
-        if (name.equals("CHOOSE EMPLOYEE") || name.equals("SELECCIONA EMPLEADO")) {
-            GeneralPickPanel.deleteElement();
-        }
-
-        if (name.equals("CHOOSE DEPARTMENT") || name.equals("SELECCIONA DEPARTAMENTO")) {
-            listModel.removeAllElements();
-            GeneralPickPanel.insertDataDepartments();
-        }
+        GeneralPickPanel.deleteElement();
 
     }
 

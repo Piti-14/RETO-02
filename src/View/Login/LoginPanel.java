@@ -57,6 +57,8 @@ public class LoginPanel extends JPanel {
         passwordField.setBorder(personalizeBorder);
 
 
+        this.add(userField);
+        this.add(passwordField);
 
         this.add(panelImage);
         this.add(titleLabel);
@@ -66,8 +68,6 @@ public class LoginPanel extends JPanel {
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
 
-        this.add(userField);
-        this.add(passwordField);
     }
 
 }
