@@ -18,8 +18,6 @@ public class Main {
 
         PayrollData.initialiseData();
 
-        System.out.println("tututu");
-        sleep(20000);
         MainFrame mainFrame = new MainFrame();
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

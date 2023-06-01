@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class GeneralPickPanel extends JPanel {
 
     public static MainPanel.ShadowLabel titleLabel;
-    public static Querys querys = new Querys();
+    //public static Querys querys = new Querys();
     public static JList jListPick;
     public static JComboBox<String> jComboBox;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();

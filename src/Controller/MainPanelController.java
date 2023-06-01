@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class MainPanelController implements ActionListener {
 
-    Querys querys = new Querys();
+    //Querys querys = new Querys();
 
     Configuration configuration = new Configuration();
     Language language = new Language(Integer.parseInt(configuration.getLanguage()));

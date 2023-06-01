@@ -11,11 +11,11 @@ public class EmployeeData {
 
     ArrayList<Employee> employees;
     ArrayList<Double> taxes;
-    Querys query = new Querys();
+    //Querys query = new Querys();
 
     public EmployeeData() throws SQLException {
-        this.employees = query.getEmployees();
-        this.taxes = query.getEmployeeTaxes();
+        //this.employees = query.getEmployees();
+        //this.taxes = query.getEmployeeTaxes();
     }
 
     public double totalEarned (String name, String lastName, String secondLastName, int hours) throws SQLException {
@@ -26,7 +26,7 @@ public class EmployeeData {
                     Objects.equals(current.getFirstLastname(), lastName) &&
                     Objects.equals(current.getSecondLastname(), secondLastName)) {
 
-                total = query.getCommonContingencies(current) + hours;
+                //total = query.getCommonContingencies(current) + hours;
             }
         }
         return total;

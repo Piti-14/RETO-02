@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public class Querys {
 
-    private Connection connect;
+    private Connection connect = ConnectionDB.Connect();
 
     public Querys() {
-        connect = ConnectionDB.Connect();
+
     }
 
     public ArrayList<Employee> getEmployees() throws SQLException {

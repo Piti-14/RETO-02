@@ -18,7 +18,7 @@ import static View.GeneralPickPanel.*;
 
 public class GeneralPickPanelController implements ActionListener {
 
-    Querys querys = new Querys();
+    //Querys querys = new Querys();
     String name;
 
     Configuration configuration = new Configuration();
