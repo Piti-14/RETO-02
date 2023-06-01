@@ -7,15 +7,10 @@ public class Language extends Properties{
     public static final int spanish = 0;
     public static final int english = 1;
     public Language(int lang){
-        switch(lang){
-            case spanish:
-                getProperties("/espanol.properties");
-                break;
-            case english:
-                getProperties("/english.properties");
-                break;
-            default:
-                getProperties("/espanol.properties");
+        switch (lang) {
+            case spanish -> getProperties("/espanol.properties");
+            case english -> getProperties("/english.properties");
+            default -> getProperties("/espanol.properties");
         }
     }
 

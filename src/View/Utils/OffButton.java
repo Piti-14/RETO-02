@@ -1,5 +1,6 @@
 package View.Utils;
 
+import Controller.UtilsController;
 import Sources.Sources;
 
 import javax.swing.*;
@@ -19,10 +20,6 @@ public class OffButton extends JButton {
         this.setContentAreaFilled(false);
         this.setBorder(null);
         this.setBounds(screenWidth*(93)/100,screenHeight*(87)/100,50,50);
-        this.addActionListener((e) -> {
-            if (JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres apagar el aplicación?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                exit(0);
-            }
-        });
+        this.addActionListener(new UtilsController(this.getClass().getSimpleName()));
     }
 }

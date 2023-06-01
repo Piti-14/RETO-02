@@ -1,21 +1,15 @@
 package Controller;
 
 import Database.Querys;
-import Model.BasicClasses.Employee;
 import View.GeneralPickPanel;
 import View.MainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 public class MainPanelController implements ActionListener {
 
     Querys querys = new Querys();
-
-
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -44,6 +38,7 @@ public class MainPanelController implements ActionListener {
         GeneralPickPanel.modifyButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(true);
         GeneralPickPanel.jComboBox.setVisible(false);
+        GeneralPickPanel.consultButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);
         MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
     }
@@ -54,23 +49,26 @@ public class MainPanelController implements ActionListener {
         GeneralPickPanel.modifyButton.setVisible(true);
         GeneralPickPanel.chooseButton.setVisible(false);
         GeneralPickPanel.jComboBox.setVisible(false);
+        GeneralPickPanel.consultButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);
     }
 
     private void consultButton() {
-        MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         GeneralPickPanel.deleteButton.setVisible(false);
         GeneralPickPanel.modifyButton.setVisible(false);
-        GeneralPickPanel.chooseButton.setVisible(true);
+        GeneralPickPanel.chooseButton.setVisible(false);
+        GeneralPickPanel.consultButton.setVisible(true);
         GeneralPickPanel.jComboBox.setVisible(true);
+        MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
     }
 
     private void deleteButton() {
         MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-        GeneralPickPanel.deleteButton.setVisible(false);
+        GeneralPickPanel.deleteButton.setVisible(true);
         GeneralPickPanel.modifyButton.setVisible(false);
-        GeneralPickPanel.chooseButton.setVisible(true);
-        GeneralPickPanel.jComboBox.setVisible(true);
+        GeneralPickPanel.chooseButton.setVisible(false);
+        GeneralPickPanel.jComboBox.setVisible(false);
+        GeneralPickPanel.consultButton.setVisible(false);
     }
 
 

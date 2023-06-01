@@ -16,24 +16,38 @@ import static View.GeneralPickPanel.*;
 public class GeneralPickPanelController implements ActionListener {
 
     Querys querys = new Querys();
+    String name;
 
+    public GeneralPickPanelController(String name) throws SQLException {
+        this.name = name;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String button = e.getActionCommand();
-        //System.out.println(button);
-
-        if (button.equals("Choose Employee") || button.equals("Elegir Empleado")) {
-            chooseEmployeeButton();
+        if (name.equals("chooseButton")) {
+            chooseButton();
         }
 
-        if (button.equals("Choose Department") || button.equals("Elegir Departamento")) {
+        if (name.equals("consultButton")) {
+            consultButton();
+        }
+
+        if (name.equals("modifyButton")) {
+            modifyButton();
+        }
+
+        if (name.equals("deleteButton")) {
+            deleteButton();
+        }
+
+        if (name.equals("alternateDepartmentButton")) {
             chooseDepartmentButton();
         }
 
-        if (button.equals("Choose") || button.equals("Elegir")) {
-            chooseButton();
+        if (name.equals("alternateEmployeeButton")) {
+            chooseEmployeeButton();
         }
+
     }
 
     private void chooseButton() {
@@ -44,6 +58,27 @@ public class GeneralPickPanelController implements ActionListener {
 
 
         MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
+    }
+
+    private void consultButton() {
+        MainFrame.cardLayout.show(MainFrame.cards,"consultPanel");
+    }
+
+    private void modifyButton() {
+        MainFrame.cardLayout.show(MainFrame.cards,"modifyPanel");
+    }
+
+    private void deleteButton() {
+        String name = titleLabel.getText();
+
+        if (name.equals("CHOOSE EMPLOYEE") || name.equals("SELECCIONA EMPLEADO")) {
+            GeneralPickPanel.deleteElement();
+        }
+
+        if (name.equals("CHOOSE DEPARTMENT") || name.equals("SELECCIONA DEPARTAMENTO")) {
+            listModel.removeAllElements();
+            GeneralPickPanel.insertDataDepartments();
+        }
 
     }
 
@@ -54,7 +89,7 @@ public class GeneralPickPanelController implements ActionListener {
         try {
             listModel.removeAllElements();
             for (Department department: querys.getDepartments()) {
-                listModel.addElement(department.getCodeDept() +", "+ department.getName());
+                listModel.addElement(department.getCodeDept() +" "+ department.getName());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -70,7 +105,7 @@ public class GeneralPickPanelController implements ActionListener {
         try {
             listModel.removeAllElements();
             for (Employee employee: querys.getEmployees()) {
-                listModel.addElement(employee.getName() + ", " + employee.getFirstLastname() + ", " + employee.getSecondLastname());
+                listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname());
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
