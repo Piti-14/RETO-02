@@ -68,7 +68,7 @@ public class AddPanel extends JPanel {
         constraints.gridy = 0;
         topInfo.add(companyTxt, constraints);
 
-        addressLbl = new JLabel("Address:");
+        addressLbl = new JLabel(language.getProperty("addressLbl"));
         constraints.gridx = 0;
         constraints.gridy = 1;
         topInfo.add(addressLbl, constraints);
