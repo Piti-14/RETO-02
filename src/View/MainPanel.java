@@ -1,9 +1,10 @@
 package View;
 
 import Controller.MainPanelController;
-import Database.Querys;
-import Model.BasicClasses.Employee;
+import Languages.Configuration;
+import Languages.Language;
 import Sources.Sources;
+import View.Login.LoginPanel;
 import View.Utils.JLabelWallpaper;
 import View.Utils.JPanelBlue;
 import View.Utils.OffButton;
@@ -18,7 +19,7 @@ import java.sql.SQLException;
 public class MainPanel extends JPanel {
 
     RoundedButton addButton, modifyButton, consultButton, deleteButton;
-    ShadowLabel titleLabel;
+    public static ShadowLabel titleLabel;
 
     public MainPanel() throws SQLException {
         this.setLayout(null);
@@ -36,8 +37,10 @@ public class MainPanel extends JPanel {
 
         Color color2 = new Color(185, 189, 209);
 
+        Configuration configuration = new Configuration();
+        Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
-        titleLabel = new ShadowLabel("BIENVENIDO USER");
+        titleLabel = new ShadowLabel(language.getProperty("welcome"));
         titleLabel.setBounds(0, ((screenHeight / 8)), screenWidth, 100);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 50));
@@ -45,24 +48,24 @@ public class MainPanel extends JPanel {
         titleLabel.setShadowColor(Color.WHITE);
         titleLabel.setShadowOffset(new Dimension(2, -2));
 
-        addButton = new RoundedButton("CREAR NÓMINAS");
+        addButton = new RoundedButton(language.getProperty("createPay"));
         addButton.setBounds((screenWidth/6), ((screenHeight/4)+50), 400, 100);
-        addButton.addActionListener(new MainPanelController());
+        addButton.addActionListener(new MainPanelController("addButton"));
         customizeButton(addButton, color1, color2);
 
-        modifyButton = new RoundedButton("MODIFICAR NÓMINAS");
+        modifyButton = new RoundedButton(language.getProperty("modifyPay"));
         modifyButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
-        modifyButton.addActionListener(new MainPanelController());
+        modifyButton.addActionListener(new MainPanelController("modifyButton"));
         customizeButton(modifyButton, color2, color1);
 
-        consultButton = new RoundedButton("CONSULTAR NÓMINAS");
+        consultButton = new RoundedButton(language.getProperty("consultPay"));
         consultButton.setBounds(screenWidth/6, ((screenHeight/2)+20), 400, 100);
-        consultButton.addActionListener(new MainPanelController());
+        consultButton.addActionListener(new MainPanelController("consultButton"));
         customizeButton(consultButton, color1, color2);
 
-        deleteButton = new RoundedButton("ELIMINAR NÓMINAS");
+        deleteButton = new RoundedButton(language.getProperty("deletePay"));
         deleteButton.setBounds(((screenWidth/2)+50), ((screenHeight/2)+20), 400, 100);
-        deleteButton.addActionListener(new MainPanelController());
+        deleteButton.addActionListener(new MainPanelController("deleteButton"));
         customizeButton(deleteButton, color2, color1);
 
         this.add(titleLabel);

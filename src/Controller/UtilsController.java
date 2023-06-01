@@ -1,5 +1,7 @@
 package Controller;
 
+import Languages.Configuration;
+import Languages.Language;
 import View.MainFrame;
 import View.Utils.OffButton;
 
@@ -12,6 +14,9 @@ import static java.lang.System.exit;
 public class UtilsController implements ActionListener {
 
     String name;
+
+    Configuration configuration = new Configuration();
+    Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
     public UtilsController(String name){
         this.name = name;
@@ -28,19 +33,23 @@ public class UtilsController implements ActionListener {
         }
 
         if (name.equals("SaveButton")) {
-
+            saveButton();
         }
 
     }
 
     private void offButton() {
-        if (JOptionPane.showConfirmDialog(null, "¿Estás seguro que quieres apagar el aplicación?", "Confirmación", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, language.getProperty("shutdownMsg"), language.getProperty("confirmation"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             exit(0);
         }
     }
 
     private void previousButton() {
         MainFrame.cardLayout.show(MainFrame.cards, "mainPanel");
+    }
+
+    private void saveButton() {
+
     }
 }
 

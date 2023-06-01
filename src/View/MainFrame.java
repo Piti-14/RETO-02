@@ -1,5 +1,8 @@
 package View;
 
+import Controller.MainFrameController;
+import Languages.Configuration;
+import Languages.Language;
 import Sources.Sources;
 import View.Login.LoginPanel;
 
@@ -11,10 +14,14 @@ public class MainFrame extends JFrame {
     public static CardLayout cardLayout;
     public static JPanel cards;
     public static JMenuBar menuBar;
-
+    public static JFrame frame;
 
     public MainFrame() throws SQLException {
         this.setVisible(true);
+
+        // To change language
+        frame = this;
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screensize = screen.getScreenSize();
@@ -23,19 +30,36 @@ public class MainFrame extends JFrame {
         this.setSize(screenWidth, screenHeight);
         this.setLayout(new BorderLayout());
 
-        JMenu menuArchive = new JMenu("Archivo");
-        JMenuItem itemExport = new JMenuItem("Exportar");
-        JMenu menuPayroll = new JMenu("Nóminas");
-        JMenuItem itemNew = new JMenuItem("Crear Nóminas");
-        JMenuItem itemModify = new JMenuItem("Modificar Nóminas");
-        JMenuItem itemConsult = new JMenuItem("Consultar Nóminas");
-        JMenuItem itemDelete = new JMenuItem("Eliminar Nóminas");
-        JMenu menuPreferences = new JMenu("Preferencias");
-        JMenu menuLanguage = new JMenu("Idioma");
-        JMenuItem itemEs = new JMenuItem("Español");
-        JMenuItem itemEn = new JMenuItem("Inglés");
-        JMenu menuHelp = new JMenu("Ayuda");
-        JMenuItem itemManual = new JMenuItem("Manual de Usuario");
+        Configuration configuration = new Configuration();
+        Language language = new Language(Integer.parseInt(configuration.getLanguage()));
+
+        JMenu menuArchive = new JMenu(language.getProperty("file"));
+        JMenuItem itemExport = new JMenuItem(language.getProperty("export"));
+        itemExport.addActionListener(new MainFrameController("itemExport"));
+
+        JMenu menuPayroll = new JMenu(language.getProperty("payroll"));
+        JMenuItem itemNew = new JMenuItem(language.getProperty("create"));
+        itemNew.addActionListener(new MainFrameController("itemNew"));
+
+        JMenuItem itemModify = new JMenuItem(language.getProperty("modify"));
+        itemModify.addActionListener(new MainFrameController("itemModify"));
+
+        JMenuItem itemConsult = new JMenuItem(language.getProperty("consult"));
+        itemConsult.addActionListener(new MainFrameController("itemConsult"));
+
+        JMenuItem itemDelete = new JMenuItem(language.getProperty("delete"));
+        itemDelete.addActionListener(new MainFrameController("itemDelete"));
+
+        JMenu menuPreferences = new JMenu(language.getProperty("preferences"));
+        JMenu menuLanguage = new JMenu(language.getProperty("language"));
+        JMenuItem itemEs = new JMenuItem(language.getProperty("spanish"));
+        itemEs.addActionListener(new MainFrameController("itemEs"));
+        JMenuItem itemEn = new JMenuItem(language.getProperty("english"));
+        itemEn.addActionListener(new MainFrameController("itemEn"));
+
+        JMenu menuHelp = new JMenu(language.getProperty("help"));
+        JMenuItem itemManual = new JMenuItem(language.getProperty("manual"));
+        itemManual.addActionListener(new MainFrameController("itemManual"));
 
         menuArchive.add(itemExport);
         menuPayroll.add(itemNew);

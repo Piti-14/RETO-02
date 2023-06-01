@@ -14,7 +14,6 @@ public class LoginPanel extends JPanel {
     public static JPasswordField passwordField;
     public static JTextField userField;
 
-
     public LoginPanel() {
         this.setLayout(null);
         MainFrame.menuBar.setVisible(false);
@@ -43,21 +42,23 @@ public class LoginPanel extends JPanel {
         titleLabel.setForeground(new Color(41, 170, 225));
         titleLabel.setBounds(screenWidth*(9)/100,screenHeight*(29)/100,452,300);
 
-        Border bordePersonalizado = BorderFactory.createLineBorder(new Color(51, 153, 255), 2);
+        Border personalizeBorder = BorderFactory.createLineBorder(new Color(51, 153, 255), 2);
 
         userField = new JTextField(60);
         userField.setBounds(screenWidth*(69)/100, screenHeight*(58)/100, 200, 30);
         userField.addKeyListener(new KeyController());
         userField.setBackground(Color.decode("#26aae1"));
-        userField.setBorder(bordePersonalizado);
+        userField.setBorder(personalizeBorder);
 
         passwordField = new JPasswordField(40);
         passwordField.setBounds(screenWidth*(69)/100, screenHeight*(63)/100, 200, 30);
         passwordField.addKeyListener(new KeyController());
         passwordField.setBackground(Color.decode("#26aae1"));
-        passwordField.setBorder(bordePersonalizado);
+        passwordField.setBorder(personalizeBorder);
 
 
+        this.add(userField);
+        this.add(passwordField);
 
         this.add(panelImage);
         this.add(titleLabel);
@@ -67,8 +68,6 @@ public class LoginPanel extends JPanel {
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
 
-        this.add(userField);
-        this.add(passwordField);
     }
 
 }
