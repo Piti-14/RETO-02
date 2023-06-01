@@ -9,6 +9,7 @@ import Languages.Configuration;
 import Languages.Language;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
+import Model.DataAccess.PayrollData;
 import View.GeneralPickPanel;
 import View.MainFrame;
 
@@ -30,7 +31,11 @@ public class GeneralPickPanelController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (name.equals("chooseButton")) {
-            chooseButton();
+            try {
+                chooseButton();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
         if (name.equals("consultButton")) {
@@ -71,12 +76,12 @@ public class GeneralPickPanelController implements ActionListener {
         }
         titleLabel.setText(language.getProperty("choosePay"));
     }
-    private void chooseButton() {
+    private void chooseButton() throws SQLException {
 
         String[] value = jListPick.getSelectedValue().toString().split(" ");
         String nif = value[value.length - 1];
 
-
+        PayrollData.generatePayroll(nif);
 
         MainFrame.cardLayout.show(MainFrame.cards,"addPanel");
     }
@@ -100,13 +105,9 @@ public class GeneralPickPanelController implements ActionListener {
         alternateEmployeeButton.setVisible(true);
         alternateDepartmentButton.setVisible(false);
 
-        try {
-            listModel.removeAllElements();
-            for (Department department: querys.getDepartments()) {
-                listModel.addElement(department.getCodeDept() +" "+ department.getName());
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+        listModel.removeAllElements();
+        for (Department department: PayrollData.departments) {
+            listModel.addElement(department.getCodeDept() + " " + department.getName());
         }
 
         titleLabel.setText(language.getProperty("chooseDep"));
@@ -116,13 +117,9 @@ public class GeneralPickPanelController implements ActionListener {
         alternateEmployeeButton.setVisible(false);
         alternateDepartmentButton.setVisible(true);
 
-        try {
-            listModel.removeAllElements();
-            for (Employee employee: querys.getEmployees()) {
-                listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname());
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+        listModel.removeAllElements();
+        for (Employee employee: PayrollData.employees) {
+            listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname());
         }
 
         titleLabel.setText(language.getProperty("chooseEmp"));

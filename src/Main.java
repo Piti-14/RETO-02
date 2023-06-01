@@ -8,13 +8,18 @@ import View.MainFrame;
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 public class Main {
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException, InterruptedException {
 
         PayrollData.initialiseData();
 
+        System.out.println("tututu");
+        sleep(20000);
         MainFrame mainFrame = new MainFrame();
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

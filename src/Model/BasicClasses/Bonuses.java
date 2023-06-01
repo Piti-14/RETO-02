@@ -2,28 +2,29 @@ package Model.BasicClasses;
 
 import Model.ICalculable;
 
-public class Bonuses implements ICalculable {
+public class Bonuses {
 
-    private String bonus;
+    private String bonusCode;
     private String description;
-    private boolean pays;
+    //private boolean pays;
     private int quant;
 
-    public Bonuses(String bonus, String description, boolean pays) {
-        this.bonus = bonus;
+    public Bonuses(String bonusCode, String description, int quant) {
+        this.bonusCode = bonusCode;
         this.description = description;
-        this.pays = pays;
+        this.quant = quant;
     }
-    public String getBonus() {
-        return bonus;
+    public String getBonusCode() {
+        return bonusCode;
     }
     public String getDescription() {
         return description;
     }
+    public int getQuant() {
+        return quant;
+    }
 
-    @Override
-    public void quantity() {
-
-        this.quant = quant;
+    public String toString() {
+        return bonusCode + ", " + description + ". Quantity: " + quant;
     }
 }

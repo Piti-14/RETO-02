@@ -6,6 +6,7 @@ import Languages.Configuration;
 import Languages.Language;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
+import Model.DataAccess.PayrollData;
 import View.Utils.*;
 
 import javax.swing.*;
@@ -139,23 +140,15 @@ public class GeneralPickPanel extends JPanel {
     }
 
     public static void insertDataEmployees() {
-        try {
-            for (Employee employee: querys.getEmployees()) {
-                listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname() + ", " + employee.getNIF());
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+        for (Employee employee: PayrollData.employees) {
+            listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname() + ", " + employee.getNIF());
         }
     }
 
     public static void insertDataDepartments() {
-        try {
-            listModel.removeAllElements();
-            for (Employee employee: querys.getEmployees()) {
-                listModel.addElement(employee.getName() + ", " + employee.getFirstLastname() + ", " + employee.getSecondLastname());
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
+        listModel.removeAllElements();
+        for (Department dept: PayrollData.departments) {
+            listModel.addElement(dept.getCodeDept() + " : " + dept.getName());
         }
     }
 

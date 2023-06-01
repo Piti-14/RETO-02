@@ -1,5 +1,6 @@
 package Model.BasicClasses;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Employee {
@@ -14,9 +15,12 @@ public class Employee {
     private boolean permanentJob;
     private String dept;
     private ProfessionalGroup group;
+    private ArrayList<Bonuses> bonus = new ArrayList<>();
+
+    public Employee(){ }
 
     public Employee(String nif, String name, String firstLastname, String secondLastname, String account,
-                    int ss_number, String seniority, boolean permanentJob, String dept, ProfessionalGroup group) {
+                    int ss_number, String seniority, boolean permanentJob, String dept, ProfessionalGroup group, ArrayList<Bonuses> bonus) {
         this.nif = nif;
         this.name = name;
         this.firstLastname = firstLastname;
@@ -35,6 +39,10 @@ public class Employee {
         }
 
         this.group = group;
+
+        //We always get an array of two items only
+        this.bonus.add(bonus.get(0));
+        this.bonus.add(bonus.get(1));
     }
 
     public String getNIF() {
@@ -103,6 +111,10 @@ public class Employee {
 
     public ProfessionalGroup getGroup() {
         return group;
+    }
+
+    public ArrayList<Bonuses> getBonus() {
+        return bonus;
     }
 
     public String toString() {
