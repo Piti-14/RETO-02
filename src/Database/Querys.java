@@ -10,11 +10,7 @@ import java.util.ArrayList;
 
 public class Querys {
 
-    private final Connection connect;
-
-    public Querys() {
-        connect = ConnectionDB.Connect();
-    }
+    private Connection connect = ConnectionDB.Connect();
 
     public ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = connect.createStatement();
@@ -22,11 +18,10 @@ public class Querys {
 
         ArrayList<Employee> employees = new ArrayList<>();
 
-        String NIF, name, firstLastName, secondLastName, account, seniority, dept, cod_p, description;
-        int ss_number, quant;
+        String NIF, name, firstLastName, secondLastName, account, seniority, dept;
+        int ss_number;
         boolean permanentJob;
         ProfessionalGroup group;
-        ArrayList<Bonuses> bonus = new ArrayList<>();
 
         while(result.next()) {
             NIF = result.getString("nif");
@@ -48,23 +43,11 @@ public class Querys {
                 group = new ProfessionalGroup("Administration" , gr);
             }
 
-            Statement query2 = connect.createStatement();
-            ResultSet result2 = query2.executeQuery("select cod_p, desc_p, cant " +
-                    " from percepciones p inner join percepciones_ind pi2 using(cod_p) " +
-                    " where pi2.nif = '" + NIF + "'");
-
-            while (result2.next()) {
-                cod_p = result2.getString(1);
-                description = result2.getString(2);
-                quant = result2.getInt(3);
-
-                Bonuses b = new Bonuses(cod_p, description, quant);
-                bonus.add(b);
-            }
-
-            Employee e = new Employee(NIF, name, firstLastName, secondLastName, account, ss_number, seniority, permanentJob, dept, group, bonus);
+            Employee e = new Employee(NIF, name, firstLastName, secondLastName, account, ss_number, seniority, permanentJob, dept, group);
             employees.add(e);
-            bonus.clear();
+
+            getSalaryPerceptions(e);
+            getNonSalaryPerceptions(e);
         }
         //ConnectionDB.exit(ConnectionDB.Connect());
 
@@ -79,7 +62,7 @@ public class Querys {
         double tax;
 
         while(result.next()) {
-            tax = (result.getDouble(1)) / 10;
+            tax = (result.getDouble(1)); // dividir por 10 y multiplicar para calcular
             taxes.add(tax);
         }
         //ConnectionDB.exit(ConnectionDB.Connect());
@@ -95,25 +78,12 @@ public class Querys {
         double tax;
 
         while(result.next()) {
-            tax = (result.getDouble(1)) / 10;
+            tax = (result.getDouble(1)); // dividir por 10 y multiplicar para calcular
             taxes.add(tax);
         }
         //ConnectionDB.exit(ConnectionDB.Connect());
 
         return taxes;
-    }
-
-    public double getCommonContingencies(Employee e) throws SQLException {
-        Statement query = connect.createStatement();
-        ResultSet result = query.executeQuery("select getSalarioBase('" + e.getGroup().getGroupCode() + "')");
-
-        double salary = 0.0;
-        if (result.next()) {
-            salary = result.getDouble(1);
-        }
-
-        //ConnectionDB.exit(ConnectionDB.Connect());
-        return salary;
     }
 
     public ArrayList<Department> getDepartments() throws SQLException {
@@ -149,12 +119,43 @@ public class Querys {
         return comp;
     }
 
-    public void nonSalaryPerceptions(String str) throws SQLException{
+    public void getSalaryPerceptions(Employee e) throws SQLException {
+        Statement query2 = connect.createStatement();
+        ResultSet result2 = query2.executeQuery("select cod_p, desc_p, cant " +
+                " from percepciones p inner join percepciones_ind pi2 using(cod_p) " +
+                " where pi2.nif = '" + e.getNIF() + "'");
+
+        ArrayList<Bonuses> bonuses = new ArrayList<>();
+        while (result2.next()) {
+            String cod_p = result2.getString(1);
+            String description = result2.getString(2);
+            int quant = result2.getInt(3);
+
+            Bonuses b = new Bonuses(cod_p, description, quant);
+            bonuses.add(b);
+        }
+
+        e.addBonuses(bonuses);
+    }
+
+    public void getNonSalaryPerceptions(Employee e) throws SQLException{
         Statement query = connect.createStatement();
         ResultSet result = query.executeQuery("select cod_p, desc_p, cant " +
                 "from trabajador t inner join percepciones_grupo pg  using(cod_gr) " +
                 "inner join percepciones p using(cod_p) " +
-                "where t.cod_gr = '" + str +"'");
+                "where t.cod_gr = '" + e.getGroup().getGroupCode() +"'");
+
+        ArrayList<Bonuses> bonuses = new ArrayList<>();
+        while (result.next()) {
+            String code = result.getString(1);
+            String descr = result.getString(2);
+            int quant = result.getInt(3);
+
+            Bonuses bonus = new Bonuses(code, descr, quant);
+            bonuses.add(bonus);
+        }
+
+        e.addBonuses(bonuses);
     }
 
     public int getIRPF(String nif) throws SQLException {

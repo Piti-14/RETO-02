@@ -30,14 +30,12 @@ public class AddPanel extends JPanel {
             amount9Txt, amount10Txt, amount11Txt, amount12Txt, amount13Txt, amount14Txt, amount15Txt, amount16Txt, amount17Txt,
             amount18Txt, amount19Txt, amount20Txt, amount21Txt, typeTxt, type1Txt, type2Txt, type3Txt, type4Txt, type5Txt,
             type6Txt, type7Txt, type8Txt, type9Txt, dateTxt, base1Txt, base2Txt, base3Txt, base4Txt, compTax1Txt, compTax2Txt,
-            compTax3Txt, compTax4Txt, compTax5Txt, compTax6Txt;
+            compTax3Txt, compTax4Txt, compTax5Txt, compTax6Txt, irpfTxt;
 
     public static ArrayList<JTextField> companyTextFields = new ArrayList<>();
     public static ArrayList<JTextField> employeeTextFields = new ArrayList<>();
     public static ArrayList<JTextField> employeeTypesTextFields = new ArrayList<>();
-
-    public static ArrayList<JTextField> earningsTextFields = new ArrayList<>();
-    public static ArrayList<JTextField> companyDeductionsTextFields = new ArrayList<>();
+    public static ArrayList<JTextField> calculationsTextFields = new ArrayList<>();
     public static ArrayList<JTextField> companyTypesTextFields = new ArrayList<>();
     public static ArrayList<JTextField> dateTextFields = new ArrayList<>();
     public static ArrayList<JTextField> perceptionsTextFields = new ArrayList<>();
@@ -473,6 +471,11 @@ public class AddPanel extends JPanel {
         constraints.gridy = 29;
         midInfo.add(incomeTaxLbl, constraints);
 
+        irpfTxt = new JTextField(10);
+        constraints.gridx = 2;
+        constraints.gridy = 29;
+        midInfo.add(irpfTxt, constraints);
+
         amount18Txt = new JTextField(10);
         constraints.gridx = 3;
         constraints.gridy = 29;
@@ -787,46 +790,57 @@ public class AddPanel extends JPanel {
         dateTextFields.add(nDaysTxt);
         dateTextFields.add(dateTxt);
 
-        perceptionsTextFields.add(salarySupplementsTxt);
+        perceptionsTextFields.add(salarySupplementsTxt); //0
         perceptionsTextFields.add(salarySupplements1Txt);
         perceptionsTextFields.add(salarySupplements2Txt);
-        perceptionsTextFields.add(compensationsOrAllowancesTxt);
+        perceptionsTextFields.add(compensationsOrAllowancesTxt);//3
         perceptionsTextFields.add(ssBenefitsCompensationsTxt);
         perceptionsTextFields.add(compensationsTxt);
         perceptionsTextFields.add(otherPerceptionsTxt);
+        perceptionsTextFields.add(amount1Txt);//7
+        perceptionsTextFields.add(amount2Txt);//8
+        perceptionsTextFields.add(amount3Txt);
+        perceptionsTextFields.add(amount4Txt);
+        perceptionsTextFields.add(amount5Txt);//11
+        perceptionsTextFields.add(amount6Txt);//12
+        perceptionsTextFields.add(amount7Txt);
+        perceptionsTextFields.add(amount8Txt);
+        perceptionsTextFields.add(amount9Txt);//15
+        perceptionsTextFields.add(amount10Txt);
+        perceptionsTextFields.add(amount11Txt);
+        perceptionsTextFields.add(amount12Txt);
 
-        earningsTextFields.add(totalEarnedTxt);
-        earningsTextFields.add(totalDeductedTxt);
-        earningsTextFields.add(totalNetReceivedTxt);
-        earningsTextFields.add(monthlyRemunerationTxt);
-        earningsTextFields.add(extraPaymentsTxt);
-        earningsTextFields.add(totalTxt);
-        earningsTextFields.add(amount1Txt);
-        earningsTextFields.add(amount2Txt);
-        earningsTextFields.add(amount3Txt);
-        earningsTextFields.add(amount4Txt);
-        earningsTextFields.add(amount5Txt);
-        earningsTextFields.add(amount6Txt);
-        earningsTextFields.add(amount7Txt);
-        earningsTextFields.add(amount8Txt);
-        earningsTextFields.add(amount9Txt);
-        earningsTextFields.add(amount10Txt);
-        earningsTextFields.add(amount11Txt);
-        earningsTextFields.add(amount12Txt);
-        earningsTextFields.add(amount13Txt);
-        earningsTextFields.add(amount14Txt);
-        earningsTextFields.add(amount15Txt);
-        earningsTextFields.add(amount16Txt);
-        earningsTextFields.add(amount17Txt);
-        earningsTextFields.add(amount18Txt);
-        earningsTextFields.add(amount19Txt);
-        earningsTextFields.add(amount20Txt);
-        earningsTextFields.add(amount21Txt);
+        calculationsTextFields.add(totalEarnedTxt);
+        calculationsTextFields.add(amount13Txt);
+        calculationsTextFields.add(amount14Txt);
+        calculationsTextFields.add(amount15Txt);
+        calculationsTextFields.add(amount16Txt);
+        calculationsTextFields.add(amount17Txt);
+        calculationsTextFields.add(amount18Txt);
+        calculationsTextFields.add(amount19Txt); //disable
+        calculationsTextFields.add(amount20Txt); //disable
+        calculationsTextFields.add(amount21Txt); //disable
+        calculationsTextFields.add(totalDeductedTxt);
+        calculationsTextFields.add(totalNetReceivedTxt);
+        calculationsTextFields.add(monthlyRemunerationTxt);
+        calculationsTextFields.add(extraPaymentsTxt);
+        calculationsTextFields.add(totalTxt);
+        calculationsTextFields.add(base1Txt);
+        calculationsTextFields.add(base2Txt);
+        calculationsTextFields.add(base3Txt);
+        calculationsTextFields.add(base4Txt);
+        calculationsTextFields.add(compTax1Txt);
+        calculationsTextFields.add(compTax2Txt);
+        calculationsTextFields.add(compTax3Txt);
+        calculationsTextFields.add(compTax4Txt);
+        calculationsTextFields.add(compTax5Txt);
+        calculationsTextFields.add(compTax6Txt);
 
         employeeTypesTextFields.add(typeTxt);
         employeeTypesTextFields.add(type1Txt);
         employeeTypesTextFields.add(type2Txt);
         employeeTypesTextFields.add(type3Txt);
+        employeeTypesTextFields.add(irpfTxt);
 
         companyTypesTextFields.add(type4Txt);
         companyTypesTextFields.add(type5Txt);
@@ -834,17 +848,6 @@ public class AddPanel extends JPanel {
         companyTypesTextFields.add(type7Txt);
         companyTypesTextFields.add(type8Txt);
         companyTypesTextFields.add(type9Txt);
-
-        companyDeductionsTextFields.add(base1Txt);
-        companyDeductionsTextFields.add(base2Txt);
-        companyDeductionsTextFields.add(base3Txt);
-        companyDeductionsTextFields.add(base4Txt);
-        companyDeductionsTextFields.add(compTax1Txt);
-        companyDeductionsTextFields.add(compTax2Txt);
-        companyDeductionsTextFields.add(compTax3Txt);
-        companyDeductionsTextFields.add(compTax4Txt);
-        companyDeductionsTextFields.add(compTax5Txt);
-        companyDeductionsTextFields.add(compTax6Txt);
     }
 
     private JPanel createPanelWithBorder(int topMargin, int bottomMargin, int leftMargin, int rightMargin, boolean includeBottomBorder) {

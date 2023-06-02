@@ -18,6 +18,8 @@ public class Main {
 
         PayrollData.initialiseData();
 
+        //System.out.println(PayrollData.employees);
+
         MainFrame mainFrame = new MainFrame();
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

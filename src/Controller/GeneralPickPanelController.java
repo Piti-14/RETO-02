@@ -61,8 +61,6 @@ public class GeneralPickPanelController implements ActionListener {
         if (name.equals("alternateEmployeeButton")) {
             chooseEmployeeButton();
         }
-
-
     }
 
     private void selectButton() {

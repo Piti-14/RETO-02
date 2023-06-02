@@ -20,7 +20,7 @@ public class Employee {
     public Employee(){ }
 
     public Employee(String nif, String name, String firstLastname, String secondLastname, String account,
-                    int ss_number, String seniority, boolean permanentJob, String dept, ProfessionalGroup group, ArrayList<Bonuses> bonus) {
+                    int ss_number, String seniority, boolean permanentJob, String dept, ProfessionalGroup group) {
         this.nif = nif;
         this.name = name;
         this.firstLastname = firstLastname;
@@ -39,10 +39,12 @@ public class Employee {
         }
 
         this.group = group;
+    }
 
-        //We always get an array of two items only
-        this.bonus.add(bonus.get(0));
-        this.bonus.add(bonus.get(1));
+    public void addBonuses(ArrayList<Bonuses> bonuses) {
+        for (Bonuses b : bonuses) {
+            this.bonus.add(b);
+        }
     }
 
     public String getNIF() {
