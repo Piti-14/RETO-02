@@ -46,19 +46,23 @@ public class PayrollData {
     public static void fillCompanyData() throws SQLException {
 
         for (int i = 0; i < COMPANY; i++) {
-            switch (i){
-                case 0: AddPanel.companyTextFields.get(i).setText(comp.getName());
+            switch (i) {
+                case 0 -> {
+                    AddPanel.companyTextFields.get(i).setText(comp.getName());
                     AddPanel.companyTextFields.get(i).setEditable(false);
-                    break;
-                case 1: AddPanel.companyTextFields.get(i).setText(comp.getAddress());
+                }
+                case 1 -> {
+                    AddPanel.companyTextFields.get(i).setText(comp.getAddress());
                     AddPanel.companyTextFields.get(i).setEditable(false);
-                    break;
-                case 2: AddPanel.companyTextFields.get(i).setText(comp.getCif());
+                }
+                case 2 -> {
+                    AddPanel.companyTextFields.get(i).setText(comp.getCif());
                     AddPanel.companyTextFields.get(i).setEditable(false);
-                    break;
-                case 3: AddPanel.companyTextFields.get(i).setText("" + comp.getCcc() + "");
+                }
+                case 3 -> {
+                    AddPanel.companyTextFields.get(i).setText("" + comp.getCcc() + "");
                     AddPanel.companyTextFields.get(i).setEditable(false);
-                    break;
+                }
             }
         }
     }
@@ -73,21 +77,26 @@ public class PayrollData {
         }
         for (int i = 0; i < EMPLOYEE; i++) {
             switch (i) {
-                case 0: AddPanel.employeeTextFields.get(i).setText(current.getName() + " " + current.getFirstLastname() + " " + current.getSecondLastname());
+                case 0 -> {
+                    AddPanel.employeeTextFields.get(i).setText(current.getName() + " " + current.getFirstLastname() + " " + current.getSecondLastname());
                     AddPanel.employeeTextFields.get(i).setEditable(false);
-                    break;
-                case 1: AddPanel.employeeTextFields.get(i).setText(current.getNIF());
+                }
+                case 1 -> {
+                    AddPanel.employeeTextFields.get(i).setText(current.getNIF());
                     AddPanel.employeeTextFields.get(i).setEditable(false);
-                    break;
-                case 2: AddPanel.employeeTextFields.get(i).setText("" + current.getSS_number() + "");
+                }
+                case 2 -> {
+                    AddPanel.employeeTextFields.get(i).setText("" + current.getSS_number() + "");
                     AddPanel.employeeTextFields.get(i).setEditable(false);
-                    break;
-                case 3: AddPanel.employeeTextFields.get(i).setText(current.getDept());
+                }
+                case 3 -> {
+                    AddPanel.employeeTextFields.get(i).setText(current.getDept());
                     AddPanel.employeeTextFields.get(i).setEditable(false);
-                    break;
-                case 4: AddPanel.employeeTextFields.get(i).setText(current.getGroup().getGroupCode());
+                }
+                case 4 -> {
+                    AddPanel.employeeTextFields.get(i).setText(current.getGroup().getGroupCode());
                     AddPanel.employeeTextFields.get(i).setEditable(false);
-                    break;
+                }
             }
         }
     }
@@ -97,15 +106,18 @@ public class PayrollData {
 
         for (int i = 0; i < DATE; i++) {
             switch (i) {
-                case 0: AddPanel.dateTextFields.get(i).setText(today.getMonth().name() + " of " + today.getYear());
+                case 0 -> {
+                    AddPanel.dateTextFields.get(i).setText(today.getMonth().name() + " of " + today.getYear());
                     AddPanel.dateTextFields.get(i).setEditable(false);
-                    break;
-                case 1: AddPanel.dateTextFields.get(i).setText("30");
+                }
+                case 1 -> {
+                    AddPanel.dateTextFields.get(i).setText("30");
                     AddPanel.dateTextFields.get(i).setEditable(false);
-                    break;
-                case 2: AddPanel.dateTextFields.get(i).setText(today.toString());
+                }
+                case 2 -> {
+                    AddPanel.dateTextFields.get(i).setText(today.toString());
                     AddPanel.dateTextFields.get(i).setEditable(false);
-                    break;
+                }
             }
         }
     }
@@ -119,22 +131,13 @@ public class PayrollData {
         }
         for (int i = 0; i < PERCEPTIONS; i++) {
             switch (i) {
-                case 0: AddPanel.perceptionsTextFields.get(i).setText("" + current.getBonus().get(0).getDescription());
+                case 0 -> {
+                    AddPanel.perceptionsTextFields.get(i).setText("" + current.getBonus().get(0).getDescription());
                     AddPanel.perceptionsTextFields.get(i).setEditable(false);
-                    break;
-                case 1: AddPanel.perceptionsTextFields.get(i).setEditable(false);
-                    break;
-                case 2: AddPanel.perceptionsTextFields.get(i).setEditable(false);
-                    break;
-                case 3: //AddPanel.perceptionsTextFields.get(i).setText();
-                    AddPanel.perceptionsTextFields.get(i).setEditable(false);
-                    break;
-                case 4: AddPanel.perceptionsTextFields.get(i).setEditable(false);
-                    break;
-                case 5: AddPanel.perceptionsTextFields.get(i).setEditable(false);
-                    break;
-                case 6: AddPanel.perceptionsTextFields.get(i).setEditable(false);
-                    break;
+                }
+                case 1, 2, 4, 5, 6 -> AddPanel.perceptionsTextFields.get(i).setEditable(false);
+                case 3 -> //AddPanel.perceptionsTextFields.get(i).setText();
+                        AddPanel.perceptionsTextFields.get(i).setEditable(false);
             }
         }
     }

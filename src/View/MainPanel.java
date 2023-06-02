@@ -53,24 +53,18 @@ public class MainPanel extends JPanel {
         addButton.addActionListener(new MainPanelController("addButton"));
         customizeButton(addButton, color1, color2);
 
-        modifyButton = new RoundedButton(language.getProperty("modifyPay"));
-        modifyButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
-        modifyButton.addActionListener(new MainPanelController("modifyButton"));
-        customizeButton(modifyButton, color2, color1);
-
         consultButton = new RoundedButton(language.getProperty("consultPay"));
-        consultButton.setBounds(screenWidth/6, ((screenHeight/2)+20), 400, 100);
+        consultButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
         consultButton.addActionListener(new MainPanelController("consultButton"));
-        customizeButton(consultButton, color1, color2);
+        customizeButton(consultButton, color2, color1);
 
         deleteButton = new RoundedButton(language.getProperty("deletePay"));
-        deleteButton.setBounds(((screenWidth/2)+50), ((screenHeight/2)+20), 400, 100);
+        deleteButton.setBounds(((screenWidth/2) -200), ((screenHeight/2)+20), 400, 100);
         deleteButton.addActionListener(new MainPanelController("deleteButton"));
         customizeButton(deleteButton, color2, color1);
 
         this.add(titleLabel);
         this.add(addButton);
-        this.add(modifyButton);
         this.add(consultButton);
         this.add(deleteButton);
 
@@ -79,8 +73,6 @@ public class MainPanel extends JPanel {
         this.add(new OffButton());
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
-
-
     }
 
     private void customizeButton(RoundedButton button, Color startColor, Color endColor) {
@@ -98,7 +90,6 @@ public class MainPanel extends JPanel {
                 // Agrandar el botón cuando el ratón entra en él
                 button.setBounds(button.getX() - 10, button.getY() - 10, button.getWidth() + 20, button.getHeight() + 20);
             }
-
 
             @Override
             public void mouseExited(MouseEvent e) {
