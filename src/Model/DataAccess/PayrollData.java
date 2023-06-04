@@ -6,11 +6,10 @@ import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import View.AddPanel;
 
-import javax.swing.*;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class PayrollData {
     public static final int COMPANY = 4;
@@ -22,13 +21,15 @@ public class PayrollData {
     public static final int COMPANY_TAXES = 6;
     public static final int PERCEPTIONS = 19;
     static Querys qs = new Querys();
-    public static EmployeeData calculedData;
+    public static EmployeeData calculatedData;
     public static Company comp;
     public static ArrayList<Employee> employees;
     public static ArrayList<Department> departments;
     public static ArrayList<Double> employeeTaxes;
     public static ArrayList<Double> companyTaxes;
-    public static int IRPF, ATEP;
+    public static double IRPF, ATEP;
+
+    public static DecimalFormat df = new DecimalFormat("#0,00");
 
     public static void initialiseData() throws SQLException {
         employees = qs.getEmployees();
@@ -47,7 +48,7 @@ public class PayrollData {
         }
         IRPF = qs.getIRPF(current.getNIF());
         ATEP = qs.getATEP(current.getNIF());
-        calculedData = new EmployeeData(current);
+        calculatedData = new EmployeeData(current);
 
         fillCompanyData();
         fillEmployeeData(current);
@@ -150,9 +151,34 @@ public class PayrollData {
     public static void fillCalculations(Employee e) {
         for (int i = 0; i < CALCULATIONS; i++) {
             switch (i) {
-                case 0: AddPanel.calculationsTextFields.get(i).setText(calculedData.totalEarned + "");
+                case 0, 15, 17 -> AddPanel.calculationsTextFields.get(i).setText(calculatedData.totalEarned + "");
+                case 1 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstDeduction) + "");
+                case 2 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.secondDeduction) + "");
+                case 3 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.thirdDeduction) + "");
+                case 4, 22 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.fourthDeduction) + "");
+                case 5 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalEmployeeTaxes) + "");
+                case 6 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.irpfDeduction) + "");
+                case 10 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalDeducted) + "");
+                case 11 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalNetPay) + "");
+                case 12 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.monthlyRemuneration) + "");
+                case 13 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.extraPays) + "");
+                case 14 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.commonContingences) + "");
+                case 16 -> AddPanel.calculationsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
+                case 18 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstCompanyDeduction) + "");
+                case 19 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.atepDeduction) + "");
+                case 20 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.secondCompanyDeduction) + "");
+                case 21 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.thirdCompanyDeduction) + "");
+                case 23 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.fifthCompanyDeduction) + "");
+                case 24 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalCompanyTaxes) + "");
             }
             AddPanel.calculationsTextFields.get(i).setEditable(false);
         }
+    }
+
+    public static double roundNumber(double n) {
+        double rounded = Math.floor(n * 100) / 100;
+        rounded = Math.ceil(rounded * 100) / 100;
+
+        return rounded;
     }
 }

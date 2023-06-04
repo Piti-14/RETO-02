@@ -14,16 +14,16 @@ import java.util.ArrayList;
 
 public class AddPanel extends JPanel {
 
-     public static JLabel companyLbl, employeeLbl, addressLbl, nifLbl, cifLbl, ssnLbl, bankNumberLbl, categoryLbl, contributionGroupLbl,
+    public static JLabel companyLbl, employeeLbl, addressLbl, nifLbl, cifLbl, ssnLbl, bankNumberLbl, categoryLbl, contributionGroupLbl,
             settlementPeriodLbl, nDaysLbl, totalsLbl, earningsLbl, amountLbl, salaryPercepcionsLbl, baseSalaryLbl,
             salarySupplementsLbl, overtimeHoursLbl, complementaryHoursLbl, extraBonusesLbl, inKindSalaryLbl,
             nonSalaryPercepcionsLbl, compensationsOrAllowancesLbl, ssBenefitsCompensationsLbl, compensationsLbl,
             otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, type2Lbl, holdbacksLbl,
             unemploymentLbl, proTrainingLbl,   totalContributionsLbl, incomeTaxLbl, advancesLbl, valueProductsLbl,
-             otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl, companySignatureLbl, receivedLbl, determinationSSLbl,
-             determinationSS2Lbl, commonHoldbacksLbl, monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl,
-             baseLbl, professionalHoldbacksLbl, fogasaLbl, overtimeContributionLbl, totalLbl, dateLbl, conceptLbl, atEPLbl,
-             unemployment2Lbl, fpLbl, total2Lbl;
+            otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl, companySignatureLbl, receivedLbl, determinationSSLbl,
+            determinationSS2Lbl, commonHoldbacksLbl, monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl,
+            baseLbl, professionalHoldbacksLbl, fogasaLbl, overtimeContributionLbl, totalLbl, dateLbl, conceptLbl, atEPLbl,
+            unemployment2Lbl, fpLbl, total2Lbl;
 
     public static JTextField companyTxt, employeeTxt, addressTxt, nifTxt, cifTxt, ssnTxt, bankNumberTxt, categoryTxt, contributionGroupTxt,
             settlementPeriodTxt, nDaysTxt, salarySupplementsTxt, salarySupplements1Txt, salarySupplements2Txt,
@@ -828,7 +828,6 @@ public class AddPanel extends JPanel {
         calculationsTextFields.add(totalNetReceivedTxt);
         calculationsTextFields.add(monthlyRemunerationTxt);
         calculationsTextFields.add(extraPaymentsTxt);
-        calculationsTextFields.add(totalTxt);
         calculationsTextFields.add(base1Txt);
         calculationsTextFields.add(base2Txt);
         calculationsTextFields.add(base3Txt);
@@ -839,6 +838,7 @@ public class AddPanel extends JPanel {
         calculationsTextFields.add(compTax4Txt);
         calculationsTextFields.add(compTax5Txt);
         calculationsTextFields.add(compTax6Txt);
+        calculationsTextFields.add(totalTxt);
 
         employeeTypesTextFields.add(typeTxt);
         employeeTypesTextFields.add(type1Txt);

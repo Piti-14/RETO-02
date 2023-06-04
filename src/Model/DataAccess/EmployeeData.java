@@ -3,8 +3,10 @@ package Model.DataAccess;
 import Database.Querys;
 import Model.BasicClasses.Bonuses;
 import Model.BasicClasses.Employee;
+import View.AddPanel;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -16,7 +18,7 @@ public class EmployeeData {
     public double firstDeduction, secondDeduction, thirdDeduction, fourthDeduction, irpfDeduction;
     public double firstCompanyDeduction, secondCompanyDeduction, thirdCompanyDeduction, fourthCompanyDeduction, fifthCompanyDeduction, atepDeduction;
     public double totalEarned, totalEmployeeTaxes, totalDeducted,
-               totalNetPay, totalCompanyTaxes;
+            totalNetPay, totalCompanyTaxes;
 
     public EmployeeData(Employee e) {
         this.employee = e;
