@@ -8,6 +8,7 @@ import View.MainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URISyntaxException;
 
 public class MainPanelController implements ActionListener {
 
@@ -18,11 +19,11 @@ public class MainPanelController implements ActionListener {
 
     String name;
 
-    public MainPanelController(String name) {
+    public MainPanelController(String name) throws URISyntaxException {
         this.name = name;
     }
 
-    public MainPanelController() {
+    public MainPanelController() throws URISyntaxException {
 
     }
 

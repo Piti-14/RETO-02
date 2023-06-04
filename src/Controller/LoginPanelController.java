@@ -7,11 +7,29 @@ import View.MainFrame;
 import View.MainPanel;
 
 import javax.swing.*;
+import java.net.URISyntaxException;
 
 public class LoginPanelController {
 
-    public static Configuration configuration = new Configuration();
-    public static Language language = new Language(Integer.parseInt(configuration.getLanguage()));
+    public static Configuration configuration;
+
+    static {
+        try {
+            configuration = new Configuration();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Language language;
+
+    static {
+        try {
+            language = new Language(Integer.parseInt(configuration.getLanguage()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void verificar(JPasswordField passwordField) {
 

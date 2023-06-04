@@ -2,6 +2,8 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 import Database.Querys;
@@ -24,7 +26,7 @@ public class GeneralPickPanelController implements ActionListener {
     Configuration configuration = new Configuration();
     Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
-    public GeneralPickPanelController(String name) throws SQLException {
+    public GeneralPickPanelController(String name) throws SQLException, URISyntaxException, IOException {
         this.name = name;
     }
     @Override

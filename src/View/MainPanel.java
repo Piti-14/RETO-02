@@ -14,6 +14,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 public class MainPanel extends JPanel {
@@ -21,7 +23,7 @@ public class MainPanel extends JPanel {
     RoundedButton addButton, modifyButton, consultButton, deleteButton;
     public static ShadowLabel titleLabel;
 
-    public MainPanel() throws SQLException {
+    public MainPanel() throws SQLException, URISyntaxException, IOException {
         this.setLayout(null);
 
         Toolkit screen = Toolkit.getDefaultToolkit();
@@ -33,7 +35,7 @@ public class MainPanel extends JPanel {
         JLabel labelImage = new JLabel(corporativeImage);
         labelImage.setBounds(0,0,screenWidth,screenHeight);
 
-        Color color1 = new Color(41, 170, 225);
+        Color color1 = new Color(41, 170,   225);
 
         Color color2 = new Color(185, 189, 209);
 

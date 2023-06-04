@@ -8,13 +8,15 @@ import View.Utils.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class LoginPanel extends JPanel {
 
     public static JPasswordField passwordField;
     public static JTextField userField;
 
-    public LoginPanel() {
+    public LoginPanel() throws URISyntaxException, IOException {
         this.setLayout(null);
         MainFrame.menuBar.setVisible(false);
 

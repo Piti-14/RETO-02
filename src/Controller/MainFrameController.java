@@ -8,6 +8,8 @@ import org.w3c.dom.Document;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 import static java.lang.System.exit;
@@ -22,7 +24,7 @@ public class MainFrameController implements ActionListener {
     Configuration configuration = new Configuration();
     Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
-    public MainFrameController(String name) {
+    public MainFrameController(String name) throws URISyntaxException, IOException {
         this.name = name;
     }
     @Override
@@ -64,8 +66,7 @@ public class MainFrameController implements ActionListener {
 
     private void rebootPop() throws SQLException {
         if (JOptionPane.showConfirmDialog(null, language.getProperty("rebootMsg"), language.getProperty("confirmation"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            MainFrame.frame.dispose();
-            new MainFrame();
+            exit(0);
         }
     }
 

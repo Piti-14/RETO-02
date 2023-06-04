@@ -1,20 +1,13 @@
-import Database.ConnectionDB;
-import Database.Querys;
-import Model.BasicClasses.Employee;
-import Model.BasicClasses.ProfessionalGroup;
 import Model.DataAccess.PayrollData;
 import View.MainFrame;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.util.ArrayList;
-
-import static java.lang.Thread.sleep;
 
 public class Main {
-    public static void main(String[] args) throws IOException, SQLException, InterruptedException {
+    public static void main(String[] args) throws SQLException, URISyntaxException, IOException {
 
         PayrollData.initialiseData();
 

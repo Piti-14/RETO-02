@@ -8,20 +8,17 @@ import View.Login.LoginPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 public class MainFrame extends JFrame {
     public static CardLayout cardLayout;
     public static JPanel cards;
     public static JMenuBar menuBar;
-    public static JFrame frame;
 
-    public MainFrame() throws SQLException {
+    public MainFrame() throws SQLException, URISyntaxException, IOException {
         this.setVisible(true);
-
-        // To change language
-        frame = this;
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screensize = screen.getScreenSize();

@@ -8,6 +8,8 @@ import View.Utils.OffButton;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static java.lang.System.exit;
 
@@ -18,7 +20,7 @@ public class UtilsController implements ActionListener {
     Configuration configuration = new Configuration();
     Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
-    public UtilsController(String name){
+    public UtilsController(String name) throws URISyntaxException, IOException {
         this.name = name;
     }
     @Override

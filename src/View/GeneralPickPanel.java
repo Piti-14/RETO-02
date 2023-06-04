@@ -12,6 +12,8 @@ import View.Utils.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 public class GeneralPickPanel extends JPanel {
@@ -29,7 +31,7 @@ public class GeneralPickPanel extends JPanel {
     public static JButton alternateDepartmentButton;
     public static JButton alternateEmployeeButton;
 
-    public GeneralPickPanel() throws SQLException {
+    public GeneralPickPanel() throws SQLException, URISyntaxException, IOException {
         this.setLayout(null);
 
         Color color = Color.decode("#26aae1");

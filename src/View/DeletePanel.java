@@ -5,10 +5,13 @@ import Sources.Sources;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 import View.Utils.*;
 
 public class DeletePanel extends JPanel {
-    public DeletePanel() {
+    public DeletePanel() throws URISyntaxException, IOException {
         this.setLayout(null);
 
         Toolkit screen = Toolkit.getDefaultToolkit();

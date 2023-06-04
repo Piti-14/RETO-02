@@ -1,17 +1,36 @@
 package Languages;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
+
 public class Configuration {
-    private static final String FILE_PROPERTIES = String.valueOf(Configuration.class.getResource("Configuration.properties")).substring(5);
 
+
+    private File filee;
     private Properties properties;
+    private static final String CONFIGFILE = "Configuration.properties";
+    private static final String FILE_PROPERTIES;
 
-    public Configuration() {
-        properties = new Properties();
+    static {
         try {
+            FILE_PROPERTIES = String.valueOf(getConfigFilePath(CONFIGFILE).toUri()).substring(7);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Configuration() throws URISyntaxException {
+        properties = new Properties();
+        filee = new File(FILE_PROPERTIES);
+
+        try {
+            System.out.println(FILE_PROPERTIES);
             FileInputStream file = new FileInputStream(FILE_PROPERTIES);
             properties.load(file);
             file.close();
@@ -35,17 +54,10 @@ public class Configuration {
         return properties.getProperty("Language");
     }
 
-    public static void main(String[] args) {
-        Configuration configuration = new Configuration();
-
-        // Establecer el valor de Language
-        configuration.setLanguage("1");
-
-        // Obtener el valor de Language
-        String language = configuration.getLanguage();
-        System.out.println("Valor de Language: " + language);
-        System.out.println("Valor de Language: " + configuration.getLanguage());
-
-
+    static Path getConfigFilePath(String file) throws URISyntaxException {
+        String jarPath = Configuration.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        String parentDir = new File(jarPath).getParent();
+        return Paths.get(parentDir, file);
     }
+
 }

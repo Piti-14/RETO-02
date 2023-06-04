@@ -6,11 +6,13 @@ import View.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static java.lang.System.exit;
 
 public class PreviousButton extends JButton {
-    public PreviousButton() {
+    public PreviousButton() throws URISyntaxException, IOException {
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screensize = screen.getScreenSize();
         int screenHeight = screensize.height;
