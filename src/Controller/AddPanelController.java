@@ -1,5 +1,7 @@
 package Controller;
 
+import Database.Insert;
+import Database.Querys;
 import View.AddPanel;
 
 import java.awt.event.ActionEvent;
@@ -24,11 +26,16 @@ public class AddPanelController implements ActionListener {
 
         Double companyAp =  Double.valueOf(AddPanel.totalTxt.getText());
 
-        // Non_percep table
+
+
+
+
+        // Nom_percep table
 
             // Salary
 
             Double amountSp = Double.valueOf(AddPanel.amount2Txt.getText());
+            Double ohSp = Double.valueOf(AddPanel.amount5Txt.getText());
 
             // Non-Salary
 
@@ -38,9 +45,12 @@ public class AddPanelController implements ActionListener {
         // Nom_reten table
 
         Double irpfPer = Double.valueOf(AddPanel.irpfTxt.getText());
-        Double irpfAmount = Double.valueOf(AddPanel.amount18Txt.getText());
+        Double amountIRPF = Double.valueOf(AddPanel.amount18Txt.getText());
 
-        Double apEp = Double.valueOf(AddPanel.type5Txt.getText());
+        Double atEpPer = Double.valueOf(AddPanel.type5Txt.getText());
+        Double amountATEP = Double.valueOf(AddPanel.compTax2Txt.getText());
+
+
 
         // Nom_cot_trabajador table
 
@@ -80,12 +90,41 @@ public class AddPanelController implements ActionListener {
 
 
 
+        try {
+            Insert.insertPayrrol(nif, year, month, totalEarned, totalNet, companyAp);
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
 
 
+        try {
+            Insert.insertNomPercep(Querys.getID(),amountSp,ohSp,amountCompAllow,nif);
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
 
+        try {
+            Insert.insertHoldbacks(Querys.getID(),irpfPer,amountIRPF,atEpPer,amountATEP );
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
 
+        try {
+            Insert.insertCotEmployee(Querys.getID(),contingenciesPer,contingenciesAmount,unEmploymentPer,unEmploymentAmount, fpPer, fpAmount, ohPer, ohAmount);
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        try {
+            Insert.insertCotCompany(Querys.getID(),unemploymentCompPer,unemploymentCompAmount,fpCompPer,fpCompAmount, fogasaPer, fogasaAmount, ohCompPer, ohCompAmount);
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
 
     }
+
+
+
 
 
 }

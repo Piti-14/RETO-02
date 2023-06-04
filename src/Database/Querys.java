@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Querys {
 
-    private Connection connect = ConnectionDB.Connect();
+    private static Connection connect = ConnectionDB.Connect();
 
     public ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = connect.createStatement();
@@ -144,7 +144,7 @@ public class Querys {
         while (result.next()) {
             String code = result.getString(1);
             String descr = result.getString(2);
-            int quant = result.getInt(3);
+            double quant = result.getDouble(3);
 
             Bonuses bonus = new Bonuses(code, descr, quant);
             bonuses.add(bonus);
@@ -176,4 +176,85 @@ public class Querys {
 
         return atep;
     }
+
+    public static int getID() throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select id_nom from nominas order by id_nom desc limit 1");
+
+        int id = 0;
+
+        while (result.next()){
+            id = result.getInt(1);
+        }
+
+        return id;
+    }
+
+    public static ArrayList<String> getPerInd(String nif) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select cod_p from percepciones_ind where nif='" + nif + "'");
+
+        ArrayList<String> per = new ArrayList<>();
+
+        while (result.next()){
+            per.add(result.getString(1));
+        }
+
+        return per;
+    }
+
+    public static ArrayList<String> getPerGroup(String nif) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select cod_p from percepciones_grupo where cod_gr='" + Querys.getCodGr(nif) + "'");
+
+        ArrayList<String> per = new ArrayList<>();
+
+        while (result.next()){
+            per.add(result.getString(1));
+        }
+
+        return per;
+    }
+
+    public static String getCodGr(String nif) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select cod_gr from trabajador where nif='" + nif + "'");
+
+        String cod = "";
+
+        while (result.next()){
+            cod = result.getString(1);
+        }
+
+        return cod;
+    }
+
+    public static String getCodCT(Double cant) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select cod_c from contingencias_t where cant=" + cant + " ");
+
+        String cod = "";
+
+        while (result.next()){
+            cod = result.getString(1);
+        }
+
+
+        return cod;
+    }
+
+    public static String getCodCE(Double cant) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select cod_c from contingencias_e where cant=" + cant + " ");
+
+        String cod = "";
+
+        while (result.next()){
+            cod = result.getString(1);
+        }
+
+        return cod;
+    }
+
+
 }
