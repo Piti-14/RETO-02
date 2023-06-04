@@ -61,15 +61,11 @@ public class PayrollData {
     public static void fillCompanyData() throws SQLException {
 
         for (int i = 0; i < COMPANY; i++) {
-            switch (i){
-                case 0: AddPanel.companyTextFields.get(i).setText(comp.getName());
-                    break;
-                case 1: AddPanel.companyTextFields.get(i).setText(comp.getAddress());
-                    break;
-                case 2: AddPanel.companyTextFields.get(i).setText(comp.getCif());
-                    break;
-                case 3: AddPanel.companyTextFields.get(i).setText("" + comp.getCcc() + "");
-                    break;
+            switch (i) {
+                case 0 -> AddPanel.companyTextFields.get(i).setText(comp.getName());
+                case 1 -> AddPanel.companyTextFields.get(i).setText(comp.getAddress());
+                case 2 -> AddPanel.companyTextFields.get(i).setText(comp.getCif());
+                case 3 -> AddPanel.companyTextFields.get(i).setText("" + comp.getCcc() + "");
             }
             AddPanel.companyTextFields.get(i).setEditable(false);
         }
@@ -78,16 +74,12 @@ public class PayrollData {
     public static void fillEmployeeData(Employee e) throws SQLException {
         for (int i = 0; i < EMPLOYEE; i++) {
             switch (i) {
-                case 0: AddPanel.employeeTextFields.get(i).setText(e.getName() + " " + e.getFirstLastname() + " " + e.getSecondLastname());
-                    break;
-                case 1: AddPanel.employeeTextFields.get(i).setText(e.getNIF());
-                    break;
-                case 2: AddPanel.employeeTextFields.get(i).setText("" + e.getSS_number() + "");
-                    break;
-                case 3: AddPanel.employeeTextFields.get(i).setText(e.getDept());
-                    break;
-                case 4: AddPanel.employeeTextFields.get(i).setText(e.getGroup().getGroupCode());
-                    break;
+                case 0 ->
+                        AddPanel.employeeTextFields.get(i).setText(e.getName() + " " + e.getFirstLastname() + " " + e.getSecondLastname());
+                case 1 -> AddPanel.employeeTextFields.get(i).setText(e.getNIF());
+                case 2 -> AddPanel.employeeTextFields.get(i).setText("" + e.getSS_number() + "");
+                case 3 -> AddPanel.employeeTextFields.get(i).setText(e.getDept());
+                case 4 -> AddPanel.employeeTextFields.get(i).setText(e.getGroup().getGroupCode());
             }
             AddPanel.employeeTextFields.get(i).setEditable(false);
         }
@@ -98,12 +90,9 @@ public class PayrollData {
 
         for (int i = 0; i < DATE; i++) {
             switch (i) {
-                case 0: AddPanel.dateTextFields.get(i).setText(today.getMonth().name() + " of " + today.getYear());
-                    break;
-                case 1: AddPanel.dateTextFields.get(i).setText("30");
-                    break;
-                case 2: AddPanel.dateTextFields.get(i).setText(today.toString());
-                    break;
+                case 0 -> AddPanel.dateTextFields.get(i).setText(today.getMonth().name() + " of " + today.getYear());
+                case 1 -> AddPanel.dateTextFields.get(i).setText("30");
+                case 2 -> AddPanel.dateTextFields.get(i).setText(today.toString());
             }
             AddPanel.dateTextFields.get(i).setEditable(false);
         }
@@ -112,20 +101,13 @@ public class PayrollData {
     public static void fillPerceptions(Employee e) {
         for (int i = 0; i < PERCEPTIONS; i++) {
             switch (i) {
-                case 0: AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getDescription());
-                    break;
-                case 3: AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getDescription());
-                    break;
-                case 6: AddPanel.perceptionsTextFields.get(i).setText("");
-                    break;
-                case 7: AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(3).getQuant() + "");
-                    break;
-                case 8: AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getQuant() + "");
-                    break;
-                case 11: AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
-                    break;
-                case 15: AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getQuant() + "");
-                    break;
+                case 0 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getDescription());
+                case 3 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getDescription());
+                case 6 -> AddPanel.perceptionsTextFields.get(i).setText("");
+                case 7 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(3).getQuant() + "");
+                case 8 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getQuant() + "");
+                case 11 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
+                case 15 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getQuant() + "");
             }
             AddPanel.perceptionsTextFields.get(i).setEditable(false);
         }
@@ -138,11 +120,11 @@ public class PayrollData {
         }
         for (int i = 0; i < EMPLOYEE_TAXES; i++) {
             switch (i) {
-                case 0: AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(6) + ""); break;
-                case 1: AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(permanent) + ""); break;
-                case 2: AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(3) + ""); break;
-                case 3: AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(5) + ""); break;
-                case 4: AddPanel.employeeTypesTextFields.get(i).setText(IRPF + ""); break;
+                case 0 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(6) + "");
+                case 1 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(permanent) + "");
+                case 2 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(3) + "");
+                case 3 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(5) + "");
+                case 4 -> AddPanel.employeeTypesTextFields.get(i).setText(IRPF + "");
             }
             AddPanel.employeeTypesTextFields.get(i).setEditable(false);
         }
@@ -155,11 +137,11 @@ public class PayrollData {
         }
         for (int i = 0; i < COMPANY_TAXES; i++) {
             switch (i) {
-                case 0: AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(7) + ""); break;
-                case 1: AddPanel.companyTypesTextFields.get(i).setText(ATEP + ""); break;
-                case 2: AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(permanent) + ""); break;
-                case 3, 4: AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(i) + ""); break;
-                case 5: AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(6) + ""); break;
+                case 0 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(7) + "");
+                case 1 -> AddPanel.companyTypesTextFields.get(i).setText(ATEP + "");
+                case 2 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(permanent) + "");
+                case 3, 4 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(i) + "");
+                case 5 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(6) + "");
             }
             AddPanel.companyTypesTextFields.get(i).setEditable(false);
         }

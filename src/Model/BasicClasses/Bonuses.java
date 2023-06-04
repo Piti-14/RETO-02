@@ -7,9 +7,9 @@ public class Bonuses {
     private String bonusCode;
     private String description;
     //private boolean pays;
-    private int quant;
+    private double quant;
 
-    public Bonuses(String bonusCode, String description, int quant) {
+    public Bonuses(String bonusCode, String description, double quant) {
         this.bonusCode = bonusCode;
         this.description = description;
         this.quant = quant;
@@ -20,7 +20,7 @@ public class Bonuses {
     public String getDescription() {
         return description;
     }
-    public int getQuant() {
+    public double getQuant() {
         return quant;
     }
 

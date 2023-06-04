@@ -4,6 +4,7 @@ import View.AddPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class AddPanelController implements ActionListener {
     @Override
@@ -27,12 +28,10 @@ public class AddPanelController implements ActionListener {
 
             // Salary
 
-            String salarySp = AddPanel.salarySupplementsTxt.getText();
             Double amountSp = Double.valueOf(AddPanel.amount2Txt.getText());
 
             // Non-Salary
 
-            String compAllow = AddPanel.compensationsOrAllowancesTxt.getText();
             Double amountCompAllow = Double.valueOf(AddPanel.amount9Txt.getText());
 
 
@@ -45,8 +44,8 @@ public class AddPanelController implements ActionListener {
 
         // Nom_cot_trabajador table
 
-        Double holdbackPer = Double.valueOf(AddPanel.typeTxt.getText());
-        Double holdbackAmount = Double.valueOf(AddPanel.amount13Txt.getText());
+        Double contingenciesPer = Double.valueOf(AddPanel.typeTxt.getText());
+        Double contingenciesAmount = Double.valueOf(AddPanel.amount13Txt.getText());
 
         Double unEmploymentPer = Double.valueOf(AddPanel.type1Txt.getText());
         Double unEmploymentAmount = Double.valueOf(AddPanel.amount14Txt.getText());
@@ -60,17 +59,20 @@ public class AddPanelController implements ActionListener {
 
         // Nom_cot_empresa
 
-        Double unemployment = Double.valueOf(AddPanel.type6Txt.getText());
+        Double unemploymentCompPer = Double.valueOf(AddPanel.type6Txt.getText());
+        Double unemploymentCompAmount = Double.valueOf(AddPanel.compTax3Txt.getText());
 
-        Double fp = Double.valueOf(AddPanel.type7Txt.getText());
+        Double fpCompPer = Double.valueOf(AddPanel.type7Txt.getText());
+        Double fpCompAmount = Double.valueOf(AddPanel.compTax4Txt.getText());
 
-        Double fogasa = Double.valueOf(AddPanel.type8Txt.getText());
 
-        Double oH = Double.valueOf(AddPanel.type9Txt.getText());
+        Double fogasaPer = Double.valueOf(AddPanel.type8Txt.getText());
+        Double fogasaAmount = Double.valueOf(AddPanel.compTax5Txt.getText());
 
-        // VA A TRABAJADOR
 
-        Double apepPer = Double.valueOf(AddPanel.type5Txt.getText());
+        Double ohCompPer = Double.valueOf(AddPanel.type9Txt.getText());
+        Double ohCompAmount = Double.valueOf(AddPanel.compTax6Txt.getText());
+
 
 
 

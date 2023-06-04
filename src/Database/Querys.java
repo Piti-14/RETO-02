@@ -49,7 +49,6 @@ public class Querys {
             getSalaryPerceptions(e);
             getNonSalaryPerceptions(e);
         }
-        //ConnectionDB.exit(ConnectionDB.Connect());
 
         return employees;
     }
@@ -65,7 +64,6 @@ public class Querys {
             tax = (result.getDouble(1)); // dividir por 10 y multiplicar para calcular
             taxes.add(tax);
         }
-        //ConnectionDB.exit(ConnectionDB.Connect());
 
         return taxes;
     }
@@ -81,7 +79,6 @@ public class Querys {
             tax = (result.getDouble(1)); // dividir por 10 y multiplicar para calcular
             taxes.add(tax);
         }
-        //ConnectionDB.exit(ConnectionDB.Connect());
 
         return taxes;
     }
@@ -96,7 +93,6 @@ public class Querys {
             departments.add(new Department(result.getString(1) , result.getString(2)));
         }
 
-        //ConnectionDB.exit(ConnectionDB.Connect());
 
         return departments;
     }
@@ -114,7 +110,6 @@ public class Querys {
                                result.getInt(4));
 
         }
-        //ConnectionDB.exit(ConnectionDB.Connect());
 
         return comp;
     }
@@ -129,7 +124,7 @@ public class Querys {
         while (result2.next()) {
             String cod_p = result2.getString(1);
             String description = result2.getString(2);
-            int quant = result2.getInt(3);
+            double quant = result2.getDouble(3);
 
             Bonuses b = new Bonuses(cod_p, description, quant);
             bonuses.add(b);
@@ -166,7 +161,6 @@ public class Querys {
         while (result.next()){
             irpf = result.getInt(1);
         }
-        //ConnectionDB.exit(ConnectionDB.Connect());
 
         return irpf;
     }
@@ -179,7 +173,6 @@ public class Querys {
         while (result.next()){
             atep = result.getInt(1);
         }
-        //ConnectionDB.exit(ConnectionDB.Connect());
 
         return atep;
     }
