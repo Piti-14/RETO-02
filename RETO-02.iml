@@ -11,7 +11,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Descargas/postgresql-42.6.0.jar!/" />
+          <root url="jar://$USER_HOME$/Baixades/postgresql-42.6.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

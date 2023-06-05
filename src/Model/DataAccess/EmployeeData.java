@@ -48,7 +48,7 @@ public class EmployeeData {
         fourthDeduction = employee.getBonus().get(1).getQuant() * (PayrollData.employeeTaxes.get(5) / 100);
         irpfDeduction = totalEarned * (PayrollData.IRPF / 100);
 
-        monthlyRemuneration = commonContingences - extraPays;
+        monthlyRemuneration = totalEarned - extraPays;
 
         totalEmployeeTaxes = firstDeduction + secondDeduction + thirdDeduction + fourthDeduction;
         totalDeducted = totalEmployeeTaxes + irpfDeduction;
