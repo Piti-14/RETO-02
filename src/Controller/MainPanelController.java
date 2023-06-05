@@ -54,10 +54,6 @@ public class MainPanelController implements ActionListener {
             createButton();
         }
 
-        if (name.equals("modifyButton")){
-            modifyButton();
-        }
-
         if (name.equals("consultButton")) {
             consultButton();
         }
@@ -79,23 +75,7 @@ public class MainPanelController implements ActionListener {
         GeneralPickPanel.selectButton.setVisible(false);
         GeneralPickPanel.alternateEmployeeButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);
-        GeneralPickPanel.titleLabel.setText(language.getProperty("chooseEmp"));
-        GeneralPickPanel.listModel.removeAllElements();
-        GeneralPickPanel.insertDataEmployees();
-    }
-
-    /**
-     * Acción realizada al presionar el botón de modificar.
-     * Muestra la vista de selección general con opciones para elegir un empleado.
-     */
-    public void modifyButton() {
-        MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
-        GeneralPickPanel.deleteButton.setVisible(false);
-        GeneralPickPanel.chooseButton.setVisible(false);
-        GeneralPickPanel.consultButton.setVisible(false);
-        GeneralPickPanel.selectButton.setVisible(false);
-        GeneralPickPanel.alternateEmployeeButton.setVisible(false);
-        GeneralPickPanel.alternateDepartmentButton.setVisible(true);
+        GeneralPickPanel.selectConsultButton.setVisible(false);
         GeneralPickPanel.titleLabel.setText(language.getProperty("chooseEmp"));
         GeneralPickPanel.listModel.removeAllElements();
         GeneralPickPanel.insertDataEmployees();
@@ -109,8 +89,9 @@ public class MainPanelController implements ActionListener {
         MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         GeneralPickPanel.deleteButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(false);
-        GeneralPickPanel.consultButton.setVisible(true);
+        GeneralPickPanel.consultButton.setVisible(false);
         GeneralPickPanel.selectButton.setVisible(false);
+        GeneralPickPanel.selectConsultButton.setVisible(true);
         GeneralPickPanel.alternateEmployeeButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);
         GeneralPickPanel.titleLabel.setText(language.getProperty("chooseEmp"));
@@ -127,6 +108,7 @@ public class MainPanelController implements ActionListener {
         GeneralPickPanel.deleteButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(false);
         GeneralPickPanel.consultButton.setVisible(false);
+        GeneralPickPanel.selectConsultButton.setVisible(false);
         GeneralPickPanel.selectButton.setVisible(true);
         GeneralPickPanel.alternateEmployeeButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);

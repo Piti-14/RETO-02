@@ -22,6 +22,7 @@ public class GeneralPickPanel extends JPanel {
     //public static Querys querys = new Querys();
     public static JList jListPick;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();
+    public static JButton selectConsultButton;
     public static JButton chooseButton;
     public static JButton deleteButton;
     public static JButton consultButton;
@@ -71,6 +72,14 @@ public class GeneralPickPanel extends JPanel {
         selectButton.setVisible(true);
         selectButton.addActionListener(new GeneralPickPanelController("selectButton"));
 
+        selectConsultButton = new JButton(language.getProperty("selectConsultBtn"));
+        selectConsultButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        selectConsultButton.setBorder(new LineBorder(Color.WHITE, 2));
+        selectConsultButton.setBackground(color);
+        selectConsultButton.setFocusPainted(false);
+        selectConsultButton.setVisible(true);
+        selectConsultButton.addActionListener(new GeneralPickPanelController("selectConsultButton"));
+
         deleteButton = new JButton(language.getProperty("deleteBtn"));
         deleteButton.setBounds(screenWidth*(72)/100,screenHeight*(44)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         deleteButton.setBorder(new LineBorder(Color.WHITE, 2));
@@ -106,6 +115,7 @@ public class GeneralPickPanel extends JPanel {
         insertDataEmployees();
 
         this.add(titleLabel);
+        this.add(selectConsultButton);
         this.add(chooseButton);
         this.add(jListPick);
         this.add(deleteButton);

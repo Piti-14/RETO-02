@@ -2,6 +2,9 @@ package Database;
 
 import java.sql.*;
 
+/**
+ * Clase para establecer y cerrar la conexión con la base de datos.
+ */
 public class ConnectionDB {
 
     private static final String driver = "org.postgresql.Driver";
@@ -9,9 +12,11 @@ public class ConnectionDB {
     private static final String usuario = "admin123";
     private static final String clave = "admin123";
 
-    /* Creamos el método para conectarnos a la base de datos.
-       Este método devolverá un objeto de tipo Connection. */
-
+    /**
+     * Establece una conexión con la base de datos.
+     *
+     * @return la conexión establecida
+     */
     public static Connection Connect(){
 
         Connection con = null;
@@ -28,9 +33,14 @@ public class ConnectionDB {
         return con;
     }
 
+    /**
+     * Cierra la conexión con la base de datos.
+     *
+     * @param con la conexión a cerrar
+     */
     public static void exit(Connection con){
         try{
-             con.close();
+            con.close();
         }catch(SQLException e){
             System.out.println(e.getMessage().toString());
         }

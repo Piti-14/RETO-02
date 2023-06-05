@@ -69,11 +69,55 @@ public class GeneralPickPanelController implements ActionListener {
         if (name.equals("alternateEmployeeButton")) {
             chooseEmployeeButton();
         }
+        if (name.equals("selectConsultButton")) {
+            try {
+                selectConsultButton();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
+    private void selectConsultButton() throws SQLException {
+        selectConsultButton.setVisible(false);
+        consultButton.setVisible(false);
+        deleteButton.setVisible(false);
+        selectConsultButton.setVisible(true);
+
+        if (alternateEmployeeButton.isVisible()) {
+            alternateEmployeeButton.setVisible(false);
+        }
+        if (alternateDepartmentButton.isVisible()) {
+            alternateDepartmentButton.setVisible(false);
+        }
+
+        String element = (String) jListPick.getSelectedValue();
+
+        listModel.removeAllElements();
+
+        String [] elements = element.split(" ");
+
+        if (elements.length<3) {
+
+            for (String nif: Querys.getNifsDepartment(elements[0])) {
+                listModel.addAll(Querys.getPayrollsDepartment(nif));
+            }
+
+        } else {
+
+            listModel.addAll(Querys.getPayrollsEmployee(elements[3]));
+
+        }
+
+        titleLabel.setText(language.getProperty("choosePay"));
     }
 
     private void selectButton() throws SQLException {
         selectButton.setVisible(false);
         deleteButton.setVisible(true);
+        consultButton.setVisible(false);
+        selectConsultButton.setVisible(false);
+
         if (alternateEmployeeButton.isVisible()) {
             alternateEmployeeButton.setVisible(false);
         }
@@ -116,6 +160,11 @@ public class GeneralPickPanelController implements ActionListener {
 
         PayrollPanel.saveButton.setVisible(false);
         PayrollPanel.nextButton.setVisible(true);
+
+        jListPick.getSelectedValue();
+
+        //Querys.setPayrollDataOnPayroll();
+
         MainFrame.cardLayout.show(MainFrame.cards,"payrrolPanel");
     }
 

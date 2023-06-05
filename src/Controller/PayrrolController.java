@@ -85,6 +85,9 @@ public class PayrrolController implements ActionListener {
         Double ohCompPer = Double.valueOf(PayrollPanel.type9Txt.getText());
         Double ohCompAmount = Double.valueOf(PayrollPanel.compTax6Txt.getText());
 
+        Double retentionPer = Double.valueOf(PayrollPanel.type4Txt.getText());
+        Double retentionAmount = Double.valueOf(PayrollPanel.compTax3Txt.getText());
+
         try {
             Insert.insertPayrrol(nif, year, month, totalEarned, totalNet, companyAp);
         } catch (SQLException ex) {
@@ -110,7 +113,7 @@ public class PayrrolController implements ActionListener {
         }
 
         try {
-            Insert.insertCotCompany(Querys.getID(), unemploymentCompPer, unemploymentCompAmount, fpCompPer, fpCompAmount, fogasaPer, fogasaAmount, ohCompPer, ohCompAmount);
+            Insert.insertCotCompany(Querys.getID(), unemploymentCompPer, unemploymentCompAmount, fpCompPer, fpCompAmount, fogasaPer, fogasaAmount, ohCompPer, ohCompAmount,retentionPer,retentionAmount);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
