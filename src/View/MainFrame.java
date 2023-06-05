@@ -38,9 +38,6 @@ public class MainFrame extends JFrame {
         JMenuItem itemNew = new JMenuItem(language.getProperty("create"));
         itemNew.addActionListener(new MainFrameController("itemNew"));
 
-        JMenuItem itemModify = new JMenuItem(language.getProperty("modify"));
-        itemModify.addActionListener(new MainFrameController("itemModify"));
-
         JMenuItem itemConsult = new JMenuItem(language.getProperty("consult"));
         itemConsult.addActionListener(new MainFrameController("itemConsult"));
 
@@ -60,14 +57,12 @@ public class MainFrame extends JFrame {
 
         menuArchive.add(itemExport);
         menuPayroll.add(itemNew);
-        menuPayroll.add(itemModify);
         menuPayroll.add(itemConsult);
         menuPayroll.add(itemDelete);
         menuPreferences.add(menuLanguage);
         menuLanguage.add(itemEs);
         menuLanguage.add(itemEn);
         menuHelp.add(itemManual);
-
 
         menuBar = new JMenuBar();
         menuBar.add(menuArchive);
@@ -79,7 +74,6 @@ public class MainFrame extends JFrame {
         MainPanel mainPanel = new MainPanel();
         PayrrolPanel payrrolPanel = new PayrrolPanel();
         GeneralPickPanel generalPickPanel = new GeneralPickPanel();
-        ModifyPanel modifyPanel = new ModifyPanel();
 
         menuBar.setVisible(false);
         cardLayout = new CardLayout();
@@ -89,7 +83,6 @@ public class MainFrame extends JFrame {
         cards.add(mainPanel,"mainPanel");
         cards.add(payrrolPanel,"payrrolPanel");
         cards.add(generalPickPanel,"playerPick");
-        cards.add(modifyPanel, "modifyPanel");
 
         this.setIconImage(new ImageIcon(Sources.class.getResource("logoteaw.png")).getImage());
         this.add(menuBar, BorderLayout.NORTH);

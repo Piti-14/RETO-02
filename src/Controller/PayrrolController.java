@@ -8,7 +8,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+/**
+ * Controlador para el panel de nómina.
+ * Maneja los eventos del panel de nómina y realiza las acciones correspondientes.
+ */
 public class PayrrolController implements ActionListener {
+
+    /**
+     * Se activa cuando se produce un evento.
+     * Realiza las acciones correspondientes según el evento ocurrido.
+     *
+     * @param e el evento ocurrido
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -20,7 +31,7 @@ public class PayrrolController implements ActionListener {
         int year = Integer.parseInt(date[2]);
         String month = date[0];
 
-        Double totalEarned = Double.valueOf(PayrrolPanel.totalEarnedTxt.getText());;
+        Double totalEarned = Double.valueOf(PayrrolPanel.totalEarnedTxt.getText());
 
         Double totalNet = Double.valueOf(PayrrolPanel.totalNetReceivedTxt.getText());
 
@@ -28,14 +39,14 @@ public class PayrrolController implements ActionListener {
 
         // Nom_percep table
 
-            // Salary
+        // Salary
 
-            Double amountSp = Double.valueOf(PayrrolPanel.amount2Txt.getText());
-            Double ohSp = Double.valueOf(PayrrolPanel.amount5Txt.getText());
+        Double amountSp = Double.valueOf(PayrrolPanel.amount2Txt.getText());
+        Double ohSp = Double.valueOf(PayrrolPanel.amount5Txt.getText());
 
-            // Non-Salary
+        // Non-Salary
 
-            Double amountCompAllow = Double.valueOf(PayrrolPanel.amount9Txt.getText());
+        Double amountCompAllow = Double.valueOf(PayrrolPanel.amount9Txt.getText());
 
 
         // Nom_reten table
@@ -45,8 +56,6 @@ public class PayrrolController implements ActionListener {
 
         Double atEpPer = Double.valueOf(PayrrolPanel.type5Txt.getText());
         Double amountATEP = Double.valueOf(PayrrolPanel.compTax2Txt.getText());
-
-
 
         // Nom_cot_trabajador table
 
@@ -62,7 +71,6 @@ public class PayrrolController implements ActionListener {
         Double ohPer = Double.valueOf(PayrrolPanel.type3Txt.getText());
         Double ohAmount = Double.valueOf(PayrrolPanel.amount16Txt.getText());
 
-
         // Nom_cot_empresa
 
         Double unemploymentCompPer = Double.valueOf(PayrrolPanel.type6Txt.getText());
@@ -71,14 +79,11 @@ public class PayrrolController implements ActionListener {
         Double fpCompPer = Double.valueOf(PayrrolPanel.type7Txt.getText());
         Double fpCompAmount = Double.valueOf(PayrrolPanel.compTax4Txt.getText());
 
-
         Double fogasaPer = Double.valueOf(PayrrolPanel.type8Txt.getText());
         Double fogasaAmount = Double.valueOf(PayrrolPanel.compTax5Txt.getText());
 
-
         Double ohCompPer = Double.valueOf(PayrrolPanel.type9Txt.getText());
         Double ohCompAmount = Double.valueOf(PayrrolPanel.compTax6Txt.getText());
-
 
         try {
             Insert.insertPayrrol(nif, year, month, totalEarned, totalNet, companyAp);
@@ -87,32 +92,27 @@ public class PayrrolController implements ActionListener {
         }
 
         try {
-            Insert.insertNomPercep(Querys.getID(),amountSp,ohSp,amountCompAllow,nif);
+            Insert.insertNomPercep(Querys.getID(), amountSp, ohSp, amountCompAllow, nif);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
 
         try {
-            Insert.insertHoldbacks(Querys.getID(),irpfPer,amountIRPF,atEpPer,amountATEP );
+            Insert.insertHoldbacks(Querys.getID(), irpfPer, amountIRPF, atEpPer, amountATEP);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
 
         try {
-            Insert.insertCotEmployee(Querys.getID(),contingenciesPer,contingenciesAmount,unEmploymentPer,unEmploymentAmount, fpPer, fpAmount, ohPer, ohAmount);
+            Insert.insertCotEmployee(Querys.getID(), contingenciesPer, contingenciesAmount, unEmploymentPer, unEmploymentAmount, fpPer, fpAmount, ohPer, ohAmount);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
 
         try {
-            Insert.insertCotCompany(Querys.getID(),unemploymentCompPer,unemploymentCompAmount,fpCompPer,fpCompAmount, fogasaPer, fogasaAmount, ohCompPer, ohCompAmount);
+            Insert.insertCotCompany(Querys.getID(), unemploymentCompPer, unemploymentCompAmount, fpCompPer, fpCompAmount, fogasaPer, fogasaAmount, ohCompPer, ohCompAmount);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
-
-
-
-
-
 }

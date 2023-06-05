@@ -8,7 +8,6 @@ public class ConnectionDB {
     private static final String bbdd = "jdbc:postgresql://reto2-equipo1-db.cdf8njq9vyzm.us-east-1.rds.amazonaws.com:5432/TeawNominas";
     private static final String usuario = "admin123";
     private static final String clave = "admin123";
-    //private static Connection con;
 
     /* Creamos el método para conectarnos a la base de datos.
        Este método devolverá un objeto de tipo Connection. */
@@ -36,13 +35,4 @@ public class ConnectionDB {
             System.out.println(e.getMessage().toString());
         }
     }
-
-    /*public static void main(String[] args) {
-        Connection con = null;
-        con = Connect();
-        if(con != null) {
-            System.out.println("bien");
-            exit(con);
-        }
-    }*/
 }

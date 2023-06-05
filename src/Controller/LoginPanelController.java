@@ -9,6 +9,10 @@ import View.MainPanel;
 import javax.swing.*;
 import java.net.URISyntaxException;
 
+/**
+ * Controlador para el panel de inicio de sesión.
+ * Verifica las credenciales de inicio de sesión y realiza acciones correspondientes.
+ */
 public class LoginPanelController {
 
     public static Configuration configuration;
@@ -31,6 +35,11 @@ public class LoginPanelController {
         }
     }
 
+    /**
+     * Verifica las credenciales de inicio de sesión y realiza acciones correspondientes.
+     *
+     * @param passwordField el campo de contraseña
+     */
     public static void verificar(JPasswordField passwordField) {
 
         String password = passwordField.getText();

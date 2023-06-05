@@ -138,10 +138,6 @@ public class GeneralPickPanel extends JPanel {
         this.add(new JLabelWallpaper());
     }
     public static void deleteElement() {
-        String element = (String) jListPick.getSelectedValue();
-
-        System.out.println(element);
-
         listModel.removeElement(jListPick.getSelectedValue());
     }
 

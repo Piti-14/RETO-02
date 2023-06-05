@@ -20,7 +20,7 @@ import java.sql.SQLException;
 
 public class MainPanel extends JPanel {
 
-    RoundedButton addButton, modifyButton, consultButton, deleteButton;
+    RoundedButton addButton, consultButton, deleteButton;
     public static ShadowLabel titleLabel;
 
     public MainPanel() throws SQLException, URISyntaxException, IOException {
