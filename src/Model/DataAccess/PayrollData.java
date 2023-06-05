@@ -4,7 +4,7 @@ import Database.Querys;
 import Model.BasicClasses.Company;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
-import View.AddPanel;
+import View.PayrrolPanel;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -63,12 +63,12 @@ public class PayrollData {
 
         for (int i = 0; i < COMPANY; i++) {
             switch (i) {
-                case 0 -> AddPanel.companyTextFields.get(i).setText(comp.getName());
-                case 1 -> AddPanel.companyTextFields.get(i).setText(comp.getAddress());
-                case 2 -> AddPanel.companyTextFields.get(i).setText(comp.getCif());
-                case 3 -> AddPanel.companyTextFields.get(i).setText("" + comp.getCcc() + "");
+                case 0 -> PayrrolPanel.companyTextFields.get(i).setText(comp.getName());
+                case 1 -> PayrrolPanel.companyTextFields.get(i).setText(comp.getAddress());
+                case 2 -> PayrrolPanel.companyTextFields.get(i).setText(comp.getCif());
+                case 3 -> PayrrolPanel.companyTextFields.get(i).setText("" + comp.getCcc() + "");
             }
-            AddPanel.companyTextFields.get(i).setEditable(false);
+            PayrrolPanel.companyTextFields.get(i).setEditable(false);
         }
     }
 
@@ -76,13 +76,13 @@ public class PayrollData {
         for (int i = 0; i < EMPLOYEE; i++) {
             switch (i) {
                 case 0 ->
-                        AddPanel.employeeTextFields.get(i).setText(e.getName() + " " + e.getFirstLastname() + " " + e.getSecondLastname());
-                case 1 -> AddPanel.employeeTextFields.get(i).setText(e.getNIF());
-                case 2 -> AddPanel.employeeTextFields.get(i).setText("" + e.getSS_number() + "");
-                case 3 -> AddPanel.employeeTextFields.get(i).setText(e.getDept());
-                case 4 -> AddPanel.employeeTextFields.get(i).setText(e.getGroup().getGroupCode());
+                        PayrrolPanel.employeeTextFields.get(i).setText(e.getName() + " " + e.getFirstLastname() + " " + e.getSecondLastname());
+                case 1 -> PayrrolPanel.employeeTextFields.get(i).setText(e.getNIF());
+                case 2 -> PayrrolPanel.employeeTextFields.get(i).setText("" + e.getSS_number() + "");
+                case 3 -> PayrrolPanel.employeeTextFields.get(i).setText(e.getDept());
+                case 4 -> PayrrolPanel.employeeTextFields.get(i).setText(e.getGroup().getGroupCode());
             }
-            AddPanel.employeeTextFields.get(i).setEditable(false);
+            PayrrolPanel.employeeTextFields.get(i).setEditable(false);
         }
     }
 
@@ -91,26 +91,26 @@ public class PayrollData {
 
         for (int i = 0; i < DATE; i++) {
             switch (i) {
-                case 0 -> AddPanel.dateTextFields.get(i).setText(today.getMonth().name() + " of " + today.getYear());
-                case 1 -> AddPanel.dateTextFields.get(i).setText("30");
-                case 2 -> AddPanel.dateTextFields.get(i).setText(today.toString());
+                case 0 -> PayrrolPanel.dateTextFields.get(i).setText(today.getMonth().name() + " of " + today.getYear());
+                case 1 -> PayrrolPanel.dateTextFields.get(i).setText("30");
+                case 2 -> PayrrolPanel.dateTextFields.get(i).setText(today.toString());
             }
-            AddPanel.dateTextFields.get(i).setEditable(false);
+            PayrrolPanel.dateTextFields.get(i).setEditable(false);
         }
     }
 
     public static void fillPerceptions(Employee e) {
         for (int i = 0; i < PERCEPTIONS; i++) {
             switch (i) {
-                case 0 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getDescription());
-                case 3 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getDescription());
-                case 6 -> AddPanel.perceptionsTextFields.get(i).setText("");
-                case 7 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(3).getQuant() + "");
-                case 8 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getQuant() + "");
-                case 11 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
-                case 15 -> AddPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getQuant() + "");
+                case 0 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getDescription());
+                case 3 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getDescription());
+                case 6 -> PayrrolPanel.perceptionsTextFields.get(i).setText("");
+                case 7 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(3).getQuant() + "");
+                case 8 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getQuant() + "");
+                case 11 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
+                case 15 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getQuant() + "");
             }
-            AddPanel.perceptionsTextFields.get(i).setEditable(false);
+            PayrrolPanel.perceptionsTextFields.get(i).setEditable(false);
         }
     }
 
@@ -121,13 +121,13 @@ public class PayrollData {
         }
         for (int i = 0; i < EMPLOYEE_TAXES; i++) {
             switch (i) {
-                case 0 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(6) + "");
-                case 1 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(permanent) + "");
-                case 2 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(3) + "");
-                case 3 -> AddPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(5) + "");
-                case 4 -> AddPanel.employeeTypesTextFields.get(i).setText(IRPF + "");
+                case 0 -> PayrrolPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(6) + "");
+                case 1 -> PayrrolPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(permanent) + "");
+                case 2 -> PayrrolPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(3) + "");
+                case 3 -> PayrrolPanel.employeeTypesTextFields.get(i).setText(employeeTaxes.get(5) + "");
+                case 4 -> PayrrolPanel.employeeTypesTextFields.get(i).setText(IRPF + "");
             }
-            AddPanel.employeeTypesTextFields.get(i).setEditable(false);
+            PayrrolPanel.employeeTypesTextFields.get(i).setEditable(false);
         }
     }
 
@@ -138,40 +138,40 @@ public class PayrollData {
         }
         for (int i = 0; i < COMPANY_TAXES; i++) {
             switch (i) {
-                case 0 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(7) + "");
-                case 1 -> AddPanel.companyTypesTextFields.get(i).setText(ATEP + "");
-                case 2 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(permanent) + "");
-                case 3, 4 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(i) + "");
-                case 5 -> AddPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(6) + "");
+                case 0 -> PayrrolPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(7) + "");
+                case 1 -> PayrrolPanel.companyTypesTextFields.get(i).setText(ATEP + "");
+                case 2 -> PayrrolPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(permanent) + "");
+                case 3, 4 -> PayrrolPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(i) + "");
+                case 5 -> PayrrolPanel.companyTypesTextFields.get(i).setText(companyTaxes.get(6) + "");
             }
-            AddPanel.companyTypesTextFields.get(i).setEditable(false);
+            PayrrolPanel.companyTypesTextFields.get(i).setEditable(false);
         }
     }
 
     public static void fillCalculations(Employee e) {
         for (int i = 0; i < CALCULATIONS; i++) {
             switch (i) {
-                case 0, 15, 17 -> AddPanel.calculationsTextFields.get(i).setText(calculatedData.totalEarned + "");
-                case 1 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstDeduction) + "");
-                case 2 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.secondDeduction) + "");
-                case 3 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.thirdDeduction) + "");
-                case 4, 22 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.fourthDeduction) + "");
-                case 5 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalEmployeeTaxes) + "");
-                case 6 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.irpfDeduction) + "");
-                case 10 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalDeducted) + "");
-                case 11 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalNetPay) + "");
-                case 12 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.monthlyRemuneration) + "");
-                case 13 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.extraPays) + "");
-                case 14 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.commonContingences) + "");
-                case 16 -> AddPanel.calculationsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
-                case 18 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstCompanyDeduction) + "");
-                case 19 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.atepDeduction) + "");
-                case 20 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.secondCompanyDeduction) + "");
-                case 21 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.thirdCompanyDeduction) + "");
-                case 23 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.fifthCompanyDeduction) + "");
-                case 24 -> AddPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalCompanyTaxes) + "");
+                case 0, 15, 17 -> PayrrolPanel.calculationsTextFields.get(i).setText(calculatedData.totalEarned + "");
+                case 1 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstDeduction) + "");
+                case 2 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.secondDeduction) + "");
+                case 3 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.thirdDeduction) + "");
+                case 4, 22 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.fourthDeduction) + "");
+                case 5 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalEmployeeTaxes) + "");
+                case 6 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.irpfDeduction) + "");
+                case 10 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalDeducted) + "");
+                case 11 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalNetPay) + "");
+                case 12 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.monthlyRemuneration) + "");
+                case 13 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.extraPays) + "");
+                case 14 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.commonContingences) + "");
+                case 16 -> PayrrolPanel.calculationsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
+                case 18 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstCompanyDeduction) + "");
+                case 19 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.atepDeduction) + "");
+                case 20 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.secondCompanyDeduction) + "");
+                case 21 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.thirdCompanyDeduction) + "");
+                case 23 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.fifthCompanyDeduction) + "");
+                case 24 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalCompanyTaxes) + "");
             }
-            AddPanel.calculationsTextFields.get(i).setEditable(false);
+            PayrrolPanel.calculationsTextFields.get(i).setEditable(false);
         }
     }
 

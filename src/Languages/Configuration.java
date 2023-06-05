@@ -10,9 +10,6 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Configuration {
-
-
-    private File filee;
     private Properties properties;
     private static final String CONFIGFILE = "Configuration.properties";
     private static final String FILE_PROPERTIES;
@@ -27,10 +24,8 @@ public class Configuration {
 
     public Configuration() throws URISyntaxException {
         properties = new Properties();
-        filee = new File(FILE_PROPERTIES);
 
         try {
-            System.out.println(FILE_PROPERTIES);
             FileInputStream file = new FileInputStream(FILE_PROPERTIES);
             properties.load(file);
             file.close();

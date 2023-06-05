@@ -1,6 +1,4 @@
 package View.Utils;
-import View.AddPanel;
-import org.w3c.dom.Document;
 /*
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -53,7 +51,7 @@ public class JPanelToPDFExporter {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             // Create your JPanel object here
-            JPanel panel = new AddPanel();
+            JPanel panel = new PayrrolPanel();
 
             // Specify the file path for the exported PDF
             String filePath = "path/to/exported.pdf";

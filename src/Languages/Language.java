@@ -18,7 +18,6 @@ public class Language extends Properties{
 
     public void getProperties(String langFile) {
         try {
-            System.out.println(langFile);
             this.load( new FileInputStream(langFile));
         } catch (IOException ignored) {
             System.out.println("Error language");

@@ -256,5 +256,43 @@ public class Querys {
         return cod;
     }
 
+    public static ArrayList<String> getPayrrolsEmployee(String nif) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select id_nom,nif,ano_n from nominas where nif='" +nif+ "'");
+
+        ArrayList<String> payrrols = new ArrayList<>();
+
+        while (result.next()){
+            payrrols.add(result.getString(1) + ", " + result.getString(2) + ", " + result.getDouble(3));
+        }
+
+        return payrrols;
+    }
+
+    public static ArrayList<String> getPayrrolsDepartment(String nif) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select id_nom,nif,ano_n from nominas where nif='" +nif+ "'");
+
+        ArrayList<String> payrrols = new ArrayList<>();
+
+        while (result.next()){
+            payrrols.add(result.getString(1) + ", " + result.getString(2) + ", " +((int) result.getDouble(3)));
+        }
+
+        return payrrols;
+    }
+
+    public static ArrayList<String> getNifsDepartment(String department) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select nif from trabajador where cod_dep='"+department+"'");
+
+        ArrayList<String> nifs = new ArrayList<>();
+
+        while (result.next()){
+            nifs.add(result.getString(1));
+        }
+
+        return nifs;
+    }
 
 }

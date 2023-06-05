@@ -1,6 +1,6 @@
 package View;
 
-import Controller.AddPanelController;
+import Controller.PayrrolController;
 import Languages.Configuration;
 import Languages.Language;
 import View.Utils.*;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class AddPanel extends JPanel {
+public class PayrrolPanel extends JPanel {
 
     public static JLabel companyLbl, employeeLbl, addressLbl, nifLbl, cifLbl, ssnLbl, bankNumberLbl, categoryLbl, contributionGroupLbl,
             settlementPeriodLbl, nDaysLbl, totalsLbl, earningsLbl, amountLbl, salaryPercepcionsLbl, baseSalaryLbl,
@@ -43,7 +43,7 @@ public class AddPanel extends JPanel {
     public static ArrayList<JTextField> dateTextFields = new ArrayList<>();
     public static ArrayList<JTextField> perceptionsTextFields = new ArrayList<>();
 
-    public AddPanel() throws URISyntaxException, IOException {
+    public PayrrolPanel() throws URISyntaxException, IOException {
         setLayout(new BorderLayout());
 
         JPanel mainPanel = new JPanel();
@@ -762,7 +762,7 @@ public class AddPanel extends JPanel {
         exitSave.add(previousButton, constraints);
 
         SaveButton saveButton = new SaveButton();
-        saveButton.addActionListener(new AddPanelController());
+        saveButton.addActionListener(new PayrrolController());
         saveButton.setPreferredSize(new Dimension(75, 75));
         constraints.gridx = 4;
         constraints.gridy = 0;
