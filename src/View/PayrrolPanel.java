@@ -7,6 +7,7 @@ import View.Utils.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -42,6 +43,36 @@ public class PayrrolPanel extends JPanel {
     public static ArrayList<JTextField> companyTypesTextFields = new ArrayList<>();
     public static ArrayList<JTextField> dateTextFields = new ArrayList<>();
     public static ArrayList<JTextField> perceptionsTextFields = new ArrayList<>();
+
+    public static PreviousButton previousButton;
+
+    static {
+        try {
+            previousButton = new PreviousButton();
+        } catch (URISyntaxException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static NextButton nextButton;
+
+    static {
+        try {
+            nextButton = new NextButton();
+        } catch (URISyntaxException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static SaveButton saveButton;
+
+    static {
+        try {
+            saveButton = new SaveButton();
+        } catch (URISyntaxException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public PayrrolPanel() throws URISyntaxException, IOException {
         setLayout(new BorderLayout());
@@ -755,13 +786,16 @@ public class PayrrolPanel extends JPanel {
         constraints.gridy = 3;
         mainPanel.add(botInfo, constraints);
 
-        PreviousButton previousButton = new PreviousButton();
         previousButton.setPreferredSize(new Dimension(75, 75));
         constraints.gridx = 0;
         constraints.gridy = 0;
         exitSave.add(previousButton, constraints);
 
-        SaveButton saveButton = new SaveButton();
+        nextButton.setPreferredSize(new Dimension(75, 75));
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        exitSave.add(nextButton, constraints);
+
         saveButton.addActionListener(new PayrrolController());
         saveButton.setPreferredSize(new Dimension(75, 75));
         constraints.gridx = 4;
