@@ -51,17 +51,17 @@ public class MainPanel extends JPanel {
         titleLabel.setShadowOffset(new Dimension(2, -2));
 
         addButton = new RoundedButton(language.getProperty("createPay"));
-        addButton.setBounds((screenWidth/6), ((screenHeight/4)+50), 400, 100);
+        addButton.setBounds(((screenWidth/2)-200), ((screenHeight/4)+50), 400, 100);
         addButton.addActionListener(new MainPanelController("addButton"));
         customizeButton(addButton, color1, color2);
 
         consultButton = new RoundedButton(language.getProperty("consultPay"));
-        consultButton.setBounds(((screenWidth/2)+50), ((screenHeight/4)+50), 400, 100);
+        consultButton.setBounds(((screenWidth/2)-200), ((screenHeight/4)+400), 400, 100);
         consultButton.addActionListener(new MainPanelController("consultButton"));
         customizeButton(consultButton, color2, color1);
 
         deleteButton = new RoundedButton(language.getProperty("deletePay"));
-        deleteButton.setBounds(((screenWidth/2) -200), ((screenHeight/2)+20), 400, 100);
+        deleteButton.setBounds(((screenWidth/2)-200), ((screenHeight/2)-50), 400, 100);
         deleteButton.addActionListener(new MainPanelController("deleteButton"));
         customizeButton(deleteButton, color2, color1);
 

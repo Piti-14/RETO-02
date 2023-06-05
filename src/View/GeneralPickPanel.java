@@ -80,7 +80,7 @@ public class GeneralPickPanel extends JPanel {
         deleteButton.addActionListener(new GeneralPickPanelController("deleteButton"));
 
         consultButton = new JButton(language.getProperty("consultBtn"));
-        consultButton.setBounds(screenWidth*(72)/100,screenHeight*(44)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        consultButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         consultButton.setBorder(new LineBorder(Color.WHITE, 2));
         consultButton.setBackground(color);
         consultButton.setFocusPainted(false);
