@@ -7,7 +7,7 @@ public class EmployeeData {
 
     private final Employee employee;
     int permanent = 0;
-    public double commonContingences, extraPays, monthlyRemuneration;
+    public static double commonContingences, extraPays, monthlyRemuneration;
     public double firstDeduction, secondDeduction, thirdDeduction, fourthDeduction, irpfDeduction;
     public double firstCompanyDeduction, secondCompanyDeduction, thirdCompanyDeduction, fourthCompanyDeduction, fifthCompanyDeduction, atepDeduction;
     public double totalEarned, totalEmployeeTaxes, totalDeducted,

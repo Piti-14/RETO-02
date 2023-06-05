@@ -1,6 +1,9 @@
 package Database;
 
 import Model.BasicClasses.*;
+import Model.DataAccess.EmployeeData;
+import Model.DataAccess.PayrollData;
+import View.PayrollPanel;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
