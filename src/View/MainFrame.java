@@ -72,7 +72,7 @@ public class MainFrame extends JFrame {
 
         LoginPanel loginPanel = new LoginPanel();
         MainPanel mainPanel = new MainPanel();
-        PayrrolPanel payrrolPanel = new PayrrolPanel();
+        PayrollPanel payrrolPanel = new PayrollPanel();
         GeneralPickPanel generalPickPanel = new GeneralPickPanel();
 
         menuBar.setVisible(false);

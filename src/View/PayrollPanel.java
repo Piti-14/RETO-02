@@ -7,13 +7,12 @@ import View.Utils.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class PayrrolPanel extends JPanel {
+public class PayrollPanel extends JPanel {
 
     public static JLabel companyLbl, employeeLbl, addressLbl, nifLbl, cifLbl, ssnLbl, bankNumberLbl, categoryLbl, contributionGroupLbl,
             settlementPeriodLbl, nDaysLbl, totalsLbl, earningsLbl, amountLbl, salaryPercepcionsLbl, baseSalaryLbl,
@@ -74,7 +73,7 @@ public class PayrrolPanel extends JPanel {
         }
     }
 
-    public PayrrolPanel() throws URISyntaxException, IOException {
+    public PayrollPanel() throws URISyntaxException, IOException {
         setLayout(new BorderLayout());
 
         JPanel mainPanel = new JPanel();

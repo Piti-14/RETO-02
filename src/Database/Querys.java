@@ -256,30 +256,30 @@ public class Querys {
         return cod;
     }
 
-    public static ArrayList<String> getPayrrolsEmployee(String nif) throws SQLException {
+    public static ArrayList<String> getPayrollsEmployee(String nif) throws SQLException {
         Statement query = connect.createStatement();
-        ResultSet result = query.executeQuery("select id_nom,nif,ano_n from nominas where nif='" +nif+ "'");
+        ResultSet result = query.executeQuery("select id_nom,nif,ano_n, mes_n from nominas where nif='" +nif+ "'");
 
-        ArrayList<String> payrrols = new ArrayList<>();
+        ArrayList<String> payrolls = new ArrayList<>();
 
         while (result.next()){
-            payrrols.add(result.getString(1) + ", " + result.getString(2) + ", " + result.getDouble(3));
+            payrolls.add(result.getString(1) + " " + result.getString(2) + " " + result.getDouble(3) + " " + result.getString(4));
         }
 
-        return payrrols;
+        return payrolls;
     }
 
-    public static ArrayList<String> getPayrrolsDepartment(String nif) throws SQLException {
+    public static ArrayList<String> getPayrollsDepartment(String nif) throws SQLException {
         Statement query = connect.createStatement();
         ResultSet result = query.executeQuery("select id_nom,nif,ano_n from nominas where nif='" +nif+ "'");
 
-        ArrayList<String> payrrols = new ArrayList<>();
+        ArrayList<String> payrolls = new ArrayList<>();
 
         while (result.next()){
-            payrrols.add(result.getString(1) + ", " + result.getString(2) + ", " +((int) result.getDouble(3)));
+            payrolls.add(result.getString(1) + ", " + result.getString(2) + ", " +((int) result.getDouble(3)));
         }
 
-        return payrrols;
+        return payrolls;
     }
 
     public static ArrayList<String> getNifsDepartment(String department) throws SQLException {
@@ -294,5 +294,129 @@ public class Querys {
 
         return nifs;
     }
+
+    public static void setPayrollDataOnPayroll(int payroll) throws SQLException {
+
+        Statement query = connect.createStatement();
+
+        ResultSet result = query.executeQuery("select * from nominas where id_nom='"+payroll+"'");
+
+        Employee employee = new Employee();
+        for (Employee emp: PayrollData.employees) {
+            if (emp.getNIF().equals(result.getString(2))) {
+                employee = emp;
+            }
+        }
+
+        ResultSet salary = query.executeQuery("select getSalarioBase('"+employee.getGroup().getGroupCode()+"')");
+
+        ResultSet extraPays = query.executeQuery("select getPagasProrrateadas('"+employee.getGroup().getGroupCode()+"')");
+
+
+
+
+        ResultSet result2 = query.executeQuery("select * from nom_percep where id_nom='"+payroll+"'");
+        ArrayList<String> data2 = new ArrayList<>();
+        while (result2.next()) {
+            data2.add(result2.getString(2));
+            data2.add(String.valueOf(result2.getDouble(3)));
+        }
+
+        ResultSet result3 = query.executeQuery("select * from nom_reten where id_nom='"+payroll+"'");
+        ArrayList<String> data3 = new ArrayList<>();
+        while (result3.next()) {
+            data3.add(result3.getString(2));
+            data3.add(String.valueOf(result3.getInt(3)));
+            data3.add(String.valueOf(result3.getDouble(4)));
+        }
+
+        ResultSet result4 = query.executeQuery("select * from nom_cot_trabajdor where id_nom='"+payroll+"'");
+        ArrayList<String> data4 = new ArrayList<>();
+        while (result4.next()) {
+            data4.add(result3.getString(2));
+            data4.add(String.valueOf(result3.getDouble(3)));
+            data4.add(String.valueOf(result3.getDouble(4)));
+        }
+
+        ResultSet result5 = query.executeQuery("select * from nom_cot_empresa where id_nom='"+payroll+"'");
+        ArrayList<String> data5 = new ArrayList<>();
+        while (result5.next()) {
+            data5.add(result3.getString(2));
+            data5.add(String.valueOf(result3.getDouble(3)));
+            data5.add(String.valueOf(result3.getDouble(4)));
+        }
+
+
+
+        PayrollPanel.employeeTxt.setText(employee.getName() + " " + employee.getFirstLastname() + " " +employee.getSecondLastname());
+        PayrollPanel.nifTxt.setText(result.getString(2));
+        PayrollPanel.ssnTxt.setText(result.getString(employee.getSS_number()));
+        PayrollPanel.categoryTxt.setText("Administración");
+        PayrollPanel.contributionGroupTxt.setText(employee.getGroup().getGroupCode());
+
+        PayrollPanel.settlementPeriodTxt.setText(result.getString(4) + "OF" + result.getDouble(3));
+        PayrollPanel.nDaysTxt.setText("30");
+        //PayrollPanel.dateTxt
+
+        PayrollPanel.salarySupplementsTxt.setText((data2.get(1)));
+        PayrollPanel.compensationsOrAllowancesTxt.setText(data2.get(5));
+        PayrollPanel.amount1Txt.setText(String.valueOf(salary.getDouble(1))); // salario base
+        PayrollPanel.amount2Txt.setText(data2.get(2));
+        PayrollPanel.amount5Txt.setText(data2.get(5));
+        PayrollPanel.amount7Txt.setText(String.valueOf(EmployeeData.extraPays));
+        /*PayrollPanel.amount9Txt.setText();
+
+        PayrollPanel.totalEarnedTxt.setText();
+        PayrollPanel.amount13Txt.setText();
+        PayrollPanel.amount14Txt.setText();
+        PayrollPanel.amount15Txt.setText();
+        PayrollPanel.amount16Txt.setText();
+        PayrollPanel.amount17Txt.setText();
+        PayrollPanel.amount18Txt.setText();
+        PayrollPanel.totalDeductedTxt.setText();
+        PayrollPanel.totalNetReceivedTxt.setText();
+
+        PayrollPanel.monthlyRemunerationTxt.setText();
+        PayrollPanel.extraPaymentsTxt.setText();
+        PayrollPanel.base1Txt.setText();
+        PayrollPanel.base2Txt.setText();
+        PayrollPanel.base3Txt.setText();
+        PayrollPanel.base4Txt.setText();
+        PayrollPanel.compTax1Txt.setText();
+        PayrollPanel.compTax2Txt.setText();
+        PayrollPanel.compTax3Txt.setText();
+        PayrollPanel.compTax4Txt.setText();
+        PayrollPanel.compTax5Txt.setText();
+        PayrollPanel.compTax6Txt.setText();
+        PayrollPanel.totalTxt.setText();
+
+        PayrollPanel.typeTxt.setText();
+        PayrollPanel.type1Txt.setText();
+        PayrollPanel.type2Txt.setText();
+        PayrollPanel.type3Txt.setText();
+        PayrollPanel.irpfTxt.setText();
+
+        PayrollPanel.type4Txt.setText();
+        PayrollPanel. type5Txt.setText();
+        PayrollPanel.type6Txt.setText();
+        PayrollPanel. type7Txt.setText();
+        PayrollPanel. type8Txt.setText();
+        PayrollPanel.  type9Txt.setText();*/
+    }
+
+
+    public static String getEmployyeDataOfPayroll(String nif) throws SQLException {
+        Statement query = connect.createStatement();
+        ResultSet result = query.executeQuery("select nom,apellido1,apellido2,cod_gr,n_ss from trabajador where nif='"+nif+"'");
+
+        String data = "";
+
+        while (result.next()){
+            data = (result.getString(1) + " " + result.getString(2)  + " " + result.getString(3) + " " + result.getString(4) + " " + result.getString(5));
+        }
+
+        return data;
+    }
+
 
 }

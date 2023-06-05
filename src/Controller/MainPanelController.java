@@ -74,9 +74,7 @@ public class MainPanelController implements ActionListener {
     public void createButton() {
         MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         GeneralPickPanel.deleteButton.setVisible(false);
-        GeneralPickPanel.modifyButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(true);
-        GeneralPickPanel.jComboBox.setVisible(false);
         GeneralPickPanel.consultButton.setVisible(false);
         GeneralPickPanel.selectButton.setVisible(false);
         GeneralPickPanel.alternateEmployeeButton.setVisible(false);
@@ -112,10 +110,8 @@ public class MainPanelController implements ActionListener {
     public void consultButton() {
         MainFrame.cardLayout.show(MainFrame.cards,"playerPick");
         GeneralPickPanel.deleteButton.setVisible(false);
-        GeneralPickPanel.modifyButton.setVisible(false);
         GeneralPickPanel.chooseButton.setVisible(false);
         GeneralPickPanel.consultButton.setVisible(true);
-        GeneralPickPanel.jComboBox.setVisible(true);
         GeneralPickPanel.selectButton.setVisible(false);
         GeneralPickPanel.alternateEmployeeButton.setVisible(false);
         GeneralPickPanel.alternateDepartmentButton.setVisible(true);

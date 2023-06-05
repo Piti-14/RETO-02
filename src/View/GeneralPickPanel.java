@@ -21,10 +21,8 @@ public class GeneralPickPanel extends JPanel {
     public static MainPanel.ShadowLabel titleLabel;
     //public static Querys querys = new Querys();
     public static JList jListPick;
-    public static JComboBox<String> jComboBox;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();
     public static JButton chooseButton;
-    public static JButton modifyButton;
     public static JButton deleteButton;
     public static JButton consultButton;
     public static JButton selectButton;
@@ -57,12 +55,6 @@ public class GeneralPickPanel extends JPanel {
         jListPick.setBorder(new LineBorder(Color.WHITE, 2));
         jListPick.setBackground(color);
 
-        jComboBox = new JComboBox<>(new String[]{language.getProperty("history"), language.getProperty("recent")});
-        jComboBox.setBounds(screenWidth*(42)/100,screenHeight*(68)/100,screenWidth*(10)/100,screenHeight*(5)/100);
-        jComboBox.setBorder(new LineBorder(Color.WHITE, 2));
-        jComboBox.setBackground(color);
-        jComboBox.setVisible(false);
-
         chooseButton = new JButton(language.getProperty("chooseBtn"));
         chooseButton.setBounds(screenWidth*(72)/100,screenHeight*(48)/100,screenWidth*(10)/100,screenHeight*(5)/100);
         chooseButton.setBorder(new LineBorder(Color.WHITE, 2));
@@ -70,14 +62,6 @@ public class GeneralPickPanel extends JPanel {
         chooseButton.setFocusPainted(false);
         chooseButton.setVisible(false);
         chooseButton.addActionListener(new GeneralPickPanelController("chooseButton"));
-
-        modifyButton = new JButton(language.getProperty("modifyBtn"));
-        modifyButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
-        modifyButton.setBorder(new LineBorder(Color.WHITE, 2));
-        modifyButton.setBackground(color);
-        modifyButton.setFocusPainted(false);
-        modifyButton.setVisible(true);
-        modifyButton.addActionListener(new GeneralPickPanelController("modifyButton"));
 
         selectButton = new JButton(language.getProperty("selectBtn"));
         selectButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
@@ -123,9 +107,7 @@ public class GeneralPickPanel extends JPanel {
 
         this.add(titleLabel);
         this.add(chooseButton);
-        this.add(jComboBox);
         this.add(jListPick);
-        this.add(modifyButton);
         this.add(deleteButton);
         this.add(alternateEmployeeButton);
         this.add(alternateDepartmentButton);

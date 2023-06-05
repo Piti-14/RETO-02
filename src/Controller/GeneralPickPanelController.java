@@ -13,10 +13,9 @@ import Languages.Language;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import Model.DataAccess.PayrollData;
-import Sources.Sources;
 import View.GeneralPickPanel;
 import View.MainFrame;
-import View.PayrrolPanel;
+import View.PayrollPanel;
 
 import static View.GeneralPickPanel.*;
 
@@ -27,6 +26,7 @@ public class GeneralPickPanelController implements ActionListener {
 
     Configuration configuration = new Configuration();
     Language language = new Language(Integer.parseInt(configuration.getLanguage()));
+    //ArrayList<int> payrolls = new ArrayList<int>();
 
     public GeneralPickPanelController(String name) throws SQLException, URISyntaxException, IOException {
         this.name = name;
@@ -90,12 +90,12 @@ public class GeneralPickPanelController implements ActionListener {
         if (elements.length<3) {
 
             for (String nif: Querys.getNifsDepartment(elements[0])) {
-                listModel.addAll(Querys.getPayrrolsDepartment(nif));
+                listModel.addAll(Querys.getPayrollsDepartment(nif));
             }
 
         } else {
 
-            listModel.addAll(Querys.getPayrrolsEmployee(elements[3]));
+            listModel.addAll(Querys.getPayrollsEmployee(elements[3]));
 
         }
 
@@ -107,15 +107,15 @@ public class GeneralPickPanelController implements ActionListener {
         String nif = value[value.length - 1];
 
         PayrollData.generatePayroll(nif);
-
-        PayrrolPanel.nextButton.setVisible(false);
-
+        PayrollPanel.nextButton.setVisible(false);
+        PayrollPanel.saveButton.setVisible(true);
         MainFrame.cardLayout.show(MainFrame.cards,"payrrolPanel");
     }
 
     private void consultButton() {
 
-        PayrrolPanel.saveButton.setVisible(false);
+        PayrollPanel.saveButton.setVisible(false);
+        PayrollPanel.nextButton.setVisible(true);
         MainFrame.cardLayout.show(MainFrame.cards,"payrrolPanel");
     }
 
@@ -153,5 +153,11 @@ public class GeneralPickPanelController implements ActionListener {
         }
 
         titleLabel.setText(language.getProperty("chooseEmp"));
+    }
+
+    public void fillData(int payroll) throws SQLException {
+
+        PayrollData.fillCompanyData();
+
     }
 }

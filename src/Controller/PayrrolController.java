@@ -2,7 +2,7 @@ package Controller;
 
 import Database.Insert;
 import Database.Querys;
-import View.PayrrolPanel;
+import View.PayrollPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,65 +25,65 @@ public class PayrrolController implements ActionListener {
 
         // Nominas Table
 
-        String nif = PayrrolPanel.nifTxt.getText();
+        String nif = PayrollPanel.nifTxt.getText();
 
-        String[] date = PayrrolPanel.settlementPeriodTxt.getText().split(" ");
+        String[] date = PayrollPanel.settlementPeriodTxt.getText().split(" ");
         int year = Integer.parseInt(date[2]);
         String month = date[0];
 
-        Double totalEarned = Double.valueOf(PayrrolPanel.totalEarnedTxt.getText());
+        Double totalEarned = Double.valueOf(PayrollPanel.totalEarnedTxt.getText());
 
-        Double totalNet = Double.valueOf(PayrrolPanel.totalNetReceivedTxt.getText());
+        Double totalNet = Double.valueOf(PayrollPanel.totalNetReceivedTxt.getText());
 
-        Double companyAp =  Double.valueOf(PayrrolPanel.totalTxt.getText());
+        Double companyAp =  Double.valueOf(PayrollPanel.totalTxt.getText());
 
         // Nom_percep table
 
         // Salary
 
-        Double amountSp = Double.valueOf(PayrrolPanel.amount2Txt.getText());
-        Double ohSp = Double.valueOf(PayrrolPanel.amount5Txt.getText());
+        Double amountSp = Double.valueOf(PayrollPanel.amount2Txt.getText());
+        Double ohSp = Double.valueOf(PayrollPanel.amount5Txt.getText());
 
         // Non-Salary
 
-        Double amountCompAllow = Double.valueOf(PayrrolPanel.amount9Txt.getText());
+        Double amountCompAllow = Double.valueOf(PayrollPanel.amount9Txt.getText());
 
 
         // Nom_reten table
 
-        Double irpfPer = Double.valueOf(PayrrolPanel.irpfTxt.getText());
-        Double amountIRPF = Double.valueOf(PayrrolPanel.amount18Txt.getText());
+        Double irpfPer = Double.valueOf(PayrollPanel.irpfTxt.getText());
+        Double amountIRPF = Double.valueOf(PayrollPanel.amount18Txt.getText());
 
-        Double atEpPer = Double.valueOf(PayrrolPanel.type5Txt.getText());
-        Double amountATEP = Double.valueOf(PayrrolPanel.compTax2Txt.getText());
+        Double atEpPer = Double.valueOf(PayrollPanel.type5Txt.getText());
+        Double amountATEP = Double.valueOf(PayrollPanel.compTax2Txt.getText());
 
         // Nom_cot_trabajador table
 
-        Double contingenciesPer = Double.valueOf(PayrrolPanel.typeTxt.getText());
-        Double contingenciesAmount = Double.valueOf(PayrrolPanel.amount13Txt.getText());
+        Double contingenciesPer = Double.valueOf(PayrollPanel.typeTxt.getText());
+        Double contingenciesAmount = Double.valueOf(PayrollPanel.amount13Txt.getText());
 
-        Double unEmploymentPer = Double.valueOf(PayrrolPanel.type1Txt.getText());
-        Double unEmploymentAmount = Double.valueOf(PayrrolPanel.amount14Txt.getText());
+        Double unEmploymentPer = Double.valueOf(PayrollPanel.type1Txt.getText());
+        Double unEmploymentAmount = Double.valueOf(PayrollPanel.amount14Txt.getText());
 
-        Double fpPer = Double.valueOf(PayrrolPanel.type2Txt.getText());
-        Double fpAmount = Double.valueOf(PayrrolPanel.amount15Txt.getText());
+        Double fpPer = Double.valueOf(PayrollPanel.type2Txt.getText());
+        Double fpAmount = Double.valueOf(PayrollPanel.amount15Txt.getText());
 
-        Double ohPer = Double.valueOf(PayrrolPanel.type3Txt.getText());
-        Double ohAmount = Double.valueOf(PayrrolPanel.amount16Txt.getText());
+        Double ohPer = Double.valueOf(PayrollPanel.type3Txt.getText());
+        Double ohAmount = Double.valueOf(PayrollPanel.amount16Txt.getText());
 
         // Nom_cot_empresa
 
-        Double unemploymentCompPer = Double.valueOf(PayrrolPanel.type6Txt.getText());
-        Double unemploymentCompAmount = Double.valueOf(PayrrolPanel.compTax3Txt.getText());
+        Double unemploymentCompPer = Double.valueOf(PayrollPanel.type6Txt.getText());
+        Double unemploymentCompAmount = Double.valueOf(PayrollPanel.compTax3Txt.getText());
 
-        Double fpCompPer = Double.valueOf(PayrrolPanel.type7Txt.getText());
-        Double fpCompAmount = Double.valueOf(PayrrolPanel.compTax4Txt.getText());
+        Double fpCompPer = Double.valueOf(PayrollPanel.type7Txt.getText());
+        Double fpCompAmount = Double.valueOf(PayrollPanel.compTax4Txt.getText());
 
-        Double fogasaPer = Double.valueOf(PayrrolPanel.type8Txt.getText());
-        Double fogasaAmount = Double.valueOf(PayrrolPanel.compTax5Txt.getText());
+        Double fogasaPer = Double.valueOf(PayrollPanel.type8Txt.getText());
+        Double fogasaAmount = Double.valueOf(PayrollPanel.compTax5Txt.getText());
 
-        Double ohCompPer = Double.valueOf(PayrrolPanel.type9Txt.getText());
-        Double ohCompAmount = Double.valueOf(PayrrolPanel.compTax6Txt.getText());
+        Double ohCompPer = Double.valueOf(PayrollPanel.type9Txt.getText());
+        Double ohCompAmount = Double.valueOf(PayrollPanel.compTax6Txt.getText());
 
         try {
             Insert.insertPayrrol(nif, year, month, totalEarned, totalNet, companyAp);
