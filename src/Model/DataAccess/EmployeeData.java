@@ -20,25 +20,28 @@ public class EmployeeData {
             permanent = 1;
         }
 
+        getExtraPays();
         getTotalEarned();
         getCommonCont();
-        getExtraPays();
         getTotalDeducted();
         getCompanyDeductions();
+    }
+
+    public void getExtraPays() {
+        extraPays = (employee.getBonus().get(3).getQuant() * 2) / 12;
     }
 
     public void getTotalEarned () {
         for (Bonuses b : employee.getBonus()) {
             totalEarned += b.getQuant();
         }
+        totalEarned += extraPays;
     }
+
+
 
     public void getCommonCont () {
         commonContingences = totalEarned - employee.getBonus().get(1).getQuant();
-    }
-
-    public void getExtraPays() {
-        extraPays = (employee.getBonus().get(3).getQuant() * 2) / 12;
     }
 
     public void getTotalDeducted () {

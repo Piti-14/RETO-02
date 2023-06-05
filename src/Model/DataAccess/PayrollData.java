@@ -108,6 +108,7 @@ public class PayrollData {
                 case 7 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(3).getQuant() + "");
                 case 8 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getQuant() + "");
                 case 11 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
+                case 12 -> PayrrolPanel.perceptionsTextFields.get(i).setText(roundNumber(calculatedData.extraPays) + "");
                 case 15 -> PayrrolPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getQuant() + "");
             }
             PayrrolPanel.perceptionsTextFields.get(i).setEditable(false);
@@ -151,7 +152,7 @@ public class PayrollData {
     public static void fillCalculations(Employee e) {
         for (int i = 0; i < CALCULATIONS; i++) {
             switch (i) {
-                case 0, 15, 17 -> PayrrolPanel.calculationsTextFields.get(i).setText(calculatedData.totalEarned + "");
+                case 0, 15, 17 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalEarned) + "");
                 case 1 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstDeduction) + "");
                 case 2 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.secondDeduction) + "");
                 case 3 -> PayrrolPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.thirdDeduction) + "");
