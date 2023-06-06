@@ -1,11 +1,5 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
-
 import Database.Delete;
 import Database.Querys;
 import Languages.Configuration;
@@ -16,6 +10,12 @@ import Model.DataAccess.PayrollData;
 import View.GeneralPickPanel;
 import View.MainFrame;
 import View.PayrollPanel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.sql.SQLException;
 
 import static View.GeneralPickPanel.*;
 
@@ -31,6 +31,7 @@ public class GeneralPickPanelController implements ActionListener {
     public GeneralPickPanelController(String name) throws SQLException, URISyntaxException, IOException {
         this.name = name;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -99,11 +100,11 @@ public class GeneralPickPanelController implements ActionListener {
 
         listModel.removeAllElements();
 
-        String [] elements = element.split(" ");
+        String[] elements = element.split(" ");
 
-        if (elements.length<3) {
+        if (elements.length < 3) {
 
-            for (String nif: Querys.getNifsDepartment(elements[0])) {
+            for (String nif : Querys.getNifsDepartment(elements[0])) {
                 listModel.addAll(Querys.getPayrollsDepartment(nif));
             }
 
@@ -149,6 +150,7 @@ public class GeneralPickPanelController implements ActionListener {
 
         titleLabel.setText(language.getProperty("choosePay"));
     }
+
     private void chooseButton() throws SQLException {
 
         String[] value = jListPick.getSelectedValue().toString().split(" ");
@@ -157,7 +159,7 @@ public class GeneralPickPanelController implements ActionListener {
         PayrollData.generatePayroll(nif);
         PayrollPanel.nextButton.setVisible(false);
         PayrollPanel.saveButton.setVisible(true);
-        MainFrame.cardLayout.show(MainFrame.cards,"payrrolPanel");
+        MainFrame.cardLayout.show(MainFrame.cards, "payrrolPanel");
     }
 
     private void consultButton() throws SQLException {
@@ -171,15 +173,15 @@ public class GeneralPickPanelController implements ActionListener {
 
         Querys.setPayrollDataOnPayroll(Integer.parseInt(data[0]));
 
-        MainFrame.cardLayout.show(MainFrame.cards,"payrrolPanel");
+        MainFrame.cardLayout.show(MainFrame.cards, "payrrolPanel");
     }
 
 
     private void deleteButton() throws SQLException {
 
-        String element = (String) jListPick.getSelectedValue() ;
+        String element = (String) jListPick.getSelectedValue();
 
-        String []el = element.split(" ");
+        String[] el = element.split(" ");
 
         GeneralPickPanel.deleteElement();
 
@@ -191,7 +193,7 @@ public class GeneralPickPanelController implements ActionListener {
         alternateDepartmentButton.setVisible(false);
 
         listModel.removeAllElements();
-        for (Department department: PayrollData.departments) {
+        for (Department department : PayrollData.departments) {
             listModel.addElement(department.getCodeDept() + " " + department.getName());
         }
 
@@ -203,8 +205,8 @@ public class GeneralPickPanelController implements ActionListener {
         alternateDepartmentButton.setVisible(true);
 
         listModel.removeAllElements();
-        for (Employee employee: PayrollData.employees) {
-            listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname());
+        for (Employee employee : PayrollData.employees) {
+            listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname() + ", " + employee.getNIF());
         }
 
         titleLabel.setText(language.getProperty("chooseEmp"));

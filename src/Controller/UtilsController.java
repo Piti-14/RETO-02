@@ -3,7 +3,6 @@ package Controller;
 import Languages.Configuration;
 import Languages.Language;
 import View.MainFrame;
-import View.Utils.OffButton;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,6 +22,7 @@ public class UtilsController implements ActionListener {
     public UtilsController(String name) throws URISyntaxException, IOException {
         this.name = name;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -53,8 +53,6 @@ public class UtilsController implements ActionListener {
     private void nextButton() {
         System.out.println(":)");
     }
-
-
 
 
 }

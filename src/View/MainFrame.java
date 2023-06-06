@@ -80,9 +80,9 @@ public class MainFrame extends JFrame {
         cards = new JPanel(cardLayout);
 
         cards.add(loginPanel, "loginPanel");
-        cards.add(mainPanel,"mainPanel");
-        cards.add(payrrolPanel,"payrrolPanel");
-        cards.add(generalPickPanel,"playerPick");
+        cards.add(mainPanel, "mainPanel");
+        cards.add(payrrolPanel, "payrrolPanel");
+        cards.add(generalPickPanel, "playerPick");
 
         this.setIconImage(new ImageIcon(Sources.class.getResource("logoteaw.png")).getImage());
         this.add(menuBar, BorderLayout.NORTH);

@@ -7,7 +7,6 @@ import Model.BasicClasses.Employee;
 import View.PayrollPanel;
 
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -23,7 +22,6 @@ public class PayrollData {
     public static final int EMPLOYEE_TAXES = 5;
     public static final int COMPANY_TAXES = 6;
     public static final int PERCEPTIONS = 19;
-    static Querys qs = new Querys();
     public static EmployeeData calculatedData;
     public static Company comp;
     public static ArrayList<Employee> employees;
@@ -31,6 +29,7 @@ public class PayrollData {
     public static ArrayList<Double> employeeTaxes;
     public static ArrayList<Double> companyTaxes;
     public static double IRPF, ATEP;
+    static Querys qs = new Querys();
 
     /**
      * Inicializa los datos necesarios para generar la nómina.
@@ -133,7 +132,7 @@ public class PayrollData {
                 case 7 -> PayrollPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(3).getQuant() + "");
                 case 8 -> PayrollPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(0).getQuant() + "");
                 case 11 -> PayrollPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
-                case 13 -> PayrollPanel.perceptionsTextFields.get(i).setText(roundNumber(calculatedData.extraPays) + "");
+                case 13 -> PayrollPanel.perceptionsTextFields.get(i).setText(roundNumber(EmployeeData.extraPays) + "");
                 case 15 -> PayrollPanel.perceptionsTextFields.get(i).setText(e.getBonus().get(2).getQuant() + "");
             }
             PayrollPanel.perceptionsTextFields.get(i).setEditable(false);
@@ -198,9 +197,9 @@ public class PayrollData {
                 case 6 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.irpfDeduction) + "");
                 case 10 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalDeducted) + "");
                 case 11 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.totalNetPay) + "");
-                case 12 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.monthlyRemuneration) + "");
-                case 13 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.extraPays) + "");
-                case 14 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.commonContingences) + "");
+                case 12 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(EmployeeData.monthlyRemuneration) + "");
+                case 13 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(EmployeeData.extraPays) + "");
+                case 14 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(EmployeeData.commonContingences) + "");
                 case 16 -> PayrollPanel.calculationsTextFields.get(i).setText(e.getBonus().get(1).getQuant() + "");
                 case 18 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.firstCompanyDeduction) + "");
                 case 19 -> PayrollPanel.calculationsTextFields.get(i).setText(roundNumber(calculatedData.atepDeduction) + "");

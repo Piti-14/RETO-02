@@ -1,7 +1,6 @@
 package Model.BasicClasses;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Clase que representa un empleado.
@@ -17,7 +16,8 @@ public class Employee {
     /**
      * Constructor por defecto de la clase Employee.
      */
-    public Employee(){ }
+    public Employee() {
+    }
 
     /**
      * Constructor de la clase Employee.

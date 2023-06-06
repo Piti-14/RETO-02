@@ -3,7 +3,9 @@ package View;
 import Controller.PayrollController;
 import Languages.Configuration;
 import Languages.Language;
-import View.Utils.*;
+import View.Utils.NextButton;
+import View.Utils.PreviousButton;
+import View.Utils.SaveButton;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,7 +21,7 @@ public class PayrollPanel extends JPanel {
             salarySupplementsLbl, overtimeHoursLbl, complementaryHoursLbl, extraBonusesLbl, inKindSalaryLbl,
             nonSalaryPercepcionsLbl, compensationsOrAllowancesLbl, ssBenefitsCompensationsLbl, compensationsLbl,
             otherPerceptionsLbl, totalEarnedLbl, deductionsLbl, employeeContributionsLbl, typeLbl, type2Lbl, holdbacksLbl,
-            unemploymentLbl, proTrainingLbl,   totalContributionsLbl, incomeTaxLbl, advancesLbl, valueProductsLbl,
+            unemploymentLbl, proTrainingLbl, totalContributionsLbl, incomeTaxLbl, advancesLbl, valueProductsLbl,
             otherDeductionsLbl, totalDeductedLbl, totalNetReceivedLbl, companySignatureLbl, receivedLbl, determinationSSLbl,
             determinationSS2Lbl, commonHoldbacksLbl, monthlyRemunerationLbl, extraPaymentsLbl, companyContributionLbl,
             baseLbl, professionalHoldbacksLbl, fogasaLbl, overtimeContributionLbl, totalLbl, dateLbl, conceptLbl, atEPLbl,
@@ -44,6 +46,8 @@ public class PayrollPanel extends JPanel {
     public static ArrayList<JTextField> perceptionsTextFields = new ArrayList<>();
 
     public static PreviousButton previousButton;
+    public static NextButton nextButton;
+    public static SaveButton saveButton;
 
     static {
         try {
@@ -53,8 +57,6 @@ public class PayrollPanel extends JPanel {
         }
     }
 
-    public static NextButton nextButton;
-
     static {
         try {
             nextButton = new NextButton();
@@ -62,8 +64,6 @@ public class PayrollPanel extends JPanel {
             throw new RuntimeException(e);
         }
     }
-
-    public static SaveButton saveButton;
 
     static {
         try {
@@ -79,11 +79,11 @@ public class PayrollPanel extends JPanel {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridBagLayout());
 
-        JPanel topInfo = createPanelWithBorder(10,10,10,10,false);
-        JPanel dateInfo = createPanelWithBorder(10,10,10,10,false);
-        JPanel midInfo = createPanelWithBorder(10,40,10,10,false);
-        JPanel botInfo = createPanelWithBorder(10,10,10,10,false);
-        JPanel exitSave = createPanelWithBorder(10,10,10,10,true);
+        JPanel topInfo = createPanelWithBorder(10, 10, 10, 10, false);
+        JPanel dateInfo = createPanelWithBorder(10, 10, 10, 10, false);
+        JPanel midInfo = createPanelWithBorder(10, 40, 10, 10, false);
+        JPanel botInfo = createPanelWithBorder(10, 10, 10, 10, false);
+        JPanel exitSave = createPanelWithBorder(10, 10, 10, 10, true);
 
         topInfo.setPreferredSize(new Dimension(800, 150));
         dateInfo.setPreferredSize(new Dimension(800, 50));
@@ -839,8 +839,8 @@ public class PayrollPanel extends JPanel {
         perceptionsTextFields.add(amount3Txt);
         perceptionsTextFields.add(amount4Txt);
         perceptionsTextFields.add(amount5Txt);//11
-        perceptionsTextFields.add(amount6Txt);//12
-        perceptionsTextFields.add(amount7Txt);
+        perceptionsTextFields.add(amount6Txt);
+        perceptionsTextFields.add(amount7Txt);//13
         perceptionsTextFields.add(amount8Txt);
         perceptionsTextFields.add(amount9Txt);//15
         perceptionsTextFields.add(amount10Txt);

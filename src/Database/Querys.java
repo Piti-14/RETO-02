@@ -339,7 +339,7 @@ public class Querys {
         PayrollPanel.base4Txt.setText(String.valueOf(result.getDouble(5)));
         PayrollPanel.base2Txt.setText(String.valueOf(result.getDouble(5)));
         PayrollPanel.base1Txt.setText(String.valueOf(result.getDouble(5)-Double.parseDouble(data2.get(3))));
-        PayrollPanel.monthlyRemunerationTxt.setText((String.valueOf(result.getDouble(5)-(baseSalary*2/12))));
+        PayrollPanel.monthlyRemunerationTxt.setText((String.valueOf(PayrollData.roundNumber(result.getDouble(5)-(baseSalary*2/12)))));
         PayrollPanel.totalNetReceivedTxt.setText(String.valueOf(result.getDouble(6)));
         PayrollPanel.settlementPeriodTxt.setText(result.getString(4) + " OF " + result.getDouble(3));
         PayrollPanel.nifTxt.setText(result.getString(2));
@@ -396,7 +396,7 @@ public class Querys {
 
         PayrollPanel.amount5Txt.setText(String.valueOf(Double.parseDouble(data2.get(3)))); // he
 
-        PayrollPanel.amount7Txt.setText(String.valueOf(baseSalary*2/12)); // pagas e
+        PayrollPanel.amount7Txt.setText(String.valueOf(PayrollData.roundNumber(baseSalary*2/12))); // pagas e
 
         PayrollPanel.amount9Txt.setText(data2.get(5)); // indemnizacions o suplidos
 
@@ -415,14 +415,14 @@ public class Querys {
         PayrollPanel.irpfTxt.setText(data3.get(1));
 
         //PayrollPanel.monthlyRemunerationTxt.setText(String.valueOf(result.getDouble(5)-EmployeeData.extraPays));
-        PayrollPanel.extraPaymentsTxt.setText(String.valueOf(baseSalary*2/12));
+        PayrollPanel.extraPaymentsTxt.setText(String.valueOf(PayrollData.roundNumber(baseSalary*2/12)));
         //PayrollPanel.base1Txt.setText(String.valueOf(result.getDouble(5)-Double.parseDouble(data2.get(4))));
         //PayrollPanel.base2Txt.setText(String.valueOf(result.getDouble(5)));
         PayrollPanel.base3Txt.setText(data2.get(3));
         //PayrollPanel.base4Txt.setText(String.valueOf(result.getDouble(5)));
 
         PayrollPanel.type4Txt.setText(data5.get(13));
-        String comp1 = String.valueOf(Double.valueOf(data5.get(13))/100 * Double.valueOf(PayrollPanel.base1Txt.getText()));
+        String comp1 = String.valueOf(PayrollData.roundNumber(Double.valueOf(data5.get(13))/100 * Double.valueOf(PayrollPanel.base1Txt.getText())));
         PayrollPanel.compTax1Txt.setText(comp1);
         PayrollPanel.type5Txt.setText(data3.get(4));
         PayrollPanel.compTax2Txt.setText(data3.get(5));
@@ -434,7 +434,7 @@ public class Querys {
         PayrollPanel.compTax5Txt.setText(data5.get(8));
         PayrollPanel.type9Txt.setText(data5.get(10));
         PayrollPanel.compTax6Txt.setText(data5.get(11));
-        PayrollPanel.totalTxt.setText(String.valueOf(Double.valueOf(data5.get(11))+Double.valueOf(data5.get(8))+Double.valueOf(data3.get(5))+Double.valueOf(comp1)+Double.valueOf(data5.get(5))+Double.valueOf(data5.get(14)))); // hechi
+        PayrollPanel.totalTxt.setText(String.valueOf(PayrollData.roundNumber(Double.valueOf(data5.get(11))+Double.valueOf(data5.get(8))+Double.valueOf(data3.get(5))+Double.valueOf(comp1)+Double.valueOf(data5.get(5))+Double.valueOf(data5.get(14))))); // hechi
 
 
 

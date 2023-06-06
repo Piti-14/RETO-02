@@ -3,7 +3,9 @@ package View.Login;
 import Controller.KeyController;
 import Sources.Sources;
 import View.MainFrame;
-import View.Utils.*;
+import View.Utils.JLabelWallpaper;
+import View.Utils.JPanelBlue;
+import View.Utils.OffButton;
 
 import javax.swing.*;
 import javax.swing.border.Border;

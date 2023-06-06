@@ -2,8 +2,6 @@ package Controller;
 
 import Languages.Configuration;
 import Languages.Language;
-import View.MainFrame;
-import org.w3c.dom.Document;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

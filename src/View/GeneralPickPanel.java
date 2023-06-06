@@ -7,7 +7,10 @@ import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import Model.DataAccess.PayrollData;
 import View.Utils.ShadowLabel;
-import View.Utils.*;
+import View.Utils.JLabelWallpaper;
+import View.Utils.JPanelBlue;
+import View.Utils.OffButton;
+import View.Utils.PreviousButton;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -52,12 +55,12 @@ public class GeneralPickPanel extends JPanel {
         titleLabel.setShadowOffset(new Dimension(2, -2));
 
         jListPick = new JList<>(listModel);
-        jListPick.setBounds(screenWidth*(30)/100,screenHeight*(29)/100,screenWidth*(32)/100,screenHeight*(34)/100);
+        jListPick.setBounds(screenWidth * (30) / 100, screenHeight * (29) / 100, screenWidth * (32) / 100, screenHeight * (34) / 100);
         jListPick.setBorder(new LineBorder(Color.WHITE, 2));
         jListPick.setBackground(color);
 
         chooseButton = new JButton(language.getProperty("chooseBtn"));
-        chooseButton.setBounds(screenWidth*(72)/100,screenHeight*(48)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        chooseButton.setBounds(screenWidth * (72) / 100, screenHeight * (48) / 100, screenWidth * (10) / 100, screenHeight * (5) / 100);
         chooseButton.setBorder(new LineBorder(Color.WHITE, 2));
         chooseButton.setBackground(color);
         chooseButton.setFocusPainted(false);
@@ -65,7 +68,7 @@ public class GeneralPickPanel extends JPanel {
         chooseButton.addActionListener(new GeneralPickPanelController("chooseButton"));
 
         selectButton = new JButton(language.getProperty("selectBtn"));
-        selectButton.setBounds(screenWidth*(72)/100,screenHeight*(47)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        selectButton.setBounds(screenWidth * (72) / 100, screenHeight * (47) / 100, screenWidth * (10) / 100, screenHeight * (5) / 100);
         selectButton.setBorder(new LineBorder(Color.WHITE, 2));
         selectButton.setBackground(color);
         selectButton.setFocusPainted(false);
@@ -81,7 +84,7 @@ public class GeneralPickPanel extends JPanel {
         selectConsultButton.addActionListener(new GeneralPickPanelController("selectConsultButton"));
 
         deleteButton = new JButton(language.getProperty("deleteBtn"));
-        deleteButton.setBounds(screenWidth*(72)/100,screenHeight*(44)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        deleteButton.setBounds(screenWidth * (72) / 100, screenHeight * (44) / 100, screenWidth * (10) / 100, screenHeight * (5) / 100);
         deleteButton.setBorder(new LineBorder(Color.WHITE, 2));
         deleteButton.setBackground(color);
         deleteButton.setFocusPainted(false);
@@ -89,7 +92,7 @@ public class GeneralPickPanel extends JPanel {
         deleteButton.addActionListener(new GeneralPickPanelController("deleteButton"));
 
         consultButton = new JButton(language.getProperty("consultBtn"));
-        consultButton.setBounds(screenWidth*(72)/100,screenHeight*(44)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        consultButton.setBounds(screenWidth * (72) / 100, screenHeight * (44) / 100, screenWidth * (10) / 100, screenHeight * (5) / 100);
         consultButton.setBorder(new LineBorder(Color.WHITE, 2));
         consultButton.setBackground(color);
         consultButton.setFocusPainted(false);
@@ -97,7 +100,7 @@ public class GeneralPickPanel extends JPanel {
         consultButton.addActionListener(new GeneralPickPanelController("consultButton"));
 
         alternateDepartmentButton = new JButton(language.getProperty("chooseDepBtn"));
-        alternateDepartmentButton.setBounds(screenWidth*(72)/100,screenHeight*(39)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        alternateDepartmentButton.setBounds(screenWidth * (72) / 100, screenHeight * (39) / 100, screenWidth * (10) / 100, screenHeight * (5) / 100);
         alternateDepartmentButton.setBorder(new LineBorder(Color.WHITE, 2));
         alternateDepartmentButton.setBackground(color);
         alternateDepartmentButton.setFocusPainted(false);
@@ -105,7 +108,7 @@ public class GeneralPickPanel extends JPanel {
         alternateDepartmentButton.addActionListener(new GeneralPickPanelController("alternateDepartmentButton"));
 
         alternateEmployeeButton = new JButton(language.getProperty("chooseEmpBtn"));
-        alternateEmployeeButton.setBounds(screenWidth*(72)/100,screenHeight*(39)/100,screenWidth*(10)/100,screenHeight*(5)/100);
+        alternateEmployeeButton.setBounds(screenWidth * (72) / 100, screenHeight * (39) / 100, screenWidth * (10) / 100, screenHeight * (5) / 100);
         alternateEmployeeButton.setBorder(new LineBorder(Color.WHITE, 2));
         alternateEmployeeButton.setBackground(color);
         alternateEmployeeButton.setFocusPainted(false);
@@ -129,19 +132,20 @@ public class GeneralPickPanel extends JPanel {
         this.add(new JPanelBlue());
         this.add(new JLabelWallpaper());
     }
+
     public static void deleteElement() {
         listModel.removeElement(jListPick.getSelectedValue());
     }
 
     public static void insertDataEmployees() {
-        for (Employee employee: PayrollData.employees) {
+        for (Employee employee : PayrollData.employees) {
             listModel.addElement(employee.getName() + " " + employee.getFirstLastname() + " " + employee.getSecondLastname() + ", " + employee.getNIF());
         }
     }
 
     public static void insertDataDepartments() {
         listModel.removeAllElements();
-        for (Department dept: PayrollData.departments) {
+        for (Department dept : PayrollData.departments) {
             listModel.addElement(dept.getCodeDept() + " : " + dept.getName());
         }
     }

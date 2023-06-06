@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
 public class LoginPanelController {
 
     public static Configuration configuration;
+    public static Language language;
 
     static {
         try {
@@ -24,8 +25,6 @@ public class LoginPanelController {
             throw new RuntimeException(e);
         }
     }
-
-    public static Language language;
 
     static {
         try {
