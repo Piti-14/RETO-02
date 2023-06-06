@@ -1,6 +1,6 @@
 package View;
 
-import Controller.PayrrolController;
+import Controller.PayrollController;
 import Languages.Configuration;
 import Languages.Language;
 import View.Utils.*;
@@ -795,7 +795,7 @@ public class PayrollPanel extends JPanel {
         constraints.gridy = 0;
         exitSave.add(nextButton, constraints);
 
-        saveButton.addActionListener(new PayrrolController());
+        saveButton.addActionListener(new PayrollController());
         saveButton.setPreferredSize(new Dimension(75, 75));
         constraints.gridx = 4;
         constraints.gridy = 0;

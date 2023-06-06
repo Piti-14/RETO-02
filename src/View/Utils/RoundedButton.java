@@ -4,16 +4,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
+/**
+ * Clase que representa un botón redondeado.
+ */
 public class RoundedButton extends JButton {
+
     private Color startColor;
     private Color endColor;
 
+    /**
+     * Crea un nuevo botón redondeado con el texto especificado.
+     *
+     * @param text el texto del botón
+     */
     public RoundedButton(String text) {
         super(text);
         setBorderPainted(false);
         setContentAreaFilled(false);
     }
 
+    /**
+     * Establece el gradiente de color del botón.
+     *
+     * @param startColor el color de inicio del gradiente
+     * @param endColor   el color de fin del gradiente
+     */
     public void setGradient(Color startColor, Color endColor) {
         this.startColor = startColor;
         this.endColor = endColor;

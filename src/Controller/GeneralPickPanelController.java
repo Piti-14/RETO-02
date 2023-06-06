@@ -177,7 +177,7 @@ public class GeneralPickPanelController implements ActionListener {
 
         GeneralPickPanel.deleteElement();
 
-        Delete.deletePayrrol(Integer.parseInt(el[0].replace(",", "")));
+        Delete.deletePayroll(Integer.parseInt(el[0].replace(",", "")));
     }
 
     private void chooseDepartmentButton() {

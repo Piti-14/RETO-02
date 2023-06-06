@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Querys {
 
-    private static Connection connect = ConnectionDB.Connect();
+    private static final Connection connect = ConnectionDB.Connect();
 
     public ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = connect.createStatement();
@@ -403,10 +403,6 @@ public class Querys {
         PayrollPanel.type9Txt.setText(data5.get(11));
         PayrollPanel.compTax6Txt.setText(data5.get(12));
         PayrollPanel.totalTxt.setText(String.valueOf(Double.valueOf(data5.get(12)+data5.get(9)+data5.get(6)+data5.get(3)+data3.get(6)+data5.get(15))));
-
-
-
-
     }
 
 

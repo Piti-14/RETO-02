@@ -4,26 +4,32 @@ import Controller.MainPanelController;
 import Languages.Configuration;
 import Languages.Language;
 import Sources.Sources;
-import View.Login.LoginPanel;
-import View.Utils.JLabelWallpaper;
-import View.Utils.JPanelBlue;
-import View.Utils.OffButton;
+import View.Utils.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.sql.SQLException;
 
+/**
+ * Clase que representa el panel principal de la interfaz de usuario.
+ */
 public class MainPanel extends JPanel {
 
-    RoundedButton addButton, consultButton, deleteButton;
+    /**
+     * Etiqueta sombreada para el título del panel.
+     */
     public static ShadowLabel titleLabel;
 
-    public MainPanel() throws SQLException, URISyntaxException, IOException {
+    /**
+     * Crea un nuevo panel principal.
+     *
+     * @throws URISyntaxException si ocurre un error de sintaxis de URI
+     * @throws IOException       si ocurre un error de entrada/salida
+     */
+    public MainPanel() throws URISyntaxException, IOException {
         this.setLayout(null);
 
         Toolkit screen = Toolkit.getDefaultToolkit();
@@ -33,35 +39,34 @@ public class MainPanel extends JPanel {
 
         ImageIcon corporativeImage = new ImageIcon(Sources.class.getResource("fondo-login.jpg"));
         JLabel labelImage = new JLabel(corporativeImage);
-        labelImage.setBounds(0,0,screenWidth,screenHeight);
+        labelImage.setBounds(0, 0, screenWidth, screenHeight);
 
-        Color color1 = new Color(41, 170,   225);
-
+        Color color1 = new Color(41, 170, 225);
         Color color2 = new Color(185, 189, 209);
 
         Configuration configuration = new Configuration();
         Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
         titleLabel = new ShadowLabel(language.getProperty("welcome"));
-        titleLabel.setBounds(0, ((screenHeight / 8)), screenWidth, 100);
+        titleLabel.setBounds(0, (screenHeight / 8), screenWidth, 100);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 50));
         titleLabel.setForeground(color1);
         titleLabel.setShadowColor(Color.WHITE);
         titleLabel.setShadowOffset(new Dimension(2, -2));
 
-        addButton = new RoundedButton(language.getProperty("createPay"));
-        addButton.setBounds(((screenWidth/2)-200), ((screenHeight/4)+50), 400, 100);
+        View.Utils.RoundedButton addButton = new View.Utils.RoundedButton(language.getProperty("createPay"));
+        addButton.setBounds((screenWidth / 2) - 200, (screenHeight / 4) + 50, 400, 100);
         addButton.addActionListener(new MainPanelController("addButton"));
         customizeButton(addButton, color1, color2);
 
-        consultButton = new RoundedButton(language.getProperty("consultPay"));
-        consultButton.setBounds(((screenWidth/2)-200), ((screenHeight/4)+400), 400, 100);
+        View.Utils.RoundedButton consultButton = new View.Utils.RoundedButton(language.getProperty("consultPay"));
+        consultButton.setBounds((screenWidth / 2) - 200, (screenHeight / 4) + 400, 400, 100);
         consultButton.addActionListener(new MainPanelController("consultButton"));
         customizeButton(consultButton, color2, color1);
 
-        deleteButton = new RoundedButton(language.getProperty("deletePay"));
-        deleteButton.setBounds(((screenWidth/2)-200), ((screenHeight/2)-50), 400, 100);
+        View.Utils.RoundedButton deleteButton = new View.Utils.RoundedButton(language.getProperty("deletePay"));
+        deleteButton.setBounds((screenWidth / 2) - 200, (screenHeight / 2) - 50, 400, 100);
         deleteButton.addActionListener(new MainPanelController("deleteButton"));
         customizeButton(deleteButton, color2, color1);
 
@@ -77,6 +82,13 @@ public class MainPanel extends JPanel {
         this.add(new JLabelWallpaper());
     }
 
+    /**
+     * Personaliza el estilo de un botón redondeado.
+     *
+     * @param button     el botón redondeado a personalizar
+     * @param startColor el color de inicio del gradiente
+     * @param endColor   el color de fin del gradiente
+     */
     private void customizeButton(RoundedButton button, Color startColor, Color endColor) {
         button.setGradient(startColor, endColor);
         button.setForeground(Color.BLACK);
@@ -99,87 +111,5 @@ public class MainPanel extends JPanel {
                 button.setBounds(button.getX() + 10, button.getY() + 10, button.getWidth() - 20, button.getHeight() - 20);
             }
         });
-    }
-
-    static class RoundedButton extends JButton {
-        private Color startColor;
-        private Color endColor;
-
-        public RoundedButton(String text) {
-            super(text);
-            setBorderPainted(false);
-            setContentAreaFilled(false);
-        }
-
-        public void setGradient(Color startColor, Color endColor) {
-            this.startColor = startColor;
-            this.endColor = endColor;
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            Graphics2D g2d = (Graphics2D) g.create();
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-            GradientPaint gradient = new GradientPaint(0, 0, startColor, getWidth(), getHeight(), endColor);
-            g2d.setPaint(gradient);
-
-            Shape shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
-            g2d.fill(shape);
-
-            g2d.setColor(getForeground());
-            g2d.setFont(getFont());
-
-            FontMetrics fm = g2d.getFontMetrics();
-            Rectangle textBounds = fm.getStringBounds(getText(), g2d).getBounds();
-            int x = (getWidth() - textBounds.width) / 2;
-            int y = (getHeight() - textBounds.height) / 2 + fm.getAscent();
-            g2d.drawString(getText(), x, y);
-
-            g2d.dispose();
-        }
-
-        @Override
-        protected void paintBorder(Graphics g) {
-            // No se pinta el borde para lograr la apariencia de bordes circulares
-        }
-    }
-
-    public static class ShadowLabel extends JLabel {
-        private Color shadowColor;
-        private Dimension shadowOffset;
-
-        public ShadowLabel(String text) {
-            super(text);
-            this.shadowColor = Color.WHITE;
-            this.shadowOffset = new Dimension(2, 2);
-        }
-
-        public void setShadowColor(Color color) {
-            this.shadowColor = color;
-        }
-
-        public void setShadowOffset(Dimension offset) {
-            this.shadowOffset = offset;
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            Graphics2D g2d = (Graphics2D) g.create();
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-            FontMetrics fm = g2d.getFontMetrics();
-            Rectangle textBounds = fm.getStringBounds(getText(), g2d).getBounds();
-            int x = (getWidth() - textBounds.width) / 2;
-            int y = (getHeight() - textBounds.height) / 2 + fm.getAscent();
-
-            g2d.setColor(shadowColor);
-            g2d.drawString(getText(), x + shadowOffset.width, y + shadowOffset.height);
-
-            g2d.setColor(getForeground());
-            g2d.drawString(getText(), x, y);
-
-            g2d.dispose();
-        }
     }
 }

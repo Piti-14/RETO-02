@@ -1,12 +1,12 @@
 package View;
 
 import Controller.GeneralPickPanelController;
-import Database.Querys;
 import Languages.Configuration;
 import Languages.Language;
 import Model.BasicClasses.Department;
 import Model.BasicClasses.Employee;
 import Model.DataAccess.PayrollData;
+import View.Utils.ShadowLabel;
 import View.Utils.*;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 public class GeneralPickPanel extends JPanel {
 
-    public static MainPanel.ShadowLabel titleLabel;
+    public static ShadowLabel titleLabel;
     //public static Querys querys = new Querys();
     public static JList jListPick;
     public static DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -43,7 +43,7 @@ public class GeneralPickPanel extends JPanel {
         Configuration configuration = new Configuration();
         Language language = new Language(Integer.parseInt(configuration.getLanguage()));
 
-        titleLabel = new MainPanel.ShadowLabel(language.getProperty("chooseEmp"));
+        titleLabel = new ShadowLabel(language.getProperty("chooseEmp"));
         titleLabel.setBounds(-75, ((screenHeight / 6)), screenWidth, 100);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 50));

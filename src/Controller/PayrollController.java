@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Controlador para el panel de nómina.
  * Maneja los eventos del panel de nómina y realiza las acciones correspondientes.
  */
-public class PayrrolController implements ActionListener {
+public class PayrollController implements ActionListener {
 
     /**
      * Se activa cuando se produce un evento.
@@ -89,7 +89,7 @@ public class PayrrolController implements ActionListener {
         Double retentionAmount = Double.valueOf(PayrollPanel.compTax3Txt.getText());
 
         try {
-            Insert.insertPayrrol(nif, year, month, totalEarned, totalNet, companyAp);
+            Insert.insertPayroll(nif, year, month, totalEarned, totalNet, companyAp);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }

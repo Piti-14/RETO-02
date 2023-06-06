@@ -20,7 +20,7 @@ public class Insert {
      * @param ap_empresa  la aportación de la empresa
      * @throws SQLException si ocurre algún error de SQL durante la inserción
      */
-    public static void insertPayrrol(String nif, int ano_n, String mes_n, Double total_dev, Double total_net, Double ap_empresa) throws SQLException {
+    public static void insertPayroll(String nif, int ano_n, String mes_n, Double total_dev, Double total_net, Double ap_empresa) throws SQLException {
         String sql = "INSERT INTO nominas(nif,ano_n,mes_n,total_dev,total_net,ap_empresa) VALUES(?,?,?,?,?,?)";
 
         try (Connection conn = connect;

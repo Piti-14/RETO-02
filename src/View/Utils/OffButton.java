@@ -9,10 +9,18 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import static java.lang.System.exit;
-
+/**
+ * Clase que representa un botón de "Apagar".
+ */
 public class OffButton extends JButton {
-    public OffButton () throws URISyntaxException, IOException {
+
+    /**
+     * Crea una nueva instancia del botón de "Apagar".
+     *
+     * @throws URISyntaxException Si se produce un error al obtener la URI de recursos.
+     * @throws IOException        Si se produce un error al leer los recursos.
+     */
+    public OffButton() throws URISyntaxException, IOException {
         Toolkit screen = Toolkit.getDefaultToolkit();
         Dimension screensize = screen.getScreenSize();
         int screenHeight = screensize.height;
@@ -21,7 +29,7 @@ public class OffButton extends JButton {
         this.setIcon(new ImageIcon(Sources.class.getResource("apagar.png")));
         this.setContentAreaFilled(false);
         this.setBorder(null);
-        this.setBounds(screenWidth*(93)/100,screenHeight*(87)/100,50,50);
+        this.setBounds(screenWidth * 93 / 100, screenHeight * 87 / 100, 50, 50);
         this.addActionListener(new UtilsController(this.getClass().getSimpleName()));
     }
 }

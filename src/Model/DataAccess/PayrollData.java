@@ -11,6 +11,9 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Clase encargada de generar los datos necesarios para mostrar una nómina en la interfaz gráfica.
+ */
 public class PayrollData {
     public static final int COMPANY = 4;
     public static final int EMPLOYEE = 5;
@@ -29,6 +32,10 @@ public class PayrollData {
     public static ArrayList<Double> companyTaxes;
     public static double IRPF, ATEP;
 
+    /**
+     * Inicializa los datos necesarios para generar la nómina.
+     * @throws SQLException si ocurre un error al obtener los datos de la base de datos.
+     */
     public static void initialiseData() throws SQLException {
         employees = qs.getEmployees();
         comp = qs.getCompanyData();
@@ -37,6 +44,11 @@ public class PayrollData {
         departments = qs.getDepartments();
     }
 
+    /**
+     * Genera la nómina para el empleado con el NIF especificado.
+     * @param nif NIF del empleado.
+     * @throws SQLException si ocurre un error al obtener los datos de la base de datos.
+     */
     public static void generatePayroll(String nif) throws SQLException {
         Employee current = new Employee();
         for (Employee e : employees) {
@@ -57,6 +69,10 @@ public class PayrollData {
         fillCalculations(current);
     }
 
+    /**
+     * Rellena los datos de la empresa en la interfaz gráfica.
+     * @throws SQLException si ocurre un error al obtener los datos de la base de datos.
+     */
     public static void fillCompanyData() throws SQLException {
 
         for (int i = 0; i < COMPANY; i++) {
@@ -70,6 +86,11 @@ public class PayrollData {
         }
     }
 
+    /**
+     * Rellena los datos del empleado en la interfaz gráfica.
+     * @param e objeto Employee con los datos del empleado.
+     * @throws SQLException si ocurre un error al obtener los datos de la base de datos.
+     */
     public static void fillEmployeeData(Employee e) throws SQLException {
         for (int i = 0; i < EMPLOYEE; i++) {
             switch (i) {
@@ -83,6 +104,9 @@ public class PayrollData {
         }
     }
 
+    /**
+     * Rellena los datos de fecha en la interfaz gráfica.
+     */
     public static void fillDateData() {
         LocalDate today = LocalDate.now();
 
@@ -96,6 +120,10 @@ public class PayrollData {
         }
     }
 
+    /**
+     * Rellena los datos de percepciones en la interfaz gráfica.
+     * @param e objeto Employee con los datos del empleado.
+     */
     public static void fillPerceptions(Employee e) {
         for (int i = 0; i < PERCEPTIONS; i++) {
             switch (i) {
@@ -112,6 +140,10 @@ public class PayrollData {
         }
     }
 
+    /**
+     * Rellena los datos de impuestos del empleado en la interfaz gráfica.
+     * @param e objeto Employee con los datos del empleado.
+     */
     public static void fillEmployeeTaxes(Employee e) {
         int permanent = 0;
         if (!e.getPermanentJob()) {
@@ -129,6 +161,10 @@ public class PayrollData {
         }
     }
 
+    /**
+     * Rellena los datos de impuestos de la empresa en la interfaz gráfica.
+     * @param e objeto Employee con los datos del empleado.
+     */
     public static void fillCompanyTaxes(Employee e) {
         int permanent = 0;
         if (!e.getPermanentJob()) {
@@ -146,6 +182,10 @@ public class PayrollData {
         }
     }
 
+    /**
+     * Rellena los cálculos en la interfaz gráfica.
+     * @param e objeto Employee con los datos del empleado.
+     */
     public static void fillCalculations(Employee e) {
         for (int i = 0; i < CALCULATIONS; i++) {
             switch (i) {
@@ -174,6 +214,11 @@ public class PayrollData {
         }
     }
 
+    /**
+     * Redondea un número decimal a dos decimales.
+     * @param n número decimal a redondear.
+     * @return número redondeado a dos decimales.
+     */
     public static double roundNumber(double n) {
         double rounded = Math.floor(n * 100) / 100;
         rounded = Math.ceil(rounded * 100) / 100;
