@@ -338,7 +338,7 @@ public class Querys {
 
         PayrollPanel.base4Txt.setText(String.valueOf(result.getDouble(5)));
         PayrollPanel.base2Txt.setText(String.valueOf(result.getDouble(5)));
-        PayrollPanel.base1Txt.setText(String.valueOf(result.getDouble(5)-Double.parseDouble(data2.get(3))));
+        PayrollPanel.base1Txt.setText(String.valueOf(PayrollData.roundNumber(result.getDouble(5)-Double.parseDouble(data2.get(3)))));
         PayrollPanel.monthlyRemunerationTxt.setText((String.valueOf(PayrollData.roundNumber(result.getDouble(5)-(baseSalary*2/12)))));
         PayrollPanel.totalNetReceivedTxt.setText(String.valueOf(result.getDouble(6)));
         PayrollPanel.settlementPeriodTxt.setText(result.getString(4) + " OF " + result.getDouble(3));
@@ -404,9 +404,9 @@ public class Querys {
         PayrollPanel.amount14Txt.setText(String.valueOf(data4.get(5)));
         PayrollPanel.amount15Txt.setText(String.valueOf(data4.get(8)));
         PayrollPanel.amount16Txt.setText(String.valueOf(data4.get(11)));
-        PayrollPanel.amount17Txt.setText(String.valueOf(Double.valueOf(data4.get(2))+Double.valueOf(data4.get(5))+Double.valueOf(data4.get(8))+Double.valueOf(data4.get(11))));
+        PayrollPanel.amount17Txt.setText(String.valueOf(PayrollData.roundNumber(Double.valueOf(data4.get(2))+Double.valueOf(data4.get(5))+Double.valueOf(data4.get(8))+Double.valueOf(data4.get(11)))));
         PayrollPanel.amount18Txt.setText(data3.get(2));
-        PayrollPanel.totalDeductedTxt.setText(String.valueOf(Double.valueOf(PayrollPanel.amount17Txt.getText()) + Double.valueOf(PayrollPanel.amount18Txt.getText())));
+        PayrollPanel.totalDeductedTxt.setText(String.valueOf(PayrollData.roundNumber(Double.valueOf(PayrollPanel.amount17Txt.getText()) + Double.valueOf(PayrollPanel.amount18Txt.getText()))));
 
         PayrollPanel.typeTxt.setText(data4.get(1));
         PayrollPanel.type1Txt.setText(data4.get(4));

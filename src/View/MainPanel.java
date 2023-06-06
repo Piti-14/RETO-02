@@ -58,7 +58,7 @@ public class MainPanel extends JPanel {
         View.Utils.RoundedButton addButton = new View.Utils.RoundedButton(language.getProperty("createPay"));
         addButton.setBounds((screenWidth / 2) - 200, (screenHeight / 4) + 50, 400, 100);
         addButton.addActionListener(new MainPanelController("addButton"));
-        customizeButton(addButton, color1, color2);
+        customizeButton(addButton, color2, color1);
 
         View.Utils.RoundedButton consultButton = new View.Utils.RoundedButton(language.getProperty("consultPay"));
         consultButton.setBounds((screenWidth / 2) - 200, (screenHeight / 4) + 400, 400, 100);
