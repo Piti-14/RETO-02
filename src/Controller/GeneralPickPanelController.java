@@ -43,7 +43,11 @@ public class GeneralPickPanelController implements ActionListener {
         }
 
         if (name.equals("consultButton")) {
-            consultButton();
+            try {
+                consultButton();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
         if (name.equals("deleteButton")) {
@@ -80,9 +84,9 @@ public class GeneralPickPanelController implements ActionListener {
 
     private void selectConsultButton() throws SQLException {
         selectConsultButton.setVisible(false);
-        consultButton.setVisible(false);
+        consultButton.setVisible(true);
         deleteButton.setVisible(false);
-        selectConsultButton.setVisible(true);
+        selectConsultButton.setVisible(false);
 
         if (alternateEmployeeButton.isVisible()) {
             alternateEmployeeButton.setVisible(false);
@@ -156,14 +160,16 @@ public class GeneralPickPanelController implements ActionListener {
         MainFrame.cardLayout.show(MainFrame.cards,"payrrolPanel");
     }
 
-    private void consultButton() {
+    private void consultButton() throws SQLException {
 
         PayrollPanel.saveButton.setVisible(false);
         PayrollPanel.nextButton.setVisible(true);
 
-        jListPick.getSelectedValue();
+        String[] data = String.valueOf(jListPick.getSelectedValue()).split(" ");
 
-        //Querys.setPayrollDataOnPayroll();
+        PayrollData.fillCompanyData();
+
+        Querys.setPayrollDataOnPayroll(Integer.parseInt(data[0]));
 
         MainFrame.cardLayout.show(MainFrame.cards,"payrrolPanel");
     }

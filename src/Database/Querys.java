@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Querys {
 
-    private static final Connection connect = ConnectionDB.Connect();
+    private static Connection connect = ConnectionDB.Connect();
 
     public ArrayList<Employee> getEmployees() throws SQLException {
         Statement query = connect.createStatement();
@@ -302,16 +302,19 @@ public class Querys {
 
         Statement query = connect.createStatement();
 
-        ResultSet result = query.executeQuery("select * from nominas where id_nom='"+payroll+"'");
+        ResultSet nifSet = query.executeQuery("select nif from nominas where id_nom='"+payroll+"'");
+        nifSet.next();
+
+        String nif = nifSet.getString(1);
+
+        connect.createStatement();
 
         Employee employee = new Employee();
         for (Employee emp: PayrollData.employees) {
-            if (emp.getNIF().equals(result.getString(2))) {
+            if (emp.getNIF().equals(nif)) {
                 employee = emp;
             }
         }
-
-        ResultSet salary = query.executeQuery("select getSalarioBase('"+employee.getGroup().getGroupCode()+"')");
 
         ResultSet result2 = query.executeQuery("select * from nom_percep where id_nom='"+payroll+"'");
         ArrayList<String> data2 = new ArrayList<>();
@@ -319,6 +322,33 @@ public class Querys {
             data2.add(result2.getString(2));
             data2.add(String.valueOf(result2.getDouble(3)));
         }
+
+        connect.createStatement();
+
+        ResultSet salary = query.executeQuery("select getSalarioBase('"+employee.getGroup().getGroupCode()+"')");
+        salary.next();
+
+        PayrollPanel.amount1Txt.setText(String.valueOf(salary.getDouble(1))); // salario base
+        double baseSalary = salary.getDouble(1);
+
+        connect.createStatement();
+
+        ResultSet result = query.executeQuery("select * from nominas where id_nom='"+payroll+"'");
+        result.next();
+
+        PayrollPanel.base4Txt.setText(String.valueOf(result.getDouble(5)));
+        PayrollPanel.base2Txt.setText(String.valueOf(result.getDouble(5)));
+        PayrollPanel.base1Txt.setText(String.valueOf(result.getDouble(5)-Double.parseDouble(data2.get(3))));
+        PayrollPanel.monthlyRemunerationTxt.setText((String.valueOf(result.getDouble(5)-(baseSalary*2/12))));
+        PayrollPanel.totalNetReceivedTxt.setText(String.valueOf(result.getDouble(6)));
+        PayrollPanel.settlementPeriodTxt.setText(result.getString(4) + " OF " + result.getDouble(3));
+        PayrollPanel.nifTxt.setText(result.getString(2));
+        PayrollPanel.totalEarnedTxt.setText(String.valueOf(result.getDouble(5)));
+
+        PayrollPanel.ssnTxt.setText(String.valueOf(employee.getSS_number()));
+
+        connect.createStatement();
+
 
         ResultSet result3 = query.executeQuery("select * from nom_reten where id_nom='"+payroll+"'");
         ArrayList<String> data3 = new ArrayList<>();
@@ -328,81 +358,87 @@ public class Querys {
             data3.add(String.valueOf(result3.getDouble(4)));
         }
 
-        ResultSet result4 = query.executeQuery("select * from nom_cot_trabajdor where id_nom='"+payroll+"'");
+        connect.createStatement();
+
+        ResultSet result4 = query.executeQuery("select * from nom_cot_trabajador where id_nom='"+payroll+"'");
         ArrayList<String> data4 = new ArrayList<>();
         while (result4.next()) {
-            data4.add(result3.getString(2));
-            data4.add(String.valueOf(result3.getDouble(3)));
-            data4.add(String.valueOf(result3.getDouble(4)));
+            data4.add(result4.getString(2));
+            data4.add(String.valueOf(result4.getDouble(3)));
+            data4.add(String.valueOf(result4.getDouble(4)));
         }
+
+        connect.createStatement();
 
         ResultSet result5 = query.executeQuery("select * from nom_cot_empresa where id_nom='"+payroll+"'");
         ArrayList<String> data5 = new ArrayList<>();
         while (result5.next()) {
-            data5.add(result3.getString(2));
-            data5.add(String.valueOf(result3.getDouble(3)));
-            data5.add(String.valueOf(result3.getDouble(4)));
+            data5.add(result5.getString(2));
+            data5.add(String.valueOf(result5.getDouble(3)));
+            data5.add(String.valueOf(result5.getDouble(4)));
         }
 
-
+        connect.createStatement();
 
         PayrollPanel.employeeTxt.setText(employee.getName() + " " + employee.getFirstLastname() + " " +employee.getSecondLastname());
-        PayrollPanel.nifTxt.setText(result.getString(2));
-        PayrollPanel.ssnTxt.setText(result.getString(employee.getSS_number()));
+        //PayrollPanel.nifTxt.setText(result.getString(2));
+        //PayrollPanel.ssnTxt.setText(result.getString(employee.getSS_number()));
         PayrollPanel.categoryTxt.setText("Administración");
         PayrollPanel.contributionGroupTxt.setText(employee.getGroup().getGroupCode());
 
-        PayrollPanel.settlementPeriodTxt.setText(result.getString(4) + "OF" + result.getDouble(3));
+        //PayrollPanel.settlementPeriodTxt.setText(result.getString(4) + "OF" + result.getDouble(3));
         PayrollPanel.nDaysTxt.setText("30");
 
-        PayrollPanel.salarySupplementsTxt.setText((data2.get(1)));
-        PayrollPanel.amount2Txt.setText(data2.get(2));
+        PayrollPanel.salarySupplementsTxt.setText((data2.get(0)));
+        PayrollPanel.amount2Txt.setText(data2.get(1));
 
-        PayrollPanel.compensationsOrAllowancesTxt.setText(data2.get(5));
-        PayrollPanel.amount1Txt.setText(String.valueOf(salary.getDouble(1))); // salario base
+        PayrollPanel.compensationsOrAllowancesTxt.setText(data2.get(4));
 
-        PayrollPanel.amount5Txt.setText(data2.get(4)); // he
+        PayrollPanel.amount5Txt.setText(String.valueOf(Double.parseDouble(data2.get(3)))); // he
 
-        PayrollPanel.amount7Txt.setText(String.valueOf(EmployeeData.extraPays)); // pagas e
+        PayrollPanel.amount7Txt.setText(String.valueOf(baseSalary*2/12)); // pagas e
 
-        PayrollPanel.amount9Txt.setText(data2.get(6)); // indemnizacions o suplidos
+        PayrollPanel.amount9Txt.setText(data2.get(5)); // indemnizacions o suplidos
 
-        PayrollPanel.totalEarnedTxt.setText(String.valueOf(result.getDouble(5)));
-        PayrollPanel.amount13Txt.setText(String.valueOf(data4.get(3)));
-        PayrollPanel.amount14Txt.setText(String.valueOf(data4.get(6)));
-        PayrollPanel.amount15Txt.setText(String.valueOf(data4.get(9)));
-        PayrollPanel.amount16Txt.setText(String.valueOf(data4.get(12)));
-        PayrollPanel.amount17Txt.setText(String.valueOf(Double.valueOf(data4.get(3)+data4.get(6)+data4.get(9)+data4.get(12))));
-        PayrollPanel.amount18Txt.setText(data3.get(3));
-        PayrollPanel.totalDeductedTxt.setText(String.valueOf(Double.valueOf(data4.get(3)+data4.get(6)+data4.get(9)+data4.get(12)+data3.get(3))));
-        PayrollPanel.totalNetReceivedTxt.setText(String.valueOf(result.getDouble(6)));
+        PayrollPanel.amount13Txt.setText(String.valueOf(data4.get(2)));
+        PayrollPanel.amount14Txt.setText(String.valueOf(data4.get(5)));
+        PayrollPanel.amount15Txt.setText(String.valueOf(data4.get(8)));
+        PayrollPanel.amount16Txt.setText(String.valueOf(data4.get(11)));
+        PayrollPanel.amount17Txt.setText(String.valueOf(Double.valueOf(data4.get(2))+Double.valueOf(data4.get(5))+Double.valueOf(data4.get(8))+Double.valueOf(data4.get(11))));
+        PayrollPanel.amount18Txt.setText(data3.get(2));
+        PayrollPanel.totalDeductedTxt.setText(String.valueOf(Double.valueOf(PayrollPanel.amount17Txt.getText()) + Double.valueOf(PayrollPanel.amount18Txt.getText())));
 
-        PayrollPanel.typeTxt.setText(data4.get(2));
-        PayrollPanel.type1Txt.setText(data4.get(5));
-        PayrollPanel.type2Txt.setText(data4.get(8));
-        PayrollPanel.type3Txt.setText(data4.get(12));
-        PayrollPanel.irpfTxt.setText(data3.get(2));
+        PayrollPanel.typeTxt.setText(data4.get(1));
+        PayrollPanel.type1Txt.setText(data4.get(4));
+        PayrollPanel.type2Txt.setText(data4.get(7));
+        PayrollPanel.type3Txt.setText(data4.get(10));
+        PayrollPanel.irpfTxt.setText(data3.get(1));
 
-        PayrollPanel.monthlyRemunerationTxt.setText(String.valueOf(result.getDouble(5)-EmployeeData.extraPays));
-        PayrollPanel.extraPaymentsTxt.setText(String.valueOf(EmployeeData.extraPays));
-        PayrollPanel.base1Txt.setText(String.valueOf(result.getDouble(5)-Double.parseDouble(data2.get(4))));
-        PayrollPanel.base2Txt.setText(String.valueOf(result.getDouble(5)));
-        PayrollPanel.base3Txt.setText(data2.get(4));
-        PayrollPanel.base4Txt.setText(String.valueOf(result.getDouble(5)));
+        //PayrollPanel.monthlyRemunerationTxt.setText(String.valueOf(result.getDouble(5)-EmployeeData.extraPays));
+        PayrollPanel.extraPaymentsTxt.setText(String.valueOf(baseSalary*2/12));
+        //PayrollPanel.base1Txt.setText(String.valueOf(result.getDouble(5)-Double.parseDouble(data2.get(4))));
+        //PayrollPanel.base2Txt.setText(String.valueOf(result.getDouble(5)));
+        PayrollPanel.base3Txt.setText(data2.get(3));
+        //PayrollPanel.base4Txt.setText(String.valueOf(result.getDouble(5)));
 
-        PayrollPanel.type4Txt.setText(data5.get(14));
-        PayrollPanel.compTax1Txt.setText(data5.get(15));
-        PayrollPanel.type5Txt.setText(data3.get(5));
-        PayrollPanel.compTax2Txt.setText(data3.get(6));
-        PayrollPanel.type6Txt.setText(data5.get(2));
-        PayrollPanel.compTax3Txt.setText(data5.get(3));
-        PayrollPanel.type7Txt.setText(data5.get(5));
-        PayrollPanel.compTax4Txt.setText(data5.get(6));
-        PayrollPanel.type8Txt.setText(data5.get(8));
-        PayrollPanel.compTax5Txt.setText(data5.get(9));
-        PayrollPanel.type9Txt.setText(data5.get(11));
-        PayrollPanel.compTax6Txt.setText(data5.get(12));
-        PayrollPanel.totalTxt.setText(String.valueOf(Double.valueOf(data5.get(12)+data5.get(9)+data5.get(6)+data5.get(3)+data3.get(6)+data5.get(15))));
+        PayrollPanel.type4Txt.setText(data5.get(13));
+        String comp1 = String.valueOf(Double.valueOf(data5.get(13))/100 * Double.valueOf(PayrollPanel.base1Txt.getText()));
+        PayrollPanel.compTax1Txt.setText(comp1);
+        PayrollPanel.type5Txt.setText(data3.get(4));
+        PayrollPanel.compTax2Txt.setText(data3.get(5));
+        PayrollPanel.type6Txt.setText(data5.get(1));
+        PayrollPanel.compTax3Txt.setText(data5.get(14));
+        PayrollPanel.type7Txt.setText(data5.get(4));
+        PayrollPanel.compTax4Txt.setText(data5.get(5));
+        PayrollPanel.type8Txt.setText(data5.get(7));
+        PayrollPanel.compTax5Txt.setText(data5.get(8));
+        PayrollPanel.type9Txt.setText(data5.get(10));
+        PayrollPanel.compTax6Txt.setText(data5.get(11));
+        PayrollPanel.totalTxt.setText(String.valueOf(Double.valueOf(data5.get(11))+Double.valueOf(data5.get(8))+Double.valueOf(data3.get(5))+Double.valueOf(comp1)+Double.valueOf(data5.get(5))+Double.valueOf(data5.get(14)))); // hechi
+
+
+
+
     }
 
 
@@ -418,6 +454,7 @@ public class Querys {
 
         return data;
     }
+
 
 
 }
